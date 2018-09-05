@@ -35,7 +35,7 @@ chmod +x hello.py
 
 Retrieve the resource
 
-In the prowser
+In the browser
 
 ```
 http://localhost:8000/cgi-bin/hello.py
