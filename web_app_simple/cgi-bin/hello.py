@@ -18,7 +18,7 @@ n = int(params['n'].value)
 print('Content-Type: text/html')
 print()
 
-print('<html')
+print('<html>')
 print('  <head>')
 print('    <title>Hello CS330</title>')
 print('  </head>')
