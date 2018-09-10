@@ -27,7 +27,7 @@ Let's generate a page using CGI and Python
 ```
 mkdir cgi-bin
 cd cgi-bin
-echo !#/usr/bin/env python3 > hello.py
+echo #!/usr/bin/env python3 > hello.py
 vi hello.py
 ...
 chmod +x hello.py
