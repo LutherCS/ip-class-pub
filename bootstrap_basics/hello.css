@@ -1,0 +1,16 @@
+p {
+    text-decoration: underline;
+    text-decoration-color: aqua;
+}
+
+.odd {
+    background-color: bisque;
+}
+
+.even {
+    background-color: burlywood;
+}
+
+#important {
+    font-size: 2em;
+}
