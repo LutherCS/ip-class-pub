@@ -18,6 +18,8 @@ Buttons *Add*, *Save list*, *Remove purchased*, and *Remove all* must perform th
 
 ## Implementation
 
-* Use model-view-controller approach.
+* Use **Model-View-Controller** pattern
 
-* Use local storage
+* Use **Publish-subscribe** pattern to connect model and view
+
+* Use **local storage** to store the shopping list as JSON
