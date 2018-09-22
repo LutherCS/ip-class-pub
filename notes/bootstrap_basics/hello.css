@@ -1,6 +1,5 @@
 p {
     text-decoration: underline;
-    text-decoration-color: aqua;
 }
 
 .odd {
@@ -13,4 +12,5 @@ p {
 
 #important {
     font-size: 2em;
+    text-decoration-color: aqua;
 }
