@@ -6,7 +6,7 @@ from datetime import datetime as dt
 
 def isPrime(n: int) -> bool:
     '''Check if the number is prime'''
-    for i in range (2, n // 2):
+    for i in range (2, n // 2 + 1):
         if n % i == 0:
             return False
     return True
