@@ -1,5 +1,6 @@
 /* jshint esversion: 6 */
-"use strict";
+/* jshint node: true */
+'use strict';
 
 function isPrime(n) {
     for (let i = 2; i <= n / 2; i++) {
@@ -22,8 +23,8 @@ function getNPrimes(n) {
     return primes;
 }
 
-function generateTableOfPrimes(n) {
-    let my_table = document.querySelector('#primetbl');
+function generateTableOfPrimes(tbl_id, n) {
+    let my_table = document.querySelector(tbl_id);
     let my_primes = getNPrimes(n);
     my_table.innerHTML = '';
     for (let p of my_primes) {
@@ -33,10 +34,4 @@ function generateTableOfPrimes(n) {
         row.appendChild(cell);
         my_table.appendChild(row);
     }
-}
-
-function clickedon() {
-    let n = parseInt(document.querySelector('#numprimes').value);
-    // console.log(n);
-    generateTableOfPrimes(n);
 }
