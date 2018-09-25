@@ -1,0 +1,42 @@
+<html>
+    <head>
+        <title>Hello CS330!</title>
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css" integrity="sha384-9gVQ4dYFwwWSjIDZnLEWnxCjeSWFphJiwGPXr1jddIhOegiu1FwO5qRGvFXOdJZ4" crossorigin="anonymous">
+    </head>
+    <body>
+        <div id=menu>
+            <!-- To be populated -->
+        </div>
+        <form id=form_meal>
+            <div class=row>
+                <div class="col-sm-4 form-group">
+                    <label for=sel_quantity>Quantity</label>
+                    <select name=quantity class=form-control id=sel_quantity>
+                    <!-- To be populated -->
+                    </select>
+                </div>
+
+                <div class="col-sm-4 form-group">
+                    <label for=sel_name>Name</label>
+                    <select name=name class=form-control id=sel_name>
+                    <!-- To be populated -->
+                    </select>
+                </div>
+
+                <div class="col-sm-4 form-group">
+                    <label for=sel_meal>Meal</label>
+                    <select name=meal class=form-control id=sel_meal>
+                    <!-- To be populated -->
+                    </select>
+                </div>
+        </form>
+        <button type="button" onclick="if (document.getElementById('form_meal').checkValidity()) {addMeal()}" class="btn btn-lg btn-block btn-primary" id=btn_add>Add</button>
+        <button type="submit" onclick="location.reload()" class="btn btn-lg btn-block btn-success" id=btn_show>Show menu</button>
+        <button type="submit" onclick="clearMenu()" class="btn btn-lg btn-block btn-danger" id=btn_clear>Clear menu</button>
+
+        <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js" integrity="sha384-cs/chFZiN24E4KMATLdqdvsezGxaGsi4hLGOzlXwp5UZB1LY//20VyM2taTB4QvJ" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js" integrity="sha384-uefMccjFJAIv6A+rW+L4AHf99KvxDjWSu1z9VI8SKNVmz4sk7buKt/6v9KI65qnm" crossorigin="anonymous"></script>
+        <script src="forms.js"></script>
+    </body>
+</html>
