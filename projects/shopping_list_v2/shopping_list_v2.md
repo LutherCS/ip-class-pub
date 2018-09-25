@@ -38,8 +38,8 @@ Implement the following Shopping List functionality using HTML, CSS, and JavaScr
 
 ## Non-funcitonal requirements
 
-* Use **Model-View-Controller** pattern
+* Use **Model-View-Controller** architecture pattern
 
-* Use **Publish-subscribe** pattern to connect *model* and *view*
+* Use **Observer** design pattern to connect *model* and *view*
 
 * Use **Bootstrap** to align and add style to the elements on the page
