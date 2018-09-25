@@ -1,25 +1,45 @@
 # Shopping List: Storage
 
-Implement the following Shopping List functionality using HTML, CSS, and JavaScript. Use of Bootstrap is encouraged.
+Implement the following Shopping List functionality using HTML, CSS, and JavaScript.
 
-# Design
+## User interface
 
 ![Shopping List Storage](shopping_list_v2.png)
 
-Buttons *Add*, *Save list*, *Remove purchased*, and *Remove all* must perform the following tasks:
+## Functional requirements
 
-* *Add* collects values from the input fields and create a new row in the table with those values.
+* When the page is loaded:
 
-* *Save list* saves current state of the list using *local storage*. The list should be regenerated upon page refresh.
+    * drop-downs *Quantity*, *Store*, *Section*, and *Priority* are automatically generated using JavaScript
+    * *shopping list* is populated based on values stored in the **local storage**, if any
 
-* *Remove purchased* removes purchased items from the list.
+* When button **Add** is clicked:
 
-* *Remove all* clears the list completely.
+    * collect values from the input fields
+    * validate input values, do not accept empty fields
+    * create a new row in the table with item values
+    * color of the row depends on the item priority
 
-## Implementation
+* When button **Save list** is clicked:
+
+    * save current state of the list using **local storage**
+
+* When button **Remove purchased** is clicked:
+
+    * remove purchased items from the list
+
+* When button **Remove all** is clicked:
+
+    * clear the list completely
+
+* When a *checkbox* or a *row* is clicked:
+
+    * mark the corresponding item as *purchased*
+
+## Non-funcitonal requirements
 
 * Use **Model-View-Controller** pattern
 
-* Use **Publish-subscribe** pattern to connect model and view
+* Use **Publish-subscribe** pattern to connect *model* and *view*
 
-* Use **local storage** to store the shopping list as JSON
+* Use **Bootstrap** to align and add style to the elements on the page
