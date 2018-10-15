@@ -36,7 +36,7 @@ Implement the following Shopping List functionality using HTML, CSS, and JavaScr
 
     * mark the corresponding item as *purchased*
 
-## Non-funcitonal requirements
+## Non-functional requirements
 
 * Use **Model-View-Controller** architecture pattern
 
