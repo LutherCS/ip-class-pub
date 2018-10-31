@@ -6,7 +6,8 @@ function add() {
     let num3 = document.querySelector('#txt_num3').value;
     let num4 = document.querySelector('#txt_num4').value;
 
-    fetch('http://localhost:5000/add?num1=' + num1 + '&num2=' + num2)
+    let server_url = 'http://localhost:5000'
+    fetch(`${server_url}/add?num1=${num1}&num2=${num2}`)
     .then(function(response) {
         return response.json();
     })
@@ -14,5 +15,4 @@ function add() {
         document.querySelector('#result').innerHTML = response.result;
     })
     .catch(error => console.error('Error: ' + error));
-
 }
