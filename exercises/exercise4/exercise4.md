@@ -27,9 +27,9 @@ It's a recommended way to generate HTML. You can use Python to replace placehold
 
 The application should work as follows:
 
-1. When a user visits `http://localhost:5000/<int:n>`, a table of `n` primes is generated. Refer to exercise1 for the implementation details the prime numbers generator. The table template must be specified in the *prime_table.html*. As the table is generated, a *cookie* should be set with `n` as a value.
+1. When a user visits `http://localhost:5000/<int:n>`, a table of `n` primes is generated. Refer to *exercise1* for the implementation details the prime numbers generator. The table template must be specified in the *prime_table.html*. As the table is generated, a *cookie* should be set with `n` as a value.
 
-2. When a user visits `http://localhost:5000/ask`, they are presented with a text field and a button. The form template must be specified in *ask.html*. When the button is clicked, user should be redirected to `http://localhost:5000/` with the text field value as a request argument.
+2. When a user visits `http://localhost:5000/ask`, they are presented with a text field and a button. The form template must be specified in *ask.html*. When the button is clicked, user should be redirected to `http://localhost:5000/` with the text field value as a request argument (if using **GET**) or form value (if using **POST**).
 
 3. When a user visits `http://localhost:5000/`, the application should check the following conditions:
 
@@ -38,6 +38,8 @@ The application should work as follows:
     * The request is empty (i.e. not a redirect from `http://localhost:5000/ask`) but a cookie is present. Redirect the user to `http://localhost:5000/<int:n>` (`n` is read from the cookie)
 
     * Redirect the user to `http://localhost:5000/ask` by default.
+
+![Diagram](exercise4.png)
 
 ## Deployment
 
