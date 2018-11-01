@@ -1,3 +1,0 @@
-# Using API
-
-* Hoo!
