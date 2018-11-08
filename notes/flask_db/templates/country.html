@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div id="container">
+    <div class="alert alert-info">
+        Pick a country
+    </div>
+    <form action="/" method="POST">
+        <div class="row">
+            <div class="col">
+                <select class="form-control" name="country">
+                    {% for o in options %}
+                    <option value="{{o[0]}}">{{o[1]}}</option>
+                    {% endfor %}
+                </select>
+            </div>
+            <div class="col">
+                <input type="submit" class="btn" value="Get Info!">
+            </div>
+        </div>
+    </form>
+</div>
+
+{% endblock %}
