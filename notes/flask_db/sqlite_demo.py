@@ -15,7 +15,35 @@ def read_txt(filename):
 
 def main(args):
     operation = args[1]
-    pass
+    conn = sqlite3.connect("zoo.sqlite3")
+    if operation == "create":
+        cur = conn.cursor()
+        cur.execute("DROP TABLE IF EXISTS animal")
+        cur.execute(
+            """CREATE TABLE animal
+                (id, name, age, species, location)"""
+        )
+        animals = read_txt("zoo.txt")
+        cur.executemany("INSERT INTO animal VALUES (?,?,?,?,?)", animals)
+        conn.commit()
+    elif operation == "read":
+        cur = conn.cursor()
+        spec = (args[2],)
+        cur.execute("SELECT * FROM animal WHERE species=?", spec)
+        for row in cur:
+            print(f"{row[3]} {row[1]} is {row[2]} y.o.")
+    elif operation == "update":
+        cur = conn.cursor()
+        age_diff = (args[2], )
+        cur.execute("UPDATE animal SET age = age + ?", age_diff)
+        conn.commit()
+    elif operation == "delete":
+        cur = conn.cursor()
+        spec = (args[2],)
+        cur.execute("DELETE FROM animal WHERE species=?", spec)
+        conn.commit()
+
+    conn.close()
 
 
 if __name__ == "__main__":
