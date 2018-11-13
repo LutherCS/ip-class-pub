@@ -16,4 +16,4 @@ Connect to the **world** database on *knuth.luther.edu* and retrieve the followi
 1. Use **POST** method to submit selection to the server.
 2. Use **records** to connect to the database.
 3. Use **Bootstrap** to format the results.
-4. Deploy this app on *pythonanywhere.com*
+4. (Optional) Deploy this app on *pythonanywhere.com*
