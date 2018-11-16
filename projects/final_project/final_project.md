@@ -11,8 +11,10 @@ By following the tutorial you should be able to build a simple micro-blogging se
 
 You application must be functional and have consistent user interface.
 
+This option is available to **individual students** only. A team must choose another option.
+
 ## Option B
-*This is a path of putting together techniques you have learned over the last 2 months.*
+*This is a path of applying existing skills.*
 
 For a **maximum grade of B (&approx;83%)** you must develop an original web application. It must include the following components:
 
@@ -26,7 +28,7 @@ For a **maximum grade of B (&approx;83%)** you must develop an original web appl
     * Only **1 (one)** table is required
 
 * Some type of form processing so that your application is **interactive**
-    * Use *GET* method
+    * Use *GET* and *POST* methods
 
 * Aesthetically appealing and consistent user interface
     * Use *Bootstrap*
@@ -35,22 +37,12 @@ For a **maximum grade of B (&approx;83%)** you must develop an original web appl
 ## Option A
 *This is a path of creativity and challenge.*
 
-For a **maximum grade of A (&approx; 93%)** you must develop an original and web application. It must be sufficiently complex and include the following components:
-
-* At least three **controllers** (routes)
-
-* At least three **views** (templates)
+For a **maximum grade of A (&approx; 93%)** your application must meet all the requirements of **Option B** and have additional complexity. It must meet the following **additional** requirements:
 
 * Make use of **persistent data** - something must be stored and accessed from the database. 
-    * Use *psycopg2*, *records*, or another Python DB API
-    * Use *SQLite3* or *PostgreSQL* DBMS
     * At least **3 (three)** tables are required
 
-* Some type of form processing so that your application is **interactive**
-    * Use *GET* **and** *POST* methods
-
 * Aesthetically appealing and consistent user interface
-    * Use *Bootstrap*
     * Use *Vue* or another JavaScript framework
 
 * Develop AJAX API for some aspect of the project that you use in your web pages.
@@ -60,13 +52,17 @@ For a **maximum grade of A (&approx; 93%)** you must develop an original and web
 
 For a **maximum grade of A+ (100%)** your application must meet all the requirements of **Option A** and have at least 1 (one) additional component/technology. Note that you may have to learn that technology yourself.
 
-* [Amazon Voice](https://developer.amazon.com/alexa-voice-service) API call
+* Access [Amazon Voice](https://developer.amazon.com/alexa-voice-service) API
 
-* [WTForms](https://wtforms.readthedocs.io/en/stable/) module for form processing
+* Use [WTForms](https://wtforms.readthedocs.io/en/stable/) module for form processing
 
-* [SQLAlchemy](https://www.sqlalchemy.org/) ORM
+* Use [SQLAlchemy](https://www.sqlalchemy.org/) toolkit
 
-* Deployed on [Heroku](https://devcenter.heroku.com/articles/getting-started-with-python)
+* Use [Open Source Document Database | MongoDB](https://www.mongodb.com/) instead of a relational database
+
+* Use [NGINX | High Performance Load Balancer, Web Server, & Reverse Proxy](https://www.nginx.com/) instead of the Flask's built-in server
+
+* Deploy on [Heroku](https://devcenter.heroku.com/articles/getting-started-with-python)
 
 * Something else (vetted by me)
 
@@ -76,23 +72,23 @@ Grading scale for **original** projects.
 
 Criterion | Option C<sup>1</sup> | Option B | Option A | Option A+
 ---|---|---|---|---
-Tutorial completed | 30 |||
-Original idea || 15 | 15 | 15
+Working application | 15 | 15 | 15 | 15
+Original idea || 20 | 20 | 20
 Single route | 10 | 10 | 10 | 10
-Additional routes || 10 | 10 | 10
+Additional routes | 5 | 5 | 5 | 5
 Single template | 10 | 10 | 10 | 10
-Additional templates || 10 | 10 | 10
+Additional templates | 5 | 5 | 5 | 5
 Python DB API | 10 | 10 | 10 | 10
 DBMS | 10 | 10 | 10 | 10
 Single table | 10 | 10 | 10 | 10
-Additional tables || 10 | 10 | 10
+Additional tables | 5 | | 5 | 5
 Form | 10 | 10 | 10 | 10
-Bootstrap | 10 | 10 | 10 | 10
 *GET* method | 10 | 10 | 10 | 10
-*POST* method ||| 5 | 5
+*POST* method | 5 | 5 | 5 | 5
+Bootstrap | 5 | 5 | 5 | 5
 Front-end framework ||| 5 | 5
 Custom API ||| 5 | 5
-Utilize new technology |||| 10
+New technology |||| 10
 |
 **Total** | **110** | **125** | **140** | **150**
 
