@@ -4,7 +4,7 @@
 
 Develop and deploy an application using Flask, Jinja2, and Bootstrap
 
-![Exercise 4](exercise4.gif)
+![Demo](demo.gif)
 
 ## Bootstrap
 
@@ -39,7 +39,7 @@ The application should work as follows:
 
     * Redirect the user to `http://localhost:5000/ask` by default.
 
-![Diagram](exercise4.png)
+![Diagram](chart.png)
 
 ## Deployment
 

@@ -16,7 +16,7 @@
 
 ## Demo
 
-![Get number trivia](exercise3.gif)
+![Get number trivia](demo.gif)
 
 ## References
 
