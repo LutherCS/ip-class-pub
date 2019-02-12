@@ -1,4 +1,4 @@
-# Client-server architechture
+# Client-server architecture
 
 Client-side technologies (non-exclusive list)
 
