@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+    <head>
+        <title>Playlist demo</title>
+        <link rel="stylesheet" href="css/style.css" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Hello there!</h1>
+        
+        <form>
+            <input type="text" id="songTitle" />
+            <select id="songArtist">
+            </select>
+            <select id="songLabel">
+            </select>
+            <input type="text" id="songAlbum" />
+            <br />
+            <button type="button" id=btn_add onclick="clickedon()">Add a song</button>
+            <button type="reset" id=btn_reset>RESET</button>
+        </form>
+        
+        <table id="playlistTable">
+            
+        </table>
+
+        <script type="text/javascript" src="js/model.js"></script>
+        <script type="text/javascript" src="js/view.js"></script>
+        <script type="text/javascript" src="js/controller.js"></script>
+    </body>
+</html>
