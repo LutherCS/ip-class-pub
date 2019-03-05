@@ -6,21 +6,20 @@
     <body>
         <h1>Hello there!</h1>
         
-        <form>
-            <input type="text" id="songTitle" />
+        <form id="newSongForm">
+            <input type="text" id="songTitle" required />
             <select id="songArtist">
             </select>
             <select id="songLabel">
             </select>
-            <input type="text" id="songAlbum" />
+            <input type="text" id="songAlbum" required />
             <br />
-            <button type="button" id=btn_add onclick="clickedon()">Add a song</button>
+            <button type="button" id=btn_add onclick="addSong()">Add a song</button>
             <button type="reset" id=btn_reset>RESET</button>
         </form>
         
-        <table id="playlistTable">
-            
-        </table>
+        <div id="playlistDiv"></div>
+        <button type="button" id=btn_clean onclick="cleanList()">Clean the list</button>
 
         <script type="text/javascript" src="js/model.js"></script>
         <script type="text/javascript" src="js/view.js"></script>
