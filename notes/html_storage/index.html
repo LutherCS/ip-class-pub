@@ -1,0 +1,58 @@
+<html>
+    <head>
+        <title>Roster</title>
+        <link rel="stylesheet" href="bootstrap.min.css" crossorigin="anonymous">
+    </head>
+    <body>
+        <h1>Class roster!</h1>
+        <div class="container">
+            <div id="roster">
+                <!-- to be populated -->
+            </div>
+        </div>
+
+        <div class="container">
+            <form id="roster_form">
+                <div class="row">
+                    <div class="col-4 form-group">
+                        <label for="selName">Name</label>
+                        <select name="selName" class="form-control" id="selName">
+                            <option>Alice</option>
+                            <option>Bob</option>
+                        </select>
+                    </div>
+
+                    <div class="col-4 form-group">
+                        <label for="selMajor">Major</label>
+                        <select name="selMajor" class="form-control" id="selMajor">
+                            <option>Accounting</option>
+                            <option>Computer Science</option>
+                            <option>Data Science</option>
+                            <option>Math</option>
+                        </select>
+                    </div>
+
+                    <div class="col-4 form-group">
+                        <label for="selGrade">Grade</label>
+                        <select name="selGrade" class="form-control" id="selGrade">
+                            <option>A</option>
+                            <option>B</option>
+                            <option>F</option>
+                        </select>
+                    </div>
+                </div>
+            </form>
+                <div class="row justify-content-around">
+                    <button type="button" class="btn btn-lg btn-primary" onclick="addGrade()">Add grade</button>
+                    <button type="button" class="btn btn-lg btn-warning" onclick="showGrades()">Show grades</button>
+                    <button type="button" class="btn btn-lg btn-danger" onclick="clearGrades()">Clear grades</button>
+                </div>
+        </div>
+
+
+        <script src="jquery-3.3.1.slim.min.js" crossorigin="anonymous"></script>
+        <script src="popper.min.js" crossorigin="anonymous"></script>
+        <script src="bootstrap.min.js" crossorigin="anonymous"></script>
+        <script type="text/javascript" src="script.js"></script>
+    </body>
+</html>
