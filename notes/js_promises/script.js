@@ -42,7 +42,7 @@ async function populate() {
         let commCount = document.createElement("div");
         commCount.classList.add("col");
         let postId = post["id"];
-        let postComments = getData(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
+        let postComments = await getData(`https://jsonplaceholder.typicode.com/posts/${postId}/comments`);
         commCount.innerHTML = postComments.length;
         headDiv.appendChild(commCount);
 
