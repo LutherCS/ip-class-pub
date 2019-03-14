@@ -1,0 +1,33 @@
+<html>
+    <head>
+        <title>Welcome to the store</title>
+    </head>
+    <body>
+        <h1 id="storeName" v-bind:title="title">{{ name }}</h1>
+        <div id="storeInventory">
+            <table>
+                <thead>
+                    <th>Name</th>
+                    <th>Price</th>
+                    <th>Quantity</th>
+                    <th>Add</th>
+                    <th>Remove</th>
+                    <th>Comment</th>
+                </thead>
+                <tbody>
+                    <tr v-for="prod in products">
+                        <td>{{ prod.name }}</td>
+                        <td>${{ prod.price }}</td>
+                        <td><input type="number" min="0" v-model.number="prod.quantity"></td>
+                        <td><button v-on:click="prod.quantity >= 0 ? prod.quantity += 1 : prod.quantity = 0">Add</button></td>
+                        <td><button v-on:click="prod.quantity > 0 ? prod.quantity -= 1 : prod.quantity = 0">Remove</button></td>
+                        <td v-if="prod.quantity < 5"><span style="color: red;">Almost out of stock</span></td>
+                    </tr>
+                </tbody>
+            </table>
+            <div id="totalItems">Stock value: ${{ stock }}</div>
+        </div>
+        <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+        <script src="script.js"></script>
+    </body>
+</html>
