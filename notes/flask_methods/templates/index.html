@@ -1,0 +1,9 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="alert alert-primary">Hello {{ username }}!</div>
+<form action="/" method="POST">
+    <div class=container>
+        <input type="submit" name="logout" value="Logout" class="btn btn-lg btn-danger" />
+    </div>
+</form>
+{% endblock %}
