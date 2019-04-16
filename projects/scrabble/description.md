@@ -14,6 +14,7 @@ Create a web app with the following functionality:
 3. If specified by the user, the generated words must contain the provided existing letter(s)
 
     * *Existing letter(s)* field should stay disabled until *Attach to existing* option is checked
+    * Existing letters must be treated as a single unit. For example, if the user specifies *cat* as existing letters, all the generated words must contain *cat*.
 
 4. Your application must not be slow
 
