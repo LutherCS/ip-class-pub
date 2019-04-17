@@ -1,0 +1,45 @@
+{% extends "base.html" %}
+{% block content %}
+
+<!-- <div class = "alert alert-primary">Hello {{ username }}!</div> -->
+<form action="/" method="GET">
+    <div class = "container">
+        <div class = "form-group">
+                <input type = "text" name = "letter1" placeholder="Letter 1"/>  
+                <input type = "text" name = "letter2" placeholder="Letter 2"/>
+                <input type = "text" name = "letter3" placeholder="Letter 3"/>
+                <input type = "text" name = "letter4" placeholder="Letter 4"/>
+                <input type = "text" name = "letter5" placeholder="Letter 5"/>
+                <input type = "text" name = "letter6" placeholder="Letter 6"/>
+                <input type = "text" name = "letter7" placeholder="Letter 7"/> 
+                
+                
+                
+        </div>
+        <div class = "checkbox" id = "addExisting">
+            <input type = "text" name = "addLetters" placeholder="Additional letter(s)"/>
+        </div>
+        <div class = "form-group">
+        <label for = "dictSelect">Select Dictionary</label>
+        <select name='dictionary' id = "dictSelect">
+                <option value="American">American</option>
+                <option value="British">British</option>
+            </select>
+        </div>
+        <!-- <label for="dictSelect">Select Dictionary</label>
+        <div class = "dropdown" id = "dictSelect">
+            <div class = "dropdown-menu" name = "dictionary">
+                <a class="dropdown-item" value = "American">
+                    American
+                </a>
+                <a class="dropdown-item" value = "British">
+                    British
+                </a>
+            </div>
+        </div> -->
+    
+        <input type = "submit" value="Help" class = "btn btn-lg btn-info"/>    
+             
+    </div>
+</form>
+{% endblock %}

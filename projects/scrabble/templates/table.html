@@ -1,0 +1,32 @@
+{% extends "base.html" %}
+{% block content %}
+
+
+<table class="table">
+    <a href="/">Home</a>
+    <thead>
+        <tr>
+            <th scope = "col">Word</th>
+            <th scope = "col">Length</th>
+            <th scope = "col">Value</th>
+        </tr>
+    </thead>
+    <tbody>
+        {% for word in wordsAndValues %}
+            <tr>
+                <td>{{ word[0] }}</td>
+                <td> {{ word[0]|length }} </td>
+                <td>{{ word[1] }} </td>
+            </tr>
+        {% endfor %}
+    </tbody>
+</table>
+<!-- {% if name %}
+    <h1>Hello {{name}}! </h1>
+
+{% else %}
+    <h1>Hello,World!</h1>
+
+{% endif %} -->
+
+{% endblock %}
