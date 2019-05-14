@@ -90,7 +90,7 @@ Bootstrap | 5 | 5 | 5 | 5
 Challenge (Front-end, requests etc) ||| 5 | 5
 Custom API ||| 5 | 5
 New technology |||| 10
-|
+||||
 **Total** | **110** | **125** | **140** | **150**
 
 [1] Point breakdown for **Option C** is approximate.
