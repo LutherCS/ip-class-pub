@@ -57,3 +57,10 @@ let | block | no | 2015
 var | function / global | | 1
 const | block | no | 2015
 none | global | | 1
+
+## Operations
+
+|| a | b | a & b | a \| b | a ^ b | a && b | a \|\| b |
+|---|:---:|:---:|:---:|:---:|:---:|:---:|:---:|
+|Decimal| 10 | 6 | 2 | 14 | 12 | 6 | 10 |
+|Binary| 1010 | 0110 | 0010 | 1110 | 1100 | 6 | 10
