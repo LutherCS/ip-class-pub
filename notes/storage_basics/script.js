@@ -16,12 +16,23 @@ function populateSelect(selectId, selectValues) {
 }
 
 function addMeal() {
+    let menu = localStorage.getItem("menu");
+    menu = menu ? JSON.parse(menu) : [];
+    let selNames = ["quantity", "name", "meal"];
+    let newMeal = {};
+    for (let cid of selNames) {
+        newMeal[cid] = document.getElementById("sel_" + cid).value;
+    }
+    menu.push(newMeal);
+    localStorage.setItem("menu", JSON.stringify(menu));
 }
 
 function clearMenu() {
+    localStorage.removeItem("menu");
 }
 
 function loadMeal() {
+
 }
 
 $(document).ready(function () {
