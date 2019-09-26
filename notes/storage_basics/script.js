@@ -32,7 +32,24 @@ function clearMenu() {
 }
 
 function loadMeal() {
+    let vals = JSON.parse(localStorage.getItem('menu'));
+    let menu = document.querySelector('#menu');
 
+    if (vals) {
+        for (let meal of vals) {
+            let menuItem = document.createElement('div');
+            menuItem.classList.add('alert');
+            menuItem.classList.add('alert-primary');
+            menuItem.innerHTML += `You are having ${meal.quantity} ${meal.name} for ${meal.meal}`;
+            menu.appendChild(menuItem);
+        }
+    } else {
+        let banner = document.createElement('div');
+        banner.classList.add('alert');
+        banner.classList.add('alert-info');
+        banner.innerHTML = 'Please select from the menu';
+        menu.appendChild(banner);
+    }
 }
 
 $(document).ready(function () {
