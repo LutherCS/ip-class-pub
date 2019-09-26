@@ -1,9 +1,10 @@
 /* jshint esversion: 6 */
 /* jshint node: true */
+/* jshint browser: true */
 'use strict';
 
 class Cat {
-    constructor(some_name, legs = 4, some_place, diet = "everything") {
+    constructor(some_name, some_place, legs = 4, diet = "everything") {
         this._name = some_name;
         this._nLegs = legs;
         this._habitat = some_place;
@@ -66,7 +67,24 @@ class Cat {
 }
 
 class Subject {
-    /* TODO */
+    constructor () {
+        this.handlers = [];
+    }
+
+    subscribe(func) {
+        this.handlers.push(func);
+    }
+
+    unsubscribe(func) {
+        this.handlers = this.handlers.filter(item => item != func);
+    }
+
+    publish(msg, obj) {
+        let scope = obj || window;
+        for (let f of this.handlers) {
+            f(scope, msg);
+        }
+    }
 
 }
 
@@ -78,6 +96,7 @@ class Clowder extends Subject {
 
     adopt(cat) {
         this._clowder.push(cat);
+        this.publish("new cat added", this);
     }
 
     [Symbol.iterator]() {
@@ -88,8 +107,8 @@ class Clowder extends Subject {
     }
 
     cleanList() {
-        /* TODO */
-
+        this._clowder = this._clowder.filter(aCat => aCat.removed);
+        this.publish("cat(s) removed", this);
     }
 
     toString() {
