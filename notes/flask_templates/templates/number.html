@@ -1,0 +1,10 @@
+<!DOCTYPE html>
+{% if nums | length > 0 %}
+<ul>
+{% for n in nums %}
+<li>{{ n }}</li>
+{% endfor %}
+</ul>
+{% else %}
+<p>Please provide a positive number</p>
+{% endif %}
