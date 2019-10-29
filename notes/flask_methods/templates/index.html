@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class='alert alert-primary'>Welcome {{username}}</div>
+
+<form action="/" method="POST">
+    <div class="container">
+        <input type="submit" name="logout" value="Logout" class="btn-info btn-lg">
+    </div>
+</form>
+
+{% endblock %}
