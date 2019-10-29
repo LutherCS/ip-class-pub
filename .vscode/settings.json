@@ -1,4 +1,4 @@
 {
-    "python.pythonPath": ".venv/bin/python",
+    "python.pythonPath": "/home/yasiro01/Classes/ip-class-pub/.venv/bin/python3",
     "python.formatting.provider": "black"
 }
