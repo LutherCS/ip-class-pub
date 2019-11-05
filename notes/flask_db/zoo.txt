@@ -1,0 +1,20 @@
+4921, Chunk, 34, Jaguar, 55
+4922, Wind, 99, Newt, 40
+4923, Underrated Thunder, 74, Macaroni Penguin, 13
+4924, Axe, 23, Long-Eared Owl, 37
+4925, Wild Isotope, 28, Humboldt Penguin, 21
+4926, Night Star, 26, Cavalier King Charles Spaniel, 62
+4927, Random Bully, 52, Armadillo, 53
+4928, Cunning Fury, 38, Pink Fairy Armadillo, 74
+4929, Evening Chunk, 50, Gecko, 77
+4930, Thunder, 38, Jaguar, 89
+4931, Shining Lover, 85, Jaguar, 12
+4932, Hope, 74, Quail, 67
+4933, Earring, 87, Cavalier King Charles Spaniel, 18
+4934, Juggernaut, 76, Armadillo, 39
+4935, Morning Isotope, 43, Armadillo, 81
+4936, Wild Lover, 100, Long-Eared Owl, 73
+4937, Awesome Fury, 51, Wombat, 1
+4938, Thunder, 32, Quail, 78
+4939, Thunder, 98, Pink Fairy Armadillo, 79
+4940, Evening Hope, 18, Gecko, 56
