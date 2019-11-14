@@ -195,12 +195,6 @@
     Use heroku addons:docs heroku-postgresql to view documentation
     ```
 
-21. Add a new database
-
-    ```bash
-    $ heroku addons:create heroku-postgresql:hobby-dev
-    ```
-
 ## References
 
 * [Getting Started on Heroku with Python | Heroku Dev Center](https://devcenter.heroku.com/articles/getting-started-with-python)
