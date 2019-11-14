@@ -198,7 +198,7 @@
 21. Add a new database
 
     ```bash
-    $ heroku addons:add heroku-postgresql:country
+    $ heroku addons:create heroku-postgresql:hobby-dev
     ```
 
 ## References
