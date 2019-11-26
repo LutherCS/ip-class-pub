@@ -45,18 +45,20 @@ Criterion | Points
 Original idea | 10
 Working application | 10
 Deployed application | 10
-Single route | 10
-Additional routes | 5
-Single template | 10
-Additional templates | 5
-DBMS used | 10
-Single table | 10
-Additional tables | 5
-*GET* method | 10
+Single route | 5
+Additional routes | 10
+Single template | 5
+Additional templates | 10
+DBMS used | 5
+DBMS remote | 10
+Single table | 5
+Additional tables | 10
+*GET* method | 5
 *POST* method | 10
-Bootstrap used | 10
-Vue or similar used | 5
-API provided and used | 20
+Bootstrap used | 5
+Vue or similar used | 10
+API provided | 10
+API used | 10
 New technology | 10
 |
 **Total** | **150**
