@@ -15,7 +15,7 @@ Your final project must be a web application with the following major components
 
 * Make use of **persistent data** - something must be stored and accessed from the database
   * Use *psycopg2*, *records*, or another Python DB API
-  * Use *SQLite3* or *PostgreSQL* DBMS
+  * Use DBMS (*SQLite3* is fine but *PostgreSQL* is better)
   * **1-3** tables required
 
 * Some type of form processing so that your application is **interactive**
@@ -29,6 +29,8 @@ Your final project must be a web application with the following major components
   * Access your app's API using JavaScript
 
 * Deploy your application on the web
+  * Heroku
+  * pythonanywhere
 
 * At least 1 (one) additional **new** component/technology. Note that you may have to learn that technology yourself.
 
@@ -38,7 +40,7 @@ Your final project must be a web application with the following major components
 
 ## Grading Criteria
 
-Grading scale for **original** projects.
+**Tentative** grading scale for projects.
 
 Criterion | Points
 ---|---
@@ -49,16 +51,16 @@ Single route | 5
 Additional routes | 10
 Single template | 5
 Additional templates | 10
-DBMS used | 5
-DBMS remote | 10
-Single table | 5
-Additional tables | 10
-*GET* method | 5
-*POST* method | 10
+DBMS used (i.e. SQLite3) | 5
+DBMS remote (i.e. PostgreSQL on Heroku) | 10
+Single DB table | 5
+Additional DB tables | 10
+GET method | 5
+POST method | 10
 Bootstrap used | 5
 Vue or similar used | 10
 API provided | 10
-API used | 10
+API used to update the DB | 10
 New technology | 10
 |
 **Total** | **150**
