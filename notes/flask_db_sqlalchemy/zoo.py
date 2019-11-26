@@ -5,4 +5,6 @@ from models import Animal, AnimalSchema
 
 @app.route("/")
 def show_zoo():
-    pass
+    zoo = Animal.query.all()
+    animal_schema = AnimalSchema(many=True)
+    return render_template("index.html", zoo=animal_schema.dump(zoo))
