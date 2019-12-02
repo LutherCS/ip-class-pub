@@ -70,3 +70,4 @@ New technology | 10
 * [LutherCS/ip-class-pub: CS330 public repository](https://github.com/LutherCS/ip-class-pub)
 * [Creating Web APIs with Python and Flask | Programming Historian](https://programminghistorian.org/en/lessons/creating-apis-with-python-and-flask)
 * [API Design Guide — API Design Guide 0.1 documentation](https://apiguide.readthedocs.io/en/latest/index.html)
+* [Developing a Single Page App with Flask and Vue.js | TestDriven.io](https://testdriven.io/blog/developing-a-single-page-app-with-flask-and-vuejs/)
