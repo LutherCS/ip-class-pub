@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome to Olin 202 mouse management</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <h1>Welcome to Olin 202</h1>
+    <form id=newMouse class="form-group">
+        <input type="number" name="buttons" id="mouseButtons" min="1" max="12" class="input-field" required>
+
+        <select name="connection" id="mouseConnection" class="btn dropdown-toggle">
+        </select>
+
+        <select name="color" id="mouseColor" class="btn dropdown-toggle">
+        </select>
+        <button type="button" id="btnAdd" class="btn btn-primary" onclick="addMouse()">Add a mouse</button>
+
+    </form>
+    <table id="tblAllMice" class="table table-striped">
+        <thead>
+            <th>Buttons</th><th>Connection</th><th>Color</th>
+        </thead>
+        <tbody></tbody>
+    </table>
+
+    <script src="js/jquery.slim.min.js"></script>
+    <script src="js/popper.min.js"></script>
+    <script src="js/bootstrap.min.js"></script> 
+    <script src="js/model.js"></script>
+    <script src="js/view.js"></script>
+    <script src="js/controller.js"></script>
+</body>
+</html>
