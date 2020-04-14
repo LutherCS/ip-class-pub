@@ -1,0 +1,11 @@
+Name,Major,GPA,GradYear
+Julie Hernandez,Data Science,1.89,2020
+Jessica Young,Biology,2.03,2022
+Christopher Cooley,Anthropology,4.00,2021
+Michael Johnson,Biology,2.67,2021
+Rachel Parker,Biology,2.77,2022
+April Barnes,Anthropology,1.60,2021
+Gary Brewer,Anthropology,1.23,2020
+Nicole Lawrence DVM,Economics,3.32,2021
+Amber Wong,Data Science,1.39,2022
+Kyle Montes,Biology,2.33,2020
