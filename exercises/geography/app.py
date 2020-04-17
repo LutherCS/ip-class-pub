@@ -6,17 +6,8 @@ import records
 app = Flask(__name__)
 
 
-USER = ""
-DB_NAME = "world"
-# HOST = "localhost"
-# PORT = 2345
-HOST = "knuth.luther.edu"
-PORT = 5432
-
-
 def get_data_from_db(query: str) -> list:
     """retrieve data from the database and return to the user"""
-    db = records.Database(f"postgresql://{USER}:@{HOST}:{PORT}/{DB_NAME}")
     pass
 
 
