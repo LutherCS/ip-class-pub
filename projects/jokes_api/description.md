@@ -12,9 +12,21 @@
 
 1. Deploy on <http://knuth.luther.edu/>.
 1. A combination of HTML and JavaScript.
-1. The interface is a single button.
+1. The interface should be able to differentiate between requests for random and specific jokes.
 1. On button click the request is sent to the server and the response is processed.
 1. Use Bootstrap or MUICSS for consistent styling
+
+## Grading
+
+Criterion | Points
+----------|-------
+Server is deployed | 20
+Server returns JSON | 20
+Server returns specific joke | 10
+Client is deployed | 20
+Client retrieves JSON | 20
+Input form works | 10
+Total | 100
 
 ## References
 
