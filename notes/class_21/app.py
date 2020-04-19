@@ -8,7 +8,8 @@ app = Flask(__name__)
 
 @app.route("/")
 def index():
-    pass
+    summary = requests.get("https://api.covid19api.com/summary")
+    return render_template("index.html", data=summary.json())
 
 
 if __name__ == "__main__":
