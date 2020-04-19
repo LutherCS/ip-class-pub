@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Roster</title>
+    <!-- load MUI -->
+    <link href="//cdn.muicss.com/mui-0.10.1/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.1/js/mui.min.js"></script>
+</head>
+<body>
+    <table id="roster" class="mui-table">
+        <thead>
+            <th>Name</th>
+            <th>Major</th>
+            <th>GPA</th>
+            <th>Graduation year</th>
+        </thead>
+        <tbody>
+            {% for s in roster %}
+            <tr>
+                <td>{{ s.name}}</td>
+                <td>{{ s.major}}</td>
+                <td>{{ s.gpa}}</td>
+                <td>{{ s.gradyear}}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>    
+</body>
+</html>
