@@ -6,6 +6,9 @@ from markupsafe import escape
 app = Flask(__name__)
 
 SECRET_KEY = os.environ.get("SECRET_KEY")
+if not SECRET_KEY:
+    SECRET_KEY = os.urandom(24)
+app.secret_key = SECRET_KEY
 
 
 @app.route("/")
