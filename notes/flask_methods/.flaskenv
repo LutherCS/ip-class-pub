@@ -1,2 +1,0 @@
-FLASK_APP=flask_methods.py
-FLASK_ENV=development
