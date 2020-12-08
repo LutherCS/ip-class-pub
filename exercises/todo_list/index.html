@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+
+<head>
+    <title>TODO list</title>
+    <link rel="stylesheet" href="css/bootstrap.min.css" crossorigin="anonymous">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<body> 
+    <div class="container">
+        <h1>TODO List</h1>
+        <div class="container">
+            <form id="newTask">
+            <div>
+                <div>
+                    <label for="title">Task</label>
+                    <input id="title" required />
+                </div>
+
+                <div>
+                    <label for="assignedTo">Assigned to</label>
+                    <select id="assignedTo"></select>
+                </div>
+
+                <div>
+                    <label for="priority">Priority</label>
+                    <select id="priority"></select>
+                </div>
+
+                <div>
+                    <label for="dueDate">Due date</label>
+                    <input id="dueDate" required />
+                </div>
+            </div>
+            <div>
+                <button type="button" id="addTaskBtn" onclick="addTask()">Add task</button>
+            </div>
+        </form>
+    </div>
+    </div>
+
+    <div class="container">
+        <table id="taskList">
+            <thead>
+                <tr>
+                    <th></th>
+                    <th>Task</th>
+                    <th>Assigned to</th>
+                    <th>Priority</th>
+                    <th>Due date</th>
+                </tr>
+            </thead>
+            <tbody></tbody>
+        </table>
+    </div>
+
+    <script src="js/bootstrap.bundle.min.js" crossorigin="anonymous"></script>
+    <script type="text/javascript" src="js/script.js"></script>
+</body>
+
+</html>
