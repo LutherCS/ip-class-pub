@@ -33,3 +33,5 @@ You can hard-code the list of team members and priorities to populate the *Assig
 - [Form data validation - Learn web development | MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation)
 - [javascript - Remove current row (tr) when checkbox is checked - Stack Overflow](https://stackoverflow.com/questions/26512386/remove-current-row-tr-when-checkbox-is-checked)
 - [How to use JavaScript closures with confidence – Hacker Noon](https://hackernoon.com/how-to-use-javascript-closures-with-confidence-85cd1f841a6b)
+- [javascript - querySelector to select closest ancestor without jQuery - Stack Overflow](https://stackoverflow.com/questions/50085510/queryselector-to-select-closest-ancestor-without-jquery)
+- [jQuery](https://jquery.com/)
