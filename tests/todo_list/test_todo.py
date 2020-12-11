@@ -59,7 +59,7 @@ def test_no_selection(page: Page):
     page.fill("#title", "Task title")
     page.fill("#dueDate", "2020-12-20")
     page.click("#addTaskBtn")
-    allRows = page.querySelectorAll("tbody[id='taskList'] > tr")
+    allRows = page.querySelectorAll("table[id='taskList'] > tbody > tr")
     newRow = allRows[-1]
     assert len(allRows) == 1
     assert newRow.querySelectorAll("td")[1].innerText() == "Task title"
@@ -87,7 +87,7 @@ def test_select_worker(page: Page, worker):
     page.fill("#dueDate", "2020-12-20")
     page.selectOption("#assignedTo", worker)
     page.click("#addTaskBtn")
-    newRow = page.querySelectorAll("tbody[id='taskList'] > tr")[-1]
+    newRow = page.querySelectorAll("table[id='taskList'] > tbody > tr")[-1]
 
     assert newRow.querySelectorAll("td")[2].innerText() == worker
 
@@ -99,7 +99,7 @@ def test_select_priority(page: Page, priority):
     page.fill("#dueDate", "2020-12-20")
     page.selectOption("#priority", priority)
     page.click("#addTaskBtn")
-    newRow = page.querySelectorAll("tbody[id='taskList'] > tr")[-1]
+    newRow = page.querySelectorAll("table[id='taskList'] > tbody > tr")[-1]
 
     assert newRow.querySelectorAll("td")[3].innerText() == priority
     assert priority.lower() in newRow.getAttribute("class")
@@ -110,9 +110,9 @@ def test_remove_row(page: Page):
     page.fill("#title", "Task title")
     page.fill("#dueDate", "2020-12-20")
     page.click("#addTaskBtn")
-    allRows = page.querySelectorAll("tbody[id='taskList'] > tr")
+    allRows = page.querySelectorAll("table[id='taskList'] > tbody > tr")
     assert len(allRows) == 1
-    page.check("tbody[id='taskList'] > tr > td > input[type='checkbox']")
+    page.check("table[id='taskList'] > tbody > tr > td > input[type='checkbox']")
     sleep(3)
-    allRows = page.querySelectorAll("tbody[id='taskList'] > tr")
+    allRows = page.querySelectorAll("table[id='taskList'] > tbody > tr")
     assert len(allRows) == 0
