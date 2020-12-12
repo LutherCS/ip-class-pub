@@ -26,7 +26,7 @@ def test_case_1_greeting(page):
 
 def test_case_1_n(page):
     page.goto("http://localhost:8000/primes.html?name=Roman&n=3")
-    assert page.querySelector("#primeInfo").innerText() == "3 is a prime n"
+    assert page.querySelector("#primeInfo").innerText() == "3 is a prime number"
 
 
 def test_case_1_table(page):
@@ -41,7 +41,7 @@ def test_case_2_greeting(page):
 
 def test_case_2_n(page):
     page.goto("http://localhost:8000/primes.html?name=Roman")
-    assert page.querySelector("#primeInfo").innerText() == "330 is not a prime n"
+    assert page.querySelector("#primeInfo").innerText() == "330 is not a prime number"
 
 
 def test_case_2_table(page):
@@ -56,7 +56,7 @@ def test_case_3_greeting(page):
 
 def test_case_3_n(page):
     page.goto("http://localhost:8000/primes.html?n=3")
-    assert page.querySelector("#primeInfo").innerText() == "3 is a prime n"
+    assert page.querySelector("#primeInfo").innerText() == "3 is a prime number"
 
 
 def test_case_3_table(page):
@@ -71,7 +71,7 @@ def test_case_4_greeting(page):
 
 def test_case_4_n(page):
     page.goto("http://localhost:8000/primes.html")
-    assert page.querySelector("#primeInfo").innerText() == "330 is not a prime n"
+    assert page.querySelector("#primeInfo").innerText() == "330 is not a prime number"
 
 
 def test_case_4_table(page):
