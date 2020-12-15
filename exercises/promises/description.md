@@ -2,15 +2,15 @@
 
 ## Task
 
-1. Work inside the *promises* directory.
+1. Work inside the *js_promises* directory.
 
 2. Create a proper directory structure (css for CSS files, js for JavaScript).
 
-3. Create a page with a *text input* field, a *button*, and a *checkbox*. When the button is clicked, read a number from the field and generate page content based on the data received from [Numbers API](http://numbersapi.com/).
+3. Create a page with a *number input* field, a *button*, and a *checkbox*. When the button is clicked, read a number from the field and generate page content based on the data received from [Numbers API](http://numbersapi.com/).
 
 4. You should include information about the **3** (three) numbers: the one entered by the user (*n*), one less than that (*n-1*), and one greater than that (*n+1*).
 
-5. If the *checkbox* is checked, retrieve data in *one batch request* (notice the slight delay in the demo).
+5. If the *checkbox* is checked, retrieve data in one batch request (notice the slight delay in the demo as information appears *without* the batch option selected.).
 
 6. Use JavaScript Promises to send requests and parse the JSON response to generate HTML content.
 
@@ -18,7 +18,7 @@
 
 ## Demo
 
-![Get number trivia](demo.gif)
+![Get number trivia](demo.apng)
 
 ## References
 
