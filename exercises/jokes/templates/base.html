@@ -1,0 +1,40 @@
+<html>
+
+<head>
+    <title>Flask for Fun</title>
+</head>
+
+<body>
+    <div>
+        <div><a href="/">Home</a></div>
+        <div>
+            <h2>Pick the category, language, and number of jokes to hear</h2>
+        </div>
+        <form method="POST">
+            <div>
+                <div>
+                    <label for="category" value="Category">Category</label>
+                    <select name="category" id="selCat">
+                        <!-- TODO: Populate categories -->
+                    </select>
+                </div>
+                <div>
+                    <label for="language" value="Language">Language</label>
+                    <select name="language" id="selLang">
+                        <!-- TODO: Populate languages -->
+                    </select>
+                </div>
+            </div>
+            <div>
+                <div>
+                    <button type="submit" id="btnAmuse" value="Tell me a joke">Amuse me</button>
+                </div>
+            </div>
+        </form>
+        <div id="jokes">
+            <!-- This is a placeholder for jokes -->
+        </div>
+    </div>
+</body>
+
+</html>
