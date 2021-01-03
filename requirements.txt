@@ -1,1 +1,6 @@
-
+Flask
+playwright
+pyjokes
+pytest
+pytest-playwright
+python-dotenv
