@@ -1,0 +1,13 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{{ number }} is an excellent choice!
+
+<form action="/game" method="POST">
+ <div class="container">
+     <input type="submit" value="Play again" name="done">
+ </div>
+</form>
+
+{% endblock %}

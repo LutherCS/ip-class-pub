@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+What is your favorite number?
+<form action="/game" method="POST">
+    <div class="container">
+        <input type="submit" name="number" value="4">
+        <input type="submit" name="number" value="14">
+        <input type="submit" name="number" value="44">
+    </div>
+
+</form>
+
+{% endblock %}
