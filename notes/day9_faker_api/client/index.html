@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fake data reader</title>
+    <link href="//cdn.muicss.com/mui-0.10.1/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.1/js/mui.min.js"></script>
+    <script src="script.js"></script>
+</head>
+
+<body>
+    <div class="mui-container mui--text-center">
+        <h1>Hello there!</h1>
+    </div>
+    <div class="mui-container mui--text-center" id="buttons">
+        <form action="GET">
+            <button class="mui-btn mui-btn-large mui-btn--primary" type="button" name="name" value="name"
+                onclick="requestData('name')">Get name</button>
+            <button class="mui-btn mui-btn-large mui-btn--primary" type="button" name="address" value="address"
+                onclick="requestData('address')">Get address</button>
+        </form>
+
+    </div>
+    <div class="mui-container mui--text-center">
+        <div class="mui-panel mui--text-center" id="response"></div>
+    </div>
+</body>
+
+</html>
