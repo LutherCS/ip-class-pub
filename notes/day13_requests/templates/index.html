@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>COVID-19</title>
+    <!-- load MUI -->
+    <link href="//cdn.muicss.com/mui-0.10.1/css/mui.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.muicss.com/mui-0.10.1/js/mui.min.js"></script>
+    <!-- Load jQuery -->
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <!-- Load DataTables -->
+    <link href="//cdn.datatables.net/1.10.20/css/jquery.dataTables.min.css" rel="stylesheet" type="text/css" />
+    <script src="//cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+</head>
+
+<body>
+    <div class="mui-container">
+        <div class="mui-row">
+            Total cases in the world: {{ data.Global.TotalConfirmed }}
+        </div>
+    </div>
+    <table id="covidData" class="mui-table">
+        <thead>
+            <th>Country</th>
+            <th>Date</th>
+            <th>New cases</th>
+            <th>New deaths</th>
+            <th>New recovered</th>
+            <th>Total cases</th>
+            <th>Total deaths</th>
+            <th>Total recovered</th>
+        </thead>
+        <tbody>
+            {% for country in data.Countries %}
+            <tr>
+                <td>{{ country.Country }}</td>
+                <td>{{ country.Date }}</td>
+                <td>{{ country.NewConfirmed }}</td>
+                <td>{{ country.NewDeaths }}</td>
+                <td>{{ country.NewRecovered }}</td>
+                <td>{{ country.TotalConfirmed }}</td>
+                <td>{{ country.TotalDeaths }}</td>
+                <td>{{ country.TotalRecovered }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script>
+        $(document).ready(function () {
+            $("#covidData").DataTable();
+        });
+    </script>
+</body>
+
+</html>
