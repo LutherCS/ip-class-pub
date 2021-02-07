@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@0.9.1/css/bulma.min.css"
+    />
+    <script src="../script.js"></script>
+    <title>date difference: Bulma</title>
+  </head>
+  <body>
+    <div class="container content">
+      <h1>Simple date difference calculator</h1>
+      <a href="https://bulma.io/"
+        >Bulma: Free, open source, and modern CSS framework based on Flexbox</a
+      >
+    </div>
+    <div class="container">
+      <form>
+        <div class="columns">
+          <div class="column">
+            <label for="date1" class="label">First date</label>
+            <input
+              type="date"
+              name="date1"
+              id="date1"
+              class="input"
+              value="2021-02-02"
+            />
+          </div>
+          <div class="column">
+            <label for="date2" class="label">Second date</label>
+            <input
+              type="date"
+              name="date2"
+              id="date2"
+              class="input"
+              value="2021-02-12"
+            />
+          </div>
+        </div>
+        <div class="block">
+          <div>
+            <input
+              type="button"
+              class="button is-info"
+              value="what's the difference?"
+              onclick="diff()"
+            />
+            <input type="reset" class="button is-danger" value="reset" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <table id="result" class="table is-fullwidth">
+        <thead>
+          <th>Date 1</th>
+          <th>Date 2</th>
+          <th>Days between the two</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

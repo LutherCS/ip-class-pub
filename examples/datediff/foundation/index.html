@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Compressed CSS -->
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/css/foundation.min.css" integrity="sha256-ogmFxjqiTMnZhxCqVmcqTvjfe1Y/ec4WaRj/aQPvn+I=" crossorigin="anonymous">
+
+    <!-- Compressed JavaScript -->
+    <script src="https://cdn.jsdelivr.net/npm/foundation-sites@6.6.3/dist/js/foundation.min.js" integrity="sha256-pRF3zifJRA9jXGv++b06qwtSqX1byFQOLjqa2PTEb2o=" crossorigin="anonymous"></script>
+    <script src="../script.js"></script>
+    <title>date difference: Foundation</title>
+  </head>
+  <body>
+    <div class="grid-container">
+      <h1>Simple date difference calculator</h1>
+      <a href="https://get.foundation/sites/docs/installation.html">Installation | Foundation for Sites 6 Docs</a>
+    </div>
+    <div class="grid-container">
+      <form>
+        <div class="grid-x">
+          <div class="cell small-6">
+            <label for="date1" class="label">First date</label>
+            <input type="date" name="date1" id="date1" value="2021-02-02" />
+          </div>
+          <div class="cell small-6">
+            <label for="date2" class="label">Second date</label>
+            <input type="date" name="date2" id="date2" value="2021-02-12" />
+          </div>
+        </div>
+        <div>
+          <div>
+            <input
+              type="button"
+              class="button"
+              value="what's the difference?"
+              onclick="diff()"
+            />
+            <input type="reset" class="alert button" value="reset" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="grid-container">
+      <table id="result">
+        <thead>
+          <th>Date 1</th>
+          <th>Date 2</th>
+          <th>Days between the two</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

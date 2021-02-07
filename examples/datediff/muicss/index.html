@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- load MUI -->
+    <link
+      href="//cdn.muicss.com/mui-0.10.3/css/mui.min.css"
+      rel="stylesheet"
+      type="text/css"
+    />
+    <script src="//cdn.muicss.com/mui-0.10.3/js/mui.min.js"></script>
+    <script src="../script.js"></script>
+    <title>date difference: MUICSS</title>
+  </head>
+  <body>
+    <div class="mui-container">
+      <h1>Simple date difference calculator</h1>
+      <a href="https://www.muicss.com/">MUI - Material Design CSS Framework</a>
+    </div>
+    <div class="mui-container">
+      <form class="mui-form">
+        <div class="mui-row">
+          <div class="mui-col mui-textfield">
+            <label for="date1">First date</label>
+            <input type="date" name="date1" id="date1" value="2021-02-02" />
+          </div>
+          <div class="mui-col mui-textfield">
+            <label for="date2">Second date</label>
+            <input type="date" name="date2" id="date2" value="2021-02-12" />
+          </div>
+        </div>
+        <div class="mui-row">
+          <div class="mui-col">
+            <input
+              type="button"
+              class="mui-btn mui-btn--primary"
+              value="what's the difference?"
+              onclick="diff()"
+            />
+            <input type="reset" class="mui-btn mui-btn--danger" value="reset" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="mui-container">
+      <table id="result" class="mui-table">
+        <thead>
+          <th>Date 1</th>
+          <th>Date 2</th>
+          <th>Days between the two</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

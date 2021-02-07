@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- Milligram CSS -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/milligram/1.4.1/milligram.css"
+    />
+
+    <script src="../script.js"></script>
+    <title>date difference: Milligram</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Simple date difference calculator</h1>
+      <a href="https://milligram.io/">Milligram - A minimalist CSS framework</a>
+    </div>
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="column">
+            <label for="date1">First date</label>
+            <input type="date" name="date1" id="date1" value="2021-02-02" />
+          </div>
+          <div class="column">
+            <label for="date2">Second date</label>
+            <input type="date" name="date2" id="date2" value="2021-02-12" />
+          </div>
+        </div>
+        <div class="row">
+          <div class="column">
+            <input
+              type="button"
+              class="button"
+              value="what's the difference?"
+              onclick="diff()"
+            />
+            <input type="reset" class="button" value="reset" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <table id="result">
+        <thead>
+          <th>Date 1</th>
+          <th>Date 2</th>
+          <th>Days between the two</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>

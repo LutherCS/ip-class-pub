@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <!-- CSS only -->
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1"
+      crossorigin="anonymous"
+    />
+    <!-- JavaScript Bundle with Popper -->
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
+      integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
+      crossorigin="anonymous"
+    ></script>
+    <script src="../script.js"></script>
+    <title>date difference: Bootstrap 5</title>
+  </head>
+  <body>
+    <div class="container">
+      <h1>Simple date difference calculator</h1>
+      <a href="https://getbootstrap.com/"
+        >Bootstrap · The most popular HTML, CSS, and JS library in the world.</a
+      >
+    </div>
+    <div class="container">
+      <form>
+        <div class="row">
+          <div class="col">
+            <label for="date1" class="form-label">First date</label>
+            <input
+              type="date"
+              name="date1"
+              id="date1"
+              class="form-control"
+              value="2021-02-02"
+            />
+          </div>
+          <div class="col">
+            <label for="date2" class="form-label">Second date</label>
+            <input
+              type="date"
+              name="date2"
+              id="date2"
+              class="form-control"
+              value="2021-02-12"
+            />
+          </div>
+        </div>
+        <div class="row">
+          <div>
+            <input
+              type="button"
+              class="btn btn-primary"
+              value="what's the difference?"
+              onclick="diff()"
+            />
+            <input type="reset" class="btn btn-danger" value="reset" />
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="container">
+      <table id="result" class="table">
+        <thead>
+          <th>Date 1</th>
+          <th>Date 2</th>
+          <th>Days between the two</th>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </body>
+</html>
