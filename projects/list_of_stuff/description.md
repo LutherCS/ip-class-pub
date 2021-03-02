@@ -18,7 +18,7 @@ Buttons _Add_, _Save_, _Remove_, and _Clear_ are required and must perform the f
 ## Implementation
 
 - Use model-view-controller pattern.
-- Use local storage to store and retrieve data.
+- Use JSON and local storage to store and retrieve data.
 - Reload the list from local storage upon page refresh.
 
 ## Grading criteria
@@ -26,10 +26,10 @@ Buttons _Add_, _Save_, _Remove_, and _Clear_ are required and must perform the f
 1. Use Model-View-Controller pattern
 2. Load the list from local storage, if present
 3. Add new item to the list on button click
-4. Save the list to local storage on button click
-5. Remove all _checked_ items from the list on button click or individually on checkbox click
+4. Save the list as JSON to local storage
+5. Remove _checked_ items from the list
 6. Remove _all_ items from the list on button click
 7. Validate input fields. Do not accept empty values
-8. Use checkbox and an item title to mark an item as checked
+8. Use checkbox to mark an item for removal
 9. Consistent design using Bootstrap or similar framework
 10. Code is error-free
