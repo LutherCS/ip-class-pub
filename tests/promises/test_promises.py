@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Testing todo_list"""
+"""Testing promises"""
 
 import subprocess
 
@@ -23,9 +23,8 @@ def teardown_module(module):
 def test_retrieval(page: Page):
     page.goto("http://localhost:8000/")
     page.fill("#number", "330")
-    page.click("#getThem")
+    page.click("#getInfo")
     page.waitForLoadState("networkidle")
-    # page.screenshot(path='tests/promises/debug.png')
     allNumbers = page.querySelectorAll("#number_info > div")
     assert [x.querySelectorAll("div")[0].innerText() for x in allNumbers] == [
         "329",
@@ -38,7 +37,7 @@ def test_batch_retrieval(page: Page):
     page.goto("http://localhost:8000/")
     page.fill("#number", "330")
     page.check("#batch")
-    page.click("#getThem")
+    page.click("#getInfo")
     page.waitForLoadState("networkidle")
     allNumbers = page.querySelectorAll("#number_info > div")
     assert [x.querySelectorAll("div")[0].innerText() for x in allNumbers] == [
@@ -51,7 +50,7 @@ def test_batch_retrieval(page: Page):
 def test_request(page: Page):
     page.goto("http://localhost:8000/")
     page.fill("#number", "330")
-    page.click("#getThem")
+    page.click("#getInfo")
     page.waitForResponse("http://numbersapi.com/*")
     allNumbers = page.querySelectorAll("#number_info > div")
     assert [x.querySelectorAll("div")[0].innerText() for x in allNumbers] == [
@@ -63,7 +62,7 @@ def test_batch_request(page: Page):
     page.goto("http://localhost:8000/")
     page.fill("#number", "330")
     page.check("#batch")
-    page.click("#getThem")
+    page.click("#getInfo")
     page.waitForResponse("http://numbersapi.com/*")
     allNumbers = page.querySelectorAll("#number_info > div")
     assert [x.querySelectorAll("div")[0].innerText() for x in allNumbers] == [
