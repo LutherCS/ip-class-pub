@@ -65,7 +65,6 @@ def test_send_joke_error():
     assert send_joke("es", "chuck") == ["No kidding!"]
 
 
-@pytest.mark.skip
 @pytest.mark.parametrize(
     "language, category, number",
     [
@@ -80,4 +79,4 @@ def test_send_jokes(language, category, number):
 
 
 if __name__ == "__main__":
-    pytest.main(["-v", "test_jokes.py"])
+    pytest.main(["-v", "test_jokes_back.py"])

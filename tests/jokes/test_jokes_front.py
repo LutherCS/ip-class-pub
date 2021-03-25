@@ -46,12 +46,11 @@ def test_select_category(page: Page, category):
 def test_select_chuck_in_spanish(page: Page):
     page.goto("http://localhost:5000/")
     page.selectOption("#selCat", "chuck")
-    page.selectOption("#sellang", "es")
+    page.selectOption("#selLang", "es")
     page.click("#btnAmuse")
     assert len(page.querySelectorAll("#jokes > p")) == 1
 
 
-@pytest.mark.skip
 @pytest.mark.parametrize("number", [1, 5, 10])
 def test_select_number(page: Page, number):
     page.goto("http://localhost:5000/")

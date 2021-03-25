@@ -2,7 +2,7 @@
 
 ## Description
 
-Use Flask and [pyjokes](https://github.com/pyjokes/pyjokes) to build a web application that would allow users to select language and category of a joke and use Jinja2 to print 1 (one) joke from the selected category.
+Use Flask and [pyjokes](https://github.com/pyjokes/pyjokes) to build a web application that would allow users to select language and category of a joke and use Jinja2 to print the specified number of jokes from the selected category.
 
 ```python
 >>> import pyjokes
@@ -14,17 +14,17 @@ Use Flask and [pyjokes](https://github.com/pyjokes/pyjokes) to build a web appli
 ## Requirements
 
 1. Use some HTML/CSS framework to style the app
-2. Allow users to select the joke language (*en*, *es*, or *de*)
-3. Allow users to select the joke category (*neutral* or *Chuck Norris*)
-4. Populate drop-downs using Jinja2 templates
+2. Allow users to select the joke language (_en_, _es_, or _de_)
+3. Allow users to select the joke category (_all_, _neutral_, or _Chuck Norris_)
+4. Allow users to select the number of jokes (e.g. 1, 5, 10)
+5. Populate `select` elements using Jinja2 templates
    1. Do not use JavaScript in this exercise
-5. Call `pyjokes` with the specified category and language to retrieve a *random* joke
-6. Handle the error (no jokes about Chuck Norris in Spanish)
-7. (Optional) Allow users to select number of jokes (remove `@pytest.mark.skip` from the test file to test this functionality)
+6. Call `pyjokes.get_joke()` with the specified category and language to retrieve a _random_ joke or `pyjokes.get_jokes()` to retrieve multiple jokes at once
+7. Handle the error (no jokes about Chuck Norris in Spanish) gracefully
 
 ## Testing
 
-Use the provided tests (*tests/jokes*) to verify the correctness of implementation.
+Use the provided tests (_tests/jokes_) to verify the correctness of implementation.
 
 ```bash
 python3 -m pytest -v tests/jokes/test_jokes.py
@@ -32,8 +32,6 @@ python3 -m pytest -v tests/jokes/test_jokes_front.py
 ```
 
 ## Demo
-
-Note that the 3rd `select` element (number of jokes) is *optional*.
 
 I used [MUI](https://www.muicss.com/) but you may continue using [Bootstrap](https://getbootstrap.com/).
 
