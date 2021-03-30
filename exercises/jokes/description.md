@@ -27,7 +27,7 @@ Use Flask and [pyjokes](https://github.com/pyjokes/pyjokes) to build a web appli
 Use the provided tests (_tests/jokes_) to verify the correctness of implementation.
 
 ```bash
-python3 -m pytest -v tests/jokes/test_jokes.py
+python3 -m pytest -v tests/jokes/test_jokes_back.py
 python3 -m pytest -v tests/jokes/test_jokes_front.py
 ```
 
