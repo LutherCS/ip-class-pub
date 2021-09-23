@@ -25,14 +25,14 @@ def test_eval(page: Page):
     page.goto("http://localhost:8000/calculator.html")
     page.click("#btnEql")
     # page.screenshot(path=f"boo.png")
-    assert page.querySelector("#result").innerText() == "0"
+    assert page.query_selector("#result").inner_text() == "0"
 
 
 def test_clear(page: Page):
     page.goto("http://localhost:8000/calculator.html")
     page.click("#btn1")
     page.click("#btnClr")
-    assert page.querySelector("#result").innerText() == "0"
+    assert page.query_selector("#result").inner_text() == "0"
 
 
 def test_error(page: Page):
@@ -42,7 +42,7 @@ def test_error(page: Page):
     page.click("#btnSum")
     page.click("#btn2")
     page.click("#btnEql")
-    assert page.querySelector("#result").innerText() == "ERROR"
+    assert page.query_selector("#result").inner_text() == "ERROR"
 
 
 def test_infinity(page: Page):
@@ -51,7 +51,7 @@ def test_infinity(page: Page):
     page.click("#btnDiv")
     page.click("#btn0")
     page.click("#btnEql")
-    assert page.querySelector("#result").innerText() == "Infinity"
+    assert page.query_selector("#result").inner_text() == "Infinity"
 
 
 @pytest.mark.parametrize(
@@ -67,7 +67,7 @@ def test_integer_operations(page: Page, buttons, result):
     page.goto("http://localhost:8000/calculator.html")
     for btn in buttons:
         page.click(f"#btn{btn}")
-    assert int(page.querySelector("#result").innerText()) == result
+    assert int(page.query_selector("#result").inner_text()) == result
 
 
 @pytest.mark.parametrize(
@@ -83,6 +83,6 @@ def test_floating_point_operations(page: Page, buttons, result):
     page.goto("http://localhost:8000/calculator.html")
     for btn in buttons:
         page.click(f"#btn{btn}")
-    assert float(page.querySelector("#result").innerText()) == pytest.approx(
+    assert float(page.query_selector("#result").inner_text()) == pytest.approx(
         result, 0.001
     )
