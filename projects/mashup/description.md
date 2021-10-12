@@ -16,7 +16,7 @@ Here is a non-exclusive list of web APIs:
 2. Use JavaScript events and HTML input elements for interactivity
 3. Use JavaScript asynchronous programming to retrieve data
 4. Use JSON or XML for data exchange
-5. Use at least 3 APIs
+5. Use at 1 API per person + 1 per team.
 6. Use local storage or cookies
 
 ### Grading rubric
