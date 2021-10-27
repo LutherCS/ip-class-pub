@@ -18,46 +18,52 @@ def setup_module(module):
 
 
 def teardown_module(module):
+    """Stop the server"""
     module.server.terminate()
 
 
 def test_click_button(page: Page):
+    """Click a button without selecting any category/language"""
     page.goto("http://localhost:5000/")
     page.click("#btnAmuse")
-    assert len(page.querySelectorAll("#jokes > p")) == 1
+    assert len(page.query_selector_all("#jokes > p")) == 1
 
 
 @pytest.mark.parametrize("language", ["de", "en", "es"])
 def test_select_language(page: Page, language):
+    """Select different languages"""
     page.goto("http://localhost:5000/")
-    page.selectOption("#selLang", language)
+    page.select_option("#selLang", language)
     page.click("#btnAmuse")
-    assert len(page.querySelectorAll("#jokes > p")) == 1
+    assert len(page.query_selector_all("#jokes > p")) == 1
 
 
 @pytest.mark.parametrize("category", ["all", "chuck", "neutral"])
 def test_select_category(page: Page, category):
+    """Select different categories"""
     page.goto("http://localhost:5000/")
-    page.selectOption("#selCat", category)
+    page.select_option("#selCat", category)
     page.click("#btnAmuse")
-    assert len(page.querySelectorAll("#jokes > p")) == 1
+    assert len(page.query_selector_all("#jokes > p")) == 1
 
 
 def test_select_chuck_in_spanish(page: Page):
+    """There are no jokes about Chuck Norris in Spanish"""
     page.goto("http://localhost:5000/")
-    page.selectOption("#selCat", "chuck")
-    page.selectOption("#selLang", "es")
+    page.select_option("#selCat", "chuck")
+    page.select_option("#selLang", "es")
     page.click("#btnAmuse")
-    assert len(page.querySelectorAll("#jokes > p")) == 1
+    assert len(page.query_selector_all("#jokes > p")) == 1
 
 
 @pytest.mark.parametrize("number", [1, 5, 10])
 def test_select_number(page: Page, number):
+    """Select different number of jokes"""
     page.goto("http://localhost:5000/")
-    page.selectOption("#selNum", str(number))
+    page.select_option("#selNum", str(number))
     page.click("#btnAmuse")
-    assert len(page.querySelectorAll("#jokes > p")) == number
+    assert len(page.query_selector_all("#jokes > p")) == number
 
 
 if __name__ == "__main__":
-    pytest.main(["-v", "test_jokes_front.py"])
+    pytest.main(["-v", __file__])

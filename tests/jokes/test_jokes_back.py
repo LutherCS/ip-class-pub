@@ -5,17 +5,21 @@ import pytest
 from exercises.jokes.app import app, send_joke
 
 
-@pytest.fixture
-def client():
+@pytest.fixture(name="client")
+def fixture_client():
     """Create the client fixture"""
-    with app.test_client() as client:
+    with app.test_client() as test_client:
         with app.app_context():
-            yield client
+            yield test_client
 
 
-def test_status(client):
-    """GET should work while POST should not"""
+def test_status_get(client):
+    """GET should work"""
     assert client.get("/").status_code == 200
+
+
+def test_status_post(client):
+    """POST should not work without any data"""
     assert client.post("/").status_code == 500
 
 
@@ -79,4 +83,4 @@ def test_send_jokes(language, category, number):
 
 
 if __name__ == "__main__":
-    pytest.main(["-v", "test_jokes_back.py"])
+    pytest.main(["-v", __file__])
