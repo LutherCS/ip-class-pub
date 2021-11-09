@@ -5,12 +5,12 @@ import pytest
 from exercises.geo.app import app, get_data_from_db
 
 
-@pytest.fixture
-def client():
+@pytest.fixture(name="client")
+def fixture_client():
     """Create the client fixture"""
-    with app.test_client() as client:
+    with app.test_client() as the_client:
         with app.app_context():
-            yield client
+            yield the_client
 
 
 @pytest.mark.parametrize(
@@ -40,4 +40,4 @@ def test_index_get(client):
 
 
 if __name__ == "__main__":
-    pytest.main(["-v", "test_geo.py"])
+    pytest.main(["-v", __file__])

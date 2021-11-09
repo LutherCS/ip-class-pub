@@ -24,9 +24,9 @@ def teardown_module(module):
 @pytest.mark.parametrize("country", ["USA", "UKR", "MDG"])
 def test_country(page: Page, country):
     page.goto("http://localhost:5000/country")
-    page.selectOption("#selCountry", country)
+    page.select_option("#selCountry", country)
     page.click("#btnInfo")
-    assert len(page.querySelectorAll("#information > tbody > tr")) == 1
+    assert len(page.query_selector_all("#information > tbody > tr")) == 1
 
 
 @pytest.mark.parametrize(
@@ -35,9 +35,9 @@ def test_country(page: Page, country):
 )
 def test_region(page: Page, region, countries):
     page.goto("http://localhost:5000/region")
-    page.selectOption("#selRegion", region)
+    page.select_option("#selRegion", region)
     page.click("#btnInfo")
-    assert len(page.querySelectorAll("#information > tbody > tr")) == countries
+    assert len(page.query_selector_all("#information > tbody > tr")) == countries
 
 
 @pytest.mark.parametrize(
@@ -45,10 +45,10 @@ def test_region(page: Page, region, countries):
 )
 def test_continent(page: Page, continent, countries):
     page.goto("http://localhost:5000/continent")
-    page.selectOption("#selContinent", continent)
+    page.select_option("#selContinent", continent)
     page.click("#btnInfo")
-    assert len(page.querySelectorAll("#information > tbody > tr")) == countries
+    assert len(page.query_selector_all("#information > tbody > tr")) == countries
 
 
 if __name__ == "__main__":
-    pytest.main(["-v", "test_jokes_front.py"])
+    pytest.main(["-v", __file__])
