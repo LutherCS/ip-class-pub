@@ -1,5 +1,10 @@
 #!/usr/bin/env python3
-"""Testing JavaScript"""
+"""
+Testing JavaScript
+
+@authors: Roman Yasinovskyy
+@version: 2022.9
+"""
 
 import subprocess
 
