@@ -17,9 +17,7 @@ Implement a simple calculator that performs the following operations: addition, 
 
 ## Styling
 
-Use Bootstrap or a similar framework. Bootstrap CSS and JavaScript files are provided.
-
-Elements have been stripped of the classes but you may add them back. Don't change the ids.
+Use of Bootstrap is optional but highly encouraged. Bootstrap CSS and JavaScript files are provided.
 
 ## Functionality
 

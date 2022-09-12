@@ -1,24 +1,40 @@
 /* jshint esversion: 8 */
-/* jshint node: true */
 /* jshint browser: true */
 'use strict';
 
-var screen;
+var outputScreen;
+var clearOnEntry;
 
 
-function enterDigit(digit) {
-}
+/**
+ * Display a digit on the `outputScreen`
+ * 
+ * @param {number} digit digit to add or display on the `outputScreen`
+ */
+function enterDigit(digit) {}
 
-function clear_screen() {
-}
 
-function eval_expr() {
-}
+/**
+ * Clear `outputScreen` and set value to 0
+ */
+function clear_screen() {}
 
-function enterOp(operation) {
-}
+
+/**
+ * Evaluate the expression and display its result or *ERROR*
+ */
+function eval_expr() {}
+
+
+/**
+ * Display an operation on the `outputScreen`
+ * 
+ * @param {string} operation to add to the expression
+ */
+function enterOp(operation) {}
+
 
 window.onload = function () {
-    screen = document.querySelector("#result");
-    screen.innerHTML = "0";
+    outputScreen = document.querySelector("#result");
+    clearOnEntry = true;
 };
