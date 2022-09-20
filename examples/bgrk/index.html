@@ -5,33 +5,114 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <link rel="stylesheet" href="style.css" />
+    <script src="https://use.fontawesome.com/releases/v5.15.4/js/all.js"></script>
     <title>Board Games Record Keeper</title>
   </head>
   <body>
     <div class="container content">
       <h1>Welcome, visitor!</h1>
-      <table class="table is-striped">
+      <form id="newGame" name="game">
+        <div class="columns" id="formRow1">
+          <div class="column is-third field is-grouped">
+            <div class="control is-expanded">
+              <label class="label">Title</label>
+              <div class="select is-fullwidth">
+                <select name="title" id="selTitle"></select>
+              </div>
+            </div>
+          </div>
+          <div class="column is-third field is-grouped">
+            <div class="control is-expanded">
+              <label class="label">Designer</label>
+              <div class="select is-fullwidth">
+                <select name="designer" id="selDesigner"></select>
+              </div>
+            </div>
+          </div>
+          <div class="column is-third field is-grouped">
+            <div class="control is-expanded">
+              <label class="label">Publisher</label>
+              <div class="select is-fullwidth">
+                <select name="publisher" id="selPublisher"></select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns" id="formRow2">
+          <div class="column is-third field is-grouped">
+            <div class="control is-expanded">
+              <label class="label">Price</label>
+              <input
+                type="text"
+                class="input"
+                id="txtPrice"
+                name="price"
+                required
+              />
+            </div>
+          </div>
+          <div class="column is-third field is-grouped">
+            <div class="control is-expanded">
+              <label class="label">Purchase date</label>
+              <input
+                type="date"
+                class="input"
+                id="datePurchased"
+                name="purchased"
+                required
+              />
+            </div>
+          </div>
+          <div class="column is-third field is-grouped">
+            <div class="control is-expanded">
+              <label class="label">Rating</label>
+              <div class="select is-fullwidth">
+                <select name="rating" id="selRating">
+                  <option value="0">0</option>
+                  <option value="1">1</option>
+                  <option value="2">2</option>
+                  <option value="3">3</option>
+                  <option value="4">4</option>
+                  <option value="5">5</option>
+                </select>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="columns">
+          <div
+            class="column notification is-danger"
+            id="feedbackMessage"
+            style="display: none"
+          >
+            <button class="delete"></button>
+          </div>
+        </div>
+        <div class="columns">
+          <div class="column">
+            <button
+              type="button"
+              class="button is-fullwidth is-dark"
+              onclick="addGame()"
+            >
+              Add game
+            </button>
+          </div>
+        </div>
+      </form>
+      <div class="container" id="games"></div>
+      <table id="myGames" class="table is-striped">
         <thead>
-          <tr>
-            <th>Title</th>
-            <th>Designer</th>
-          </tr>
+          <th>Title</th>
+          <th>Designer</th>
+          <th>Publisher</th>
+          <th>Price</th>
+          <th>Purchased on</th>
+          <th>Rating</th>
         </thead>
-        <tbody>
-          <tr>
-            <td>Catan</td>
-            <td>Klaus Teuber</td>
-          </tr>
-          <tr>
-            <td>Pandemic</td>
-            <td>Matt Leacock</td>
-          </tr>
-          <tr>
-            <td>Ticket to Ride</td>
-            <td>Alan R. Moon</td>
-          </tr>
-        </tbody>
+        <tbody></tbody>
       </table>
     </div>
+    <script src="script.js"></script>
   </body>
 </html>
