@@ -61,11 +61,25 @@ class Library extends Subject {
     constructor() {
         super();
         this._collection = [];
-    }
 
+        this.localLibrary = window.localStorage.getItem("myGameLibrary");
+        if (this.localLibrary) {
+            this.localLibrary = JSON.parse(this.localLibrary);
+            for (let game of this.localLibrary) {
+                let newGame = new Game(game["_title"], game["_designer"], game["_publisher"], game["_price"], game["_purchased"], game["_rating"]);
+                this._collection.push(newGame);
+            }
+        } else {
+            this.localLibrary = [];
+        }
+
+    }
+    
     add(newGame) {
         this._collection.push(newGame);
-        console.log(`Model just added ${newGame.toString()}`);
+        this.localLibrary.push(newGame);
+        window.localStorage.setItem("myGameLibrary", JSON.stringify(this.localLibrary));
+        // console.log(`Model just added ${newGame.toString()}`);
         this.publish(`A new game (${newGame.toString()}) has been added`, this);
     }
 

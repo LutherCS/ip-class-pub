@@ -28,6 +28,7 @@ function populateSelectorOptions(selectorID, optionName) {
 
 class LibraryView {
     constructor(model) {
+        this.redrawTable(model._collection);
         model.subscribe(this.redrawTable.bind(this));
     }
 
@@ -62,7 +63,7 @@ class LibraryView {
             cellRating.innerText = "★".repeat(Number(game.rating));
             row.appendChild(cellRating);
 
-            console.log(`View just added ${game.toString()}`);
+            // console.log(`View just added ${game.toString()}`);
             tblBody.appendChild(row);
         }
     }

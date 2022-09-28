@@ -19,6 +19,6 @@ function addGame() {
     let rating = document.querySelector("#selRating").value;
 
     let newGame = new Game(title, designer, publisher, price, purchased, rating);
-    console.log(`Controller just added ${newGame.toString()}`);
+    // console.log(`Controller just added ${newGame.toString()}`);
     myLibraryModel.add(newGame);
 }
