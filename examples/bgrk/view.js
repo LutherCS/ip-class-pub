@@ -32,11 +32,18 @@ class LibraryView {
         model.subscribe(this.redrawTable.bind(this));
     }
 
-    redrawTable(listOfGames) {
+    async redrawTable(listOfGames) {
         let tblBody = document.querySelector("#myGames > tbody");
         tblBody.innerHTML = "";
 
         for (let game of listOfGames) {
+            let api_key = "";  // It's a secret
+            let gameData = await fetch(`https://api.boardgameatlas.com/api/search?name=${game.title}&client_id=${api_key}`)
+                .then((response) => response.json())
+                .catch((error) => console.log(error));
+
+            let minAge = gameData.games[0].min_age;
+
             let row = document.createElement("tr");
 
             let cellTitle = document.createElement("td");
@@ -62,6 +69,10 @@ class LibraryView {
             let cellRating = document.createElement("td");
             cellRating.innerText = "★".repeat(Number(game.rating));
             row.appendChild(cellRating);
+
+            let cellAge = document.createElement("td");
+            cellAge.innerHTML = minAge;
+            row.appendChild(cellAge);
 
             // console.log(`View just added ${game.toString()}`);
             tblBody.appendChild(row);
