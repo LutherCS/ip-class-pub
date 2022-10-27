@@ -6,7 +6,7 @@ Board Game Record Keeper
 @version: 2022.10
 """
 
-from flask import Flask, request
+from flask import Flask, render_template, request
 from markupsafe import escape
 
 app = Flask(__name__)
@@ -19,7 +19,12 @@ def hello():
 
 @app.route("/<string:name>")
 def greet_by_name(name: str):
-    return f"Hello, <strong>{name}</strong>"
+    return render_template("hello.html", name=name)
+
+
+@app.route("/<string:name>/<int:times>")
+def greet_many_times(name: str, times: int) -> str:
+    return render_template("hello.html", names=[name] * times)
 
 
 @app.route("/sum/<path:subpath>")
@@ -28,6 +33,7 @@ def sum_of_2(subpath):
     return f"The sum of {a} and {b} is {do_stuff(int(a), int(b))}"
 
 
+@app.route("/mult/<int:a>/<int:b>")
 @app.route("/prod/<int:a>/<int:b>")
 def prod_of_2(a: int, b: int) -> str:
     return f"The product of {a} and {b} is {a * b}"
