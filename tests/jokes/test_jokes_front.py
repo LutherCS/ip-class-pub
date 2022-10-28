@@ -1,10 +1,18 @@
 #!/usr/bin/env python3
-"""Using pytest-flask to test Flask app"""
+"""
+Using pytest-playwright to test the front end
+
+@authors: Roman Yasinovskyy
+@version: 2022.10
+"""
 
 import os
 import subprocess
+
 import pytest
 from playwright.sync_api import Page
+
+TIMEOUT = 1000
 
 
 def setup_module(module):
@@ -24,6 +32,7 @@ def teardown_module(module):
 
 def test_click_button(page: Page):
     """Click a button without selecting any category/language"""
+    page.set_default_timeout(TIMEOUT)
     page.goto("http://localhost:5000/")
     page.click("#btnAmuse")
     assert len(page.query_selector_all("#jokes > p")) == 1
@@ -32,6 +41,7 @@ def test_click_button(page: Page):
 @pytest.mark.parametrize("language", ["de", "en", "es"])
 def test_select_language(page: Page, language):
     """Select different languages"""
+    page.set_default_timeout(TIMEOUT)
     page.goto("http://localhost:5000/")
     page.select_option("#selLang", language)
     page.click("#btnAmuse")
@@ -41,6 +51,7 @@ def test_select_language(page: Page, language):
 @pytest.mark.parametrize("category", ["all", "chuck", "neutral"])
 def test_select_category(page: Page, category):
     """Select different categories"""
+    page.set_default_timeout(TIMEOUT)
     page.goto("http://localhost:5000/")
     page.select_option("#selCat", category)
     page.click("#btnAmuse")
@@ -49,6 +60,7 @@ def test_select_category(page: Page, category):
 
 def test_select_chuck_in_spanish(page: Page):
     """There are no jokes about Chuck Norris in Spanish"""
+    page.set_default_timeout(TIMEOUT)
     page.goto("http://localhost:5000/")
     page.select_option("#selCat", "chuck")
     page.select_option("#selLang", "es")
@@ -59,6 +71,7 @@ def test_select_chuck_in_spanish(page: Page):
 @pytest.mark.parametrize("number", [1, 5, 10])
 def test_select_number(page: Page, number):
     """Select different number of jokes"""
+    page.set_default_timeout(TIMEOUT)
     page.goto("http://localhost:5000/")
     page.select_option("#selNum", str(number))
     page.click("#btnAmuse")

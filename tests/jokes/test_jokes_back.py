@@ -1,8 +1,23 @@
 #!/usr/bin/env python3
-"""Using pytest-flask to test Flask app"""
+"""
+Using pytest-flask to test the back end
+
+@authors: Roman Yasinovskyy
+@version: 2022.10
+"""
+
+import importlib
+import pathlib
+import sys
 
 import pytest
-from exercises.jokes.app import app, send_joke
+
+try:
+    importlib.util.find_spec("exercises." + pathlib.Path(__file__).parts[-2], "jokes")
+except ModuleNotFoundError:
+    sys.path.append(f"{pathlib.Path(__file__).parents[2]}/")
+finally:
+    from exercises.jokes.app import app, send_joke
 
 
 @pytest.fixture(name="client")
