@@ -6,67 +6,56 @@ Board Game Record Keeper
 @version: 2022.10
 """
 
-from flask import Flask, render_template, request
-from markupsafe import escape
+from csv import DictReader
+from flask import (
+    Flask,
+    make_response,
+    redirect,
+    render_template,
+    request,
+    url_for,
+    jsonify,
+)
 
 app = Flask(__name__)
 
-
-@app.route("/")
-def hello():
-    return "Hello, <strong>student</strong>!"
+all_games = dict()
+chosen_games = dict()
 
 
-@app.route("/<string:name>")
-def greet_by_name(name: str):
-    return render_template("hello.html", name=name)
+@app.get("/")
+def index():
+    global all_games
+    global chosen_games
+    if not all_games:
+        with open("data/games.csv") as datafile:
+            for record in DictReader(datafile):
+                all_games[record["title"]] = record
+    if not chosen_games:
+        return render_template("base.html", games=all_games.values())
+    return render_template(
+        "games.html", games=all_games.values(), collection=chosen_games.values()
+    )
 
 
-@app.route("/<string:name>/<int:times>")
-def greet_many_times(name: str, times: int) -> str:
-    return render_template("hello.html", names=[name] * times)
+@app.post("/addgame")
+def read_user_selection():
+    global all_games
+    global chosen_games
+    response = make_response(redirect(url_for("index"), code=303))
+    game_title = request.form.get("game")
+    chosen_games[game_title] = all_games[game_title]
+
+    return response
 
 
-@app.route("/sum/<path:subpath>")
-def sum_of_2(subpath):
-    a, b = subpath.split("/")
-    return f"The sum of {a} and {b} is {do_stuff(int(a), int(b))}"
+@app.get("/api/v1/games/all")
+def get_all_games():
+    global all_games
+    return jsonify(all_games)
 
 
-@app.route("/mult/<int:a>/<int:b>")
-@app.route("/prod/<int:a>/<int:b>")
-def prod_of_2(a: int, b: int) -> str:
-    return f"The product of {a} and {b} is {a * b}"
-
-
-def do_stuff(a: int, b: int) -> int:
-    return a + b
-
-
-@app.route("/math")
-def do_math() -> str:
-    if not request.args:
-        return """
-<form>
-<select name="a">
-    <option value="1">1</option>
-    <option value="2">2</option>
-    <option value="3">3</option>
-</select>
-<select name="b">
-    <option value="1">1</option>
-    <option value="5">5</option>
-    <option value="10">10</option>
-</select>
-<select name="op">
-    <option value="+">+</option>
-    <option value="*">*</option>
-</select>
-<input type='submit'>
-</form>
-"""
-    else:
-        if request.args.get("op") == "+":
-            return sum_of_2(f"{request.args.get('a')}/{request.args.get('b')}")
-        if request.args.get("op") == "*":
-            return prod_of_2(int(request.args.get("a")), int(request.args.get("b")))
+@app.get("/api/v1/games/my")
+def get_user_games():
+    global chosen_games
+    return jsonify(chosen_games)

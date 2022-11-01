@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<div class="container">
+    {% if collection | length > 0 %}
+    <table class="table">
+        <thead>
+            <th>Title</th>
+            <th>Designer</th>
+            <th>Publisher</th>
+            <th>Year</th>
+        </thead>
+        {% for game in collection %}
+        <tr>
+            <td>{{ game.title }}</td>
+            <td>{{ game.designer }}</td>
+            <td>{{ game.publisher }}</td>
+            <td>{{ game.year }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+    {% endif %}
+</div>
+
+
+{% endblock %}
