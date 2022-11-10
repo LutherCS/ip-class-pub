@@ -1,8 +1,19 @@
 #!/usr/bin/env python3
 """Using pytest-flask to test Flask app"""
 
+import importlib
+import pathlib
+import sys
+
 import pytest
-from exercises.geo.app import app, get_data_from_db
+
+try:
+    importlib.util.find_spec("exercises." + pathlib.Path(__file__).parts[-2], "geo")
+except ModuleNotFoundError:
+    sys.path.append(f"{pathlib.Path(__file__).parents[2]}/")
+finally:
+    from exercises.geo.app import app, get_data_from_db
+
 
 
 @pytest.fixture(name="client")
