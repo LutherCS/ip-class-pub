@@ -8,7 +8,9 @@ Board Game Record Keeper
 
 from csv import DictReader
 from functools import cache
+from os import environ
 
+import requests
 from dotenv import load_dotenv
 from flask import (
     Flask,
@@ -36,6 +38,7 @@ def create_app():
     load_dotenv()
     app.config.from_prefixed_env()
     app.config["all_games"] = read_data_file("data/games.csv")
+    app.config["bga_client_id"] = environ["BGA_CLIENT_ID"]
 
     return app
 
@@ -59,8 +62,18 @@ def read_user_selection():
     all_games = app.config["all_games"]
     response = make_response(redirect(url_for("index"), code=303))
     game_title = request.form.get("game")
+    game_info_bga = requests.get(
+        f"https://api.boardgameatlas.com/api/search?name={game_title}&client_id={app.config['bga_client_id']}"
+    )
+    game_min_age = 0
+    try:
+        game_min_age = game_info_bga.json()["games"][0]["min_age"]
+    except Exception:
+        pass
     chosen_games = session.get("chosen_games", [])
-    chosen_games.append(all_games[game_title])
+    new_game = all_games[game_title]
+    new_game["min_age"] = game_min_age
+    chosen_games.append(new_game)
     session["chosen_games"] = chosen_games
 
     return response
