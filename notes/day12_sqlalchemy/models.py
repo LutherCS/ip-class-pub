@@ -10,7 +10,7 @@ class Student(db.Model):
     gradyear = db.Column(db.Integer)
 
 
-class StudentSchema(mm.ModelSchema):
+class StudentSchema(mm.SQLAlchemyAutoSchema):
     class Meta:
         model = Student
         sqla_session = db.session
