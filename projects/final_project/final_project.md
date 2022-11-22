@@ -8,7 +8,7 @@ Your final project is an original, functional web application that uses *Flask* 
   * At least three templates
 * **User interface: design**
   * Aesthetically appealing and consistent
-  * Use *Bootstrap* or *MUI*
+  * Use *Bootstrap*, *MUI*, or another framework
 * **User interface: interactivity**
   * Use forms and validate user input
   * Use both *GET* and *POST* methods
@@ -16,10 +16,12 @@ Your final project is an original, functional web application that uses *Flask* 
   * At least three routes
   * Use both *GET* and *POST* methods
 * **Persistent data: database**
-  * Use a database (*SQLite* or *PostgreSQL*) for persistent data storage
+  * Use a database (*SQLite*, *PostgreSQL*, ot other) for persistent data storage
   * Use *psycopg2*, *records*, or other Python package to access the database
 * **Persistent data: model**
   * At least three tables in a database
+  * The tables must be related using *foreign keys*
+  * There must be at least one query that uses `join` to query multiple tables.
 * **Persistent data: API**
   * Provide access to *some part of* your data via API
   * Demonstrate this functionality using a sample client application
@@ -32,7 +34,7 @@ Your final project is an original, functional web application that uses *Flask* 
   * Returns correct results
 * **Application: deployment**
   * Deployed and publicly available
-  * Use *Heroku* or *PythonAnywhere*
+  * Use *Netlify*, *PythonAnywhere*, or other platform
 * **Application: complexity**. One of the following:
   * Use *Vue* or another JavaScript framework
   * Use *requests* to communicate with an external API
