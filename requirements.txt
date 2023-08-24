@@ -90,7 +90,7 @@ trio==0.21.0
 trio-websocket==0.9.2
 urllib3==1.26.12
 websockets==10.1
-Werkzeug==2.2.2
+Werkzeug==2.2.3
 wsproto==1.2.0
 WTForms==3.0.1
 zipp==3.8.1
