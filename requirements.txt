@@ -13,7 +13,7 @@ docutils==0.19
 et-xmlfile==1.1.0
 Faker==14.2.0
 flake8==5.0.4
-Flask==2.2.2
+Flask==2.2.5
 Flask-BabelEx==0.9.4
 Flask-Cors==3.0.10
 Flask-Login==0.6.2
