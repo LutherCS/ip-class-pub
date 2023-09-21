@@ -77,6 +77,14 @@ class Garage {
         this._allVehicles.push(newVehicle);
     }
 
+    sell(someVehicle) {
+        if (!this._allVehicles.includes(someVehicle)) {
+            throw Error("You cannot sell what you don't own");
+        }
+        this._allVehicles =
+            this._allVehicles.filter(item => item !== someVehicle);
+    }
+
     [Symbol.iterator]() {
         let idx = -1;
         return {
@@ -99,6 +107,41 @@ for (let v of g._allVehicles) {
 for (let v of g.vehicles) {
     console.log(v.toString());
 }
+for (let v of g) {
+    console.log(v.toString());
+}
+
+console.log("Selling a car");
+g.sell(v1)
+for (let v of g) {
+    console.log(v.toString());
+}
+try {
+    g.sell(v1)
+} catch (error) { }
+
+for (let v of g) {
+    console.log(v.toString());
+}
+
+class Motorcycle extends Vehicle {
+    constructor(color, year, model, wheels) {
+        super(color, year, model);
+        this._wheels = wheels;
+    }
+
+    get wheels() {
+        return this._wheels;
+    }
+
+    toString() {
+        return `${super.toString()} with ${this._wheels} wheels`;
+    }
+}
+
+console.log("Buying a bike");
+let bike = new Motorcycle("orange", 2004, "HD", 2);
+g.buy(bike)
 for (let v of g) {
     console.log(v.toString());
 }
