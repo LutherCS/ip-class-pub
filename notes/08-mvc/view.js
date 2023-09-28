@@ -1,7 +1,9 @@
 "use strict";
 
 class FootlockerView {
-    constructor(model) { }
+    constructor(model) {
+        model.subscribe(this.redrawView.bind(this));
+    }
 
     redrawView(footlocker, msg) {
         let tblBody = document.querySelector("#tbl_footlocket > tbody");
@@ -18,10 +20,10 @@ class FootlockerView {
             row.appendChild(tdSize);
 
             let tdPrice = document.createElement("td");
-            tdPrice.innerText = pair.price;
+            tdPrice.innerText = `$ ${Number.parseFloat(pair.price).toFixed(2)}`;
             row.appendChild(tdPrice);
 
-            tblBody.appendChild(tow);
+            tblBody.appendChild(row);
         }
     }
 }

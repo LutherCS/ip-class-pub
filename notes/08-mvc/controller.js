@@ -18,16 +18,23 @@ function populateSelect(selectElementId, options) {
     }
 }
 
+/**
+ * Add a pair of shoes to the footlocker
+ * @returns if the form is invalid
+ */
 function addPair() {
-    if (document.querySelector("#shoe_details").checkValidity()) {
+    if (!document.querySelector("#shoe_details").checkValidity()) {
         return;
     }
     let brand = document.querySelector("#sel_brand").selectedOptions[0].value;
     let size = document.querySelector("#num_size").value;
-    let price = document.querySelecor("#num_price").value;
-    let newPair = Shoe(brand, size, price);
-
+    let price = document.querySelector("#num_price").value;
+    let newPair = new Shoe(brand, size, price);
     myFootlockerModel.add(newPair);
+}
+
+function clearAll() {
+    myFootlockerModel.clear();
 }
 
 window.onload = function (params) {
