@@ -88,7 +88,7 @@ toml==0.10.2
 tomli==2.0.1
 trio==0.21.0
 trio-websocket==0.9.2
-urllib3==1.26.12
+urllib3==1.26.17
 websockets==10.1
 Werkzeug==2.2.3
 wsproto==1.2.0
