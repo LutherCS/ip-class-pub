@@ -1,0 +1,14 @@
+GET https://api.wikimedia.org/feed/v1/wikipedia/en/onthisday/all/09/28
+###
+
+GET https://strangerthings-quotes.vercel.app/api/quotes
+###
+
+GET https://strangerthings-quotes.vercel.app/api/quotes/2
+###
+
+GET https://lucifer-quotes.vercel.app/api/quotes
+###
+
+GET https://bcs-quotes.vercel.app/api/quotes
+###
