@@ -6,9 +6,10 @@ Use any open web Application Programming Interfaces (APIs) and fuse them togethe
 
 Here is a non-exclusive list of web APIs:
 
-- [toddmotto/public-apis: A collective list of public JSON APIs for use in web development.](https://github.com/toddmotto/public-apis)
-
 - [ProgrammableWeb - APIs, Mashups and the Web as Platform](https://www.programmableweb.com/)
+- [API List: A public list of free APIs for programmers](https://apilist.fun/)
+- [The Public APIs List, a curated list for the public web Apis](https://apislist.com/)
+- [GitHub - public-apis/public-apis: A collective list of free APIs](https://github.com/public-apis/public-apis)
 
 ## Project requirements
 
