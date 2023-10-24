@@ -3,7 +3,7 @@
 Using pytest-playwright to test the front end
 
 @authors: Roman Yasinovskyy
-@version: 2022.10
+@version: 2023.10
 """
 
 import os

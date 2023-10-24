@@ -3,17 +3,17 @@
 Using pytest-flask to test the back end
 
 @authors: Roman Yasinovskyy
-@version: 2022.10
+@version: 2023.10
 """
 
-import importlib
 import pathlib
 import sys
+from importlib import util
 
 import pytest
 
 try:
-    importlib.util.find_spec("exercises." + pathlib.Path(__file__).parts[-2], "jokes")
+    util.find_spec("exercises." + pathlib.Path(__file__).parts[-2], "jokes")
 except ModuleNotFoundError:
     sys.path.append(f"{pathlib.Path(__file__).parents[2]}/")
 finally:
@@ -34,8 +34,8 @@ def test_status_get(client):
 
 
 def test_status_post(client):
-    """POST should not work without any data"""
-    assert client.post("/").status_code == 500
+    """POST should work without any data"""
+    assert client.post("/").status_code == 200
 
 
 @pytest.mark.parametrize(
