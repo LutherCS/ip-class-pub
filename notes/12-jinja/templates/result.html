@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+You clicked {{number}}!
+
+<form action="/game" method="POST">
+<input type="submit" class="button" value="Play again" name="playagain" />
+</form>
+
+{% endblock %}

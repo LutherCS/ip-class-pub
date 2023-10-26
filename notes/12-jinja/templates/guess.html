@@ -1,0 +1,11 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+<form action="/game" method="POST">
+{% for n in numbers %}
+    <input type="submit" class="button" name="number" value={{ n }} />
+{% endfor %}
+</form>
+
+{% endblock %}

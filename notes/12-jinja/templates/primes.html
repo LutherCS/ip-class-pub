@@ -1,0 +1,21 @@
+{% extends "base.html"%}
+
+{% block content %}
+
+{% if numbers | length == 1 %}
+
+Here comes the prime number.
+
+{% else %}
+
+Here come the prime numbers.
+
+{% endif %}
+
+<ul>
+{% for number in numbers %}
+<li>{{number}}</li>
+{% endfor %}
+</ul>
+
+{% endblock %}
