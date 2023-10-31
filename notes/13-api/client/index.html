@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>API Client</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+  </head>
+  <body>
+    <h1>What do you want?</h1>
+    <main class="container">
+      <div>
+        <input type="button" value="Number" name="number" onclick="getData('number')" />
+        <input type="button" value="Name" name="name" onclick="getData('name')" />
+        <input type="button" value="Quote" name="quote" onclick="getData('quote')" />
+      </div>
+      <div id="content"></div>
+    </main>
+    <script src="script.js"></script>
+  </body>
+</html>
