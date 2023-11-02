@@ -13,7 +13,7 @@
     </main>
     <script>
       async function getKoan() {
-        let data = await fetch("http://localhost:5000/api/v1/koan")
+        let data = await fetch("https://yasiro01.pythonanywhere.com/api/v1/koan")
           .then((response) => response.json())
           .catch((error) => console.error(error));
         document.querySelector("#content").innerHTML = data["koan"];
