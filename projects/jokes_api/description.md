@@ -3,10 +3,10 @@
 ## Server side
 
 1. Deploy on [PythonAnywhere](https://www.pythonanywhere.com/), [Heroku](https://www.heroku.com/), or another platform of your choice.
-2. Your API should return the exact number of random jokes in the specified language/category. It is up to you how to structure the URL, read the provided references for ideas. The provided examples are mutually exclusive, implement either of them (or something else entirely).
+2. Your API must return the exact number of random jokes in the specified language/category. It is up to you how to structure the URL, read the provided references for ideas. The provided examples are mutually exclusive, implement either of them (or something else entirely).
    1. Example 1: when accessed at URL `/api/v1/jokes?category=chuck&language=de&number=10` your service must return 10 Chuck Norris jokes in German from the `pyjokes` collection as a JSON object (array of dictionaries).
    2. Example 2: when accessed at URL `/api/v1/jokes/es/neutral/5` your service must return 5 neutral jokes in Spanish from the `pyjokes` collection as a JSON object (array of dictionaries).
-3. Your API should return the specific joke if its `id` is provided. It is up to you how to structure the URL, read the provided references for ideas. The provided examples are mutually exclusive, implement either of them (or something else entirely).
+3. Your API must return the specific joke if its `id` is provided. It is up to you how to structure the URL, read the provided references for ideas. The provided examples are mutually exclusive, implement either of them (or something else entirely).
    1. Example 1: when accessed at URL `/api/v1/jokes?category=chuck&language=de&id=33` your service must return the specified (`id` is `33`) Chuck Norris joke in German from the `pyjokes` collection as a JSON object (dictionary).
    1. Example 2: when accessed at URL `/api/v1/jokes/es/neutral/1/5` your service must return the specified (`id` is `5`) neutral joke in Spanish from the `pyjokes` collection as a JSON object (dictionary).
 4. Return a valid `404 Not Found` HTTP response if the `id` value is outside of range `0..size` where `size` is a total number of jokes in the collection. Use `len(pyjokes.get_jokes(category=[all,chuck,neutral], language=[en,es,de]))` to find out the number of jokes in each category/language.
@@ -14,7 +14,7 @@
 
 ## Client side
 
-1. Deploy on <http://knuth.luther.edu/> (<http://jupyter.luther.edu/> outside of campus network), GitHUb pages, Netlify, or another platform of your choice
+1. Deploy on GitHub pages, Netlify, or another platform of your choice
 2. User should be able to select different language, category, and number of jokes
 3. User should be able to request a specific joke.
 4. Use JavaScript to retrieve data from your deployed API.
