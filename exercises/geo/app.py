@@ -1,7 +1,6 @@
 import requests
 from flask import Flask, request, render_template, send_from_directory
 from flask import redirect, url_for
-import records
 
 app = Flask(__name__)
 
