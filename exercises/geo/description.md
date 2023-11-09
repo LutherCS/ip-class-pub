@@ -18,5 +18,5 @@ Connect to the _world_ database on _knuth.luther.edu_ or its SQLite3 version and
 ## Requirements
 
 1. Use `POST` method to submit selection to the server.
-2. Use `records`, `psycopg2`, or `sqlite3` to connect to the database.
+2. Use `psycopg`, or `sqlite3` to connect to the database.
 3. Use the provided local _Bootstrap_, _Bulma_, or _MUI_ to format the results.
