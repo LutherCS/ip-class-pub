@@ -5,42 +5,9 @@ import csv
 import pathlib
 
 import sqlalchemy as sa
-from sqlalchemy.orm import declarative_base
 from sqlalchemy.orm import scoped_session, sessionmaker
-from marshmallow_sqlalchemy import SQLAlchemySchema, auto_field
 
-
-Base = declarative_base()
-
-
-class Animal(Base):
-    """Animal class"""
-
-    __tablename__ = "animal"
-    an_id = sa.Column(sa.Integer, primary_key=True)
-    name = sa.Column(sa.String, nullable=False)
-    age = sa.Column(sa.Integer)
-    species = sa.Column(sa.String)
-    location = sa.Column(sa.String)
-
-    def __repr__(self):
-        return f"<Animal(name={self.name!r})>"
-
-
-class AnimalSchema(SQLAlchemySchema):
-    """Animal schema"""
-
-    class Meta:
-        """Animal metadata"""
-
-        model = Animal
-        load_instance = True
-
-    an_id = auto_field()
-    name = auto_field
-    age = auto_field
-    species = auto_field
-    location = auto_field
+from models import Animal
 
 
 def init_db(filename: str):
@@ -51,7 +18,7 @@ def init_db(filename: str):
     engine = sa.create_engine(f"sqlite:////{this_dir}/{filename}.sqlite3")
     session = scoped_session(sessionmaker(bind=engine))
 
-    Base.metadata.create_all(engine)
+    Animal.metadata.create_all(engine)
 
     with open(f"{filename}.csv", "r", encoding="utf8") as f:
         content = csv.DictReader(f)
