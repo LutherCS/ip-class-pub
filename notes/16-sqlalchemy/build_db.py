@@ -9,7 +9,6 @@ from sqlalchemy.orm import scoped_session, sessionmaker
 
 from models import Animal
 
-
 def init_db(filename: str):
     """Initialize the database"""
     this_dir = pathlib.Path(__file__).parent

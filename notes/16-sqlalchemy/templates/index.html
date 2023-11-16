@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Zoo</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css" />
+  </head>
+  <body>
+    <table id="zoo" role="grid">
+      <thead>
+        <th>Name</th>
+        <th>Age</th>
+        <th>Species</th>
+        <th>Location</th>
+      </thead>
+      <tbody>
+        {% for animal in zoo %}
+        <tr>
+          <td>{{animal.name}}</td>
+          <td>{{animal.age}}</td>
+          <td>{{animal.species}}</td>
+          <td>{{animal.location}}</td>
+        </tr>
+        {% endfor %}
+      </tbody>
+    </table>
+  </body>
+</html>
