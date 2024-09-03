@@ -16,7 +16,7 @@ Flask-Security-Too==5.3.3
 Flask-SQLAlchemy==3.1.1
 Flask-WTF==1.2.1
 greenlet==3.0.0
-gunicorn==21.2.0
+gunicorn==22.0.0
 idna==3.4
 importlib-resources==6.1.0
 iniconfig==2.0.0
