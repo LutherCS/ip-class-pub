@@ -5,10 +5,10 @@
 Implement the following functionality.
 
 1. Read parameters `name` and `number` from the URL query string
-2. Generate a page based on the provided values:
-   1. Display an individualized greeting
-   2. Display whether the number is prime
-   3. Display a table of the first `number` primes
+2. Generate a page based on the provided values and display the following:
+   1. An individualized greeting
+   2. Whether the number is prime
+   3. A table of the first `number` primes (1 number per row)
 3. If any value is not provided in the URL, use the following defaults: *student* for `name` and *330* for `number`
 
 ## HTML
@@ -23,7 +23,7 @@ Classes of these elements are left at your discretion and depend on the chosen C
 
 ## CSS
 
-Use *Bootstrap* or other framework to style the greeting, the information about the number, and the table of primes.
+Use *Bulma* to style the greeting, the information about the number, and the table of primes.
 
 ## JavaScript
 
@@ -69,7 +69,11 @@ http://localhost:8000/primes.html
 
 ## Testing
 
-Requires `pytest` and `playwright`.
+Requires `pytest` and `playwright`. You may have to initialize `playwright` and download various browsers before first use:
+
+```bash
+playwright install
+```
 
 Run the following:
 
