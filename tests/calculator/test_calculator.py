@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Testing todo_list"""
+"""Testing calculator"""
 
 import subprocess
 
