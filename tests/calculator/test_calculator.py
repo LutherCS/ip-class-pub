@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""Testing todo_list"""
+"""Testing calculator"""
 
 import subprocess
 
@@ -86,3 +86,5 @@ def test_floating_point_operations(page: Page, buttons, result):
     assert float(page.query_selector("#result").inner_text()) == pytest.approx(
         result, 0.001
     )
+if __name__ == "__main__":
+    pytest.main(["-v", __file__])
