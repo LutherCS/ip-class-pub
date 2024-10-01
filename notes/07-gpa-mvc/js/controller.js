@@ -17,6 +17,9 @@ const gradePoints = {
     "F": 0.0,
 };
 
+var myTranscriptModel = new Transcript();
+var myTranscriptView = new TranscriptView(myTranscriptModel);
+
 function populateSelect(selectElementId, options) {
     let selectElement = document.querySelector(selectElementId);
     for (let opt in options) {
@@ -27,7 +30,21 @@ function populateSelect(selectElementId, options) {
     }
 }
 
-window.onload = function (params) {
+function addCourse() {
+    let title = document.querySelector("#courseTitle").selectedOptions[0].value;
+    let credits = parseInt(document.querySelector("#courseCredits").value);
+    let grade = document.querySelector("#courseGrade").value;
+
+    myTranscriptModel.add(new Course(title, credits, grade));
+}
+
+function calculateGPA() {
+    let gpa = myTranscriptModel.calculateGPA();
+    let resultDiv = document.querySelector("#message");
+    resultDiv.innerHTML = gpa.toFixed(3);
+}
+
+window.onload = function () {
     populateSelect("#courseTitle", allCourses);
     populateSelect("#courseGrade", gradePoints);
 }
