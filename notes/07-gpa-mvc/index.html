@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>GPA Calculator</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
+    <link rel="stylesheet" href="css/style.css">
+    <script type="text/javascript" src="js/model.js" defer></script>
+    <script type="text/javascript" src="js/view.js" defer></script>
+    <script type="text/javascript" src="js/controller.js" defer></script>
+</head>
+
+<body>
+    <section class="section">
+        <div class="container">
+            <h1 class="title">Welcome to the GPA Calculator</h1>
+            <div id="message" class="notification is-centered"></div>
+
+            <form id="newCourse">
+                <div class="grid">
+                    <div class="cell">
+                        <select name="title" id="courseTitle" class="select is-fullwidth"></select>
+                    </div>
+                    <div class="cell">
+                        <input type="number" name="credits" id="courseCredits" min="1" max="8"
+                            class="input is-fullwidth" required>
+                    </div>
+                    <div class="cell">
+                        <select name="grade" id="courseGrade" class="select is-fullwidth"></select>
+                    </div>
+                </div>
+                <div class="grid">
+                    <div class="cell">
+                        <button type="button" class="button is-primary is-fullwidth"
+                            onclick="calculateGPA()">Calculate</button>
+                    </div>
+                    <div class="cell">
+                        <button type="button" class="button is-dark is-fullwidth" onclick="addCourse()">Add
+                            class</button>
+                    </div>
+                </div>
+
+            </form>
+
+        </div>
+    </section>
+
+    <section class="section">
+        <div id="grades" class="container">
+            <table id="courses" class="table is-striped is-fullwidth">
+                <thead>
+                    <th>Title</th>
+                    <th>Credits</th>
+                    <th>Grade</th>
+                </thead>
+                <tbody></tbody>
+            </table>
+        </div>
+    </section>
+
+</body>
+
+</html>
