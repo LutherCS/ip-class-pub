@@ -38,7 +38,9 @@ function populateSelect(selectElementId, options) {
  * @returns JSON
  */
 async function getData(url) {
-
+    return fetch(url)
+        .then(response => response.json())
+        .catch(error => console.error(error));
 }
 
 
@@ -46,6 +48,27 @@ async function getData(url) {
  * Get quote(s) for the chosen album
 */
 async function getQuote() {
+    let album = document.querySelector("#selAlbumTitle").value
+    let number = document.querySelector("input[type='radio'][name='number']:checked").value;
+
+    let url = "https://taylorswiftapi.onrender.com/get";
+    if (number === "all") {
+        url += "-all";
+    }
+    if (album != "Any") {
+        url += `?album=${album}`;
+    }
+    let data = await getData(url);
+
+    if (data.constructor == Object) { data = [data]; }
+
+    let targetDiv = document.querySelector("#quotes");
+    for (let quoteDict of data) {
+        let nextQuote = document.createElement("div");
+        nextQuote.classList.add("message");
+        nextQuote.innerHTML = quoteDict.quote;
+        targetDiv.appendChild(nextQuote);
+    }
 
 }
 
