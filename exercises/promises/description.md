@@ -2,14 +2,14 @@
 
 ## Task
 
-1. Work inside the _js_promises_ directory.
-2. Create a proper directory structure (_css_ for CSS files, _js_ for JavaScript).
-3. Create a page with a _number_ input field, a _button_, and a _checkbox_. When the button is clicked, read a number from the field and generate page content based on the data received from [Numbers API](http://numbersapi.com/).
-4. You should include information about _3_ (three) numbers: the one entered by the user (_n_), one less than that (_n-1_), and one greater than that (_n+1_).
-5. Information about each number must be enclosed in a `div` element with two more `div` elements inside it: the number itself and the trivia. Make sure to add the results to the existing `div` with the `id` of _number_info_.
-6. If the _checkbox_ is checked, retrieve data in **one** batch request (notice the slight delay in the demo as information appears _without_ the batch option selected).
+1. Work inside the *js_promises* directory.
+2. Create a proper directory structure (*css* for CSS files, *js* for JavaScript).
+3. Create a page with a *number* input field, a *checkbox*, and a *button*. When the button is clicked, read a number from the field and generate page content based on the data received from [Numbers API](http://numbersapi.com/).
+4. You should include information about *3* (three) numbers: the one entered by the user (*n*), one less than that (*n-1*), and one greater than that (*n+1*).
+5. Make sure to add the results to the existing `div` with the `id` of `number_info`.
+6. If the checkbox is checked, retrieve data in **one** batch request (notice the slight delay in the demo as information appears without the batch option selected).
 7. Use JavaScript Promises to send requests and parse the JSON response to generate HTML content.
-8. Use Bootstrap and/or CSS to style your application.
+8. Use Bulma to style your application.
 
 ## Demo
 

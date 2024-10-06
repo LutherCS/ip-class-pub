@@ -1,39 +1,47 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Numbers</title>
-    <!-- CSS only -->
-    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/css/bootstrap.min.css" rel="stylesheet"
-        integrity="sha384-giJF6kkoqNQ00vy+HMDP7azOuL0xtbfIcaT9wjKHr8RbDVddVHyTfAAsrekwKmP1" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <script type="text/javascript" src="js/script.js" defer></script>
 </head>
 
 <body>
     <div>
-        <form id=form_number>
+        <div>
+            <form id="form_number">
+                <div>
+                    <div>
+                        <div>
+                            <input type="number" id="number" placeholder="Enter a number" required />
+                        </div>
+                        <div>
+                            <label>
+                                <input type="checkbox" value="" id="batch">
+                                Check a box to get 3 numbers at once
+                            </label>
+                        </div>
+                        <div>
+                            <input type=button id="getInfo"
+                                onclick="if (document.getElementById('form_number').checkValidity()) {clickedon()}"
+                                value="Get Info!" />
+                        </div>
+                    </div>
+                </div>
+            </form>
+        </div>
+    </div>
+    <div>
+        <div>
             <div>
-                <div>
-                    <label for="number">Enter a number</label>
-                    <input type="number" id="number" placeholder="Enter a number" />
-                </div>
-                <div>
-                    <label for="getThem">Click a button</label>
-                    <input type=button id="getInfo" onclick="clickedon()" value="Get Info!" />
-                </div>
-                <div>
-                    <label for=batch>Check a box to get 3 numbers at once</label>
-                    <input type="checkbox" value="" id="batch">
-                </div>
+                <div id="number_info"></div>
             </div>
-        </form>
+        </div>
     </div>
-    <div id=number_info>
-
-    </div>
-    <!-- JavaScript Bundle with Popper -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta1/dist/js/bootstrap.bundle.min.js"
-        integrity="sha384-ygbV9kiqUc6oa4msXn9868pTtWMgiQaeYH7/t7LECLbyPA2x65Kgf80OJFdroafW"
-        crossorigin="anonymous"></script>
-    <script src=js/script.js></script>
 </body>
 
 </html>
