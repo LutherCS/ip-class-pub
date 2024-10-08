@@ -13,7 +13,7 @@ Here is a non-exclusive list of web APIs:
 
 ## Project requirements
 
-1. Use Bootstrap or similar framework for styling
+1. Use Bulma or similar framework for styling
 2. Use JavaScript events and HTML input elements for interactivity
 3. Use JavaScript asynchronous programming to retrieve data
 4. Use JSON or XML for data exchange
@@ -24,7 +24,7 @@ Here is a non-exclusive list of web APIs:
 
 | Criterion                          | Points | Comment                                               |
 | ---------------------------------- | ------ | ----------------------------------------------------- |
-| User interface. Bootstrap          | 15     | The use of Bootstrap or similar framework is required |
+| User interface. Bulma              | 15     | The use of Bulma or similar framework is required     |
 | User interface. Consistency        | 15     | The layout of elements must have some structure       |
 | Event handling. Control elements   | 15     | Button(s), input field(s), drop-down menu etc         |
 | Event handling. JavaScript         | 15     | Use JavaScript properly                               |
