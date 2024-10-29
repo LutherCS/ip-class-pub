@@ -2,43 +2,52 @@
 
 <head>
     <title>Flask for Fun</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
 </head>
 
 <body>
-    <div>
-        <div><a href="/">Home</a></div>
-        <div>
-            <h2>Pick the category, language, and number of jokes to hear</h2>
+    <div class="section">
+        <h1 class="title">Pick the language, the category and the number of jokes to hear</h1>
+        <div class="container">
+            <form class="form" method="post" action="/">
+                <div class="fixed-grid has-3-cols">
+                    <div class="grid">
+                        <div class="field cell" id="fieldLanguage">
+                            <label>Language</label>
+                            <div class="control select is-fullwidth">
+                                <select name="language" id="selLang">
+                                    <!-- TODO: Populate language options -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field cell" id="fieldCategory">
+                            <label>Category</label>
+                            <div class="control select is-fullwidth">
+                                <select name="category" id="selCat">
+                                    <!-- TODO: Populate category options -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="field cell" id="fieldNumber">
+                            <label>Number</label>
+                            <div class="control select is-fullwidth">
+                                <select name="number" id="selNum">
+                                    <!-- TODO: Populate number options -->
+                                </select>
+                            </div>
+                        </div>
+                        <div class="cell is-col-span-3">
+                            <button type="submit" id="btnAmuse" class="button is-primary is-fullwidth"
+                                value="Tell me a joke">Amuse me</button>
+                        </div>
+                    </div>
+                </div>
+            </form>
         </div>
-        <form method="POST">
-            <div>
-                <div>
-                    <label for="category" value="Category">Category</label>
-                    <select name="category" id="selCat">
-                        <!-- TODO: Populate categories -->
-                    </select>
-                </div>
-                <div>
-                    <label for="language" value="Language">Language</label>
-                    <select name="language" id="selLang">
-                        <!-- TODO: Populate languages -->
-                    </select>
-                </div>
-                <div>
-                    <label for="number" value="Number">Number</label>
-                    <select name="number" id="selNum">
-                        <!-- TODO: Populate numbers -->
-                    </select>
-                </div>
-            </div>
-            <div>
-                <div>
-                    <button type="submit" id="btnAmuse" value="Tell me a joke">Amuse me</button>
-                </div>
-            </div>
-        </form>
-        <div id="jokes">
-            <!-- This is a placeholder for jokes -->
+    </div>
+    <div class="section">
+        <div class="container" id="jokes">
+            <!-- TODO: Populate with jokes or a placeholder -->
         </div>
     </div>
 </body>

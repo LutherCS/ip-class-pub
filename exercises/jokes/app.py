@@ -1,29 +1,54 @@
 #!/usr/bin/env python3
-"""Flask application to use `pyjokes`"""
+"""
+Serving `pyjokes` via templates
+
+@authors:
+@version: 2024.10
+"""
 
 import random
-from typing import List
 
 import pyjokes
-from flask import Flask, render_template, request
+from flask import Flask, abort, render_template, request
+from pyjokes.exc import PyjokesError
+
+LANGUAGES = {
+    "cs": "CZECH",
+    "de": "GERMAN",
+    "en": "ENGLISH",
+    "es": "SPANISH",
+    "eu": "BASQUE",
+    "fr": "FRENCH",
+    "gl": "GALICIAN",
+    "hu": "HUNGARIAN",
+    "it": "ITALIAN",
+    "lt": "LITHUANIAN",
+    "pl": "POLISH",
+    "sv": "SWEDISH",
+}
 
 app = Flask(__name__)
 
 
-@app.route("/", methods=["GET"])
+@app.get("/")
 def index():
     """Render the template with form"""
-    raise NotImplementedError
+    # TODO: Implement this function
+    ...
 
 
-@app.route("/", methods=["POST"])
+@app.post("/")
 def index_jokes():
     """Render the template with jokes"""
-    raise NotImplementedError
+    # TODO: Implement this function
+    ...
 
 
-def send_joke(
-    language: str = "en", category: str = "all", number: int = 1
-) -> List[str]:
+def get_jokes(
+    language: str = "en",
+    category: str = "all",
+    number: int = 1,
+) -> list[str]:
     """Return a list of jokes"""
-    raise NotImplementedError
+    # TODO: Implement this function
+    ...
