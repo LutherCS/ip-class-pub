@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block content %}
+
+{% if number == correct %}
+Lucky guess, {{ number }} is a good number!
+{% else %}
+No, incorrect, the answer is {{ correct }}.
+{% endif %}
+
+<form action="/game" method="post">
+    <input type="submit" class="button is-danger" value="Play again" name="again">
+</form>
+
+{% endblock content %}
