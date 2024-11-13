@@ -1,32 +1,96 @@
-import requests
-from flask import Flask, request, render_template, send_from_directory
-from flask import redirect, url_for
+#!/usr/bin/env python3
+"""
+Geography query app
 
-app = Flask(__name__)
+@authors:
+@version: 2024.11
+"""
 
+import pathlib
+import sqlite3
 
-def get_data_from_db(query: str) -> list:
-    """retrieve data from the database and return to the user"""
-    raise NotImplementedError
-
-
-@app.route("/", methods=["GET", "POST"])
-def index():
-    if request.method == "GET":
-        # display links to 3 options (country / region / continent)
-        return render_template("index.html")
-    # retrieve data from the database based on the selected option and present it to the user
-    raise NotImplementedError
+from dotenv import load_dotenv
+from flask import Flask, abort, flash, redirect, render_template, request, url_for
+from werkzeug.wrappers import Response
 
 
-@app.route("/<string:scope>")
-def search(scope: str):
-    if scope == "country":
-        # get countries from the database and populate options of the drop-down menu
-        raise NotImplementedError
-    elif scope == "region":
-        # get regions from the database and populate options of the drop-down menu
-        raise NotImplementedError
-    elif scope == "continent":
-        # get continents from the database and populate options of the drop-down menu
-        raise NotImplementedError
+def create_app():
+    """Create Flask app"""
+    this_app = Flask(__name__)
+    if pathlib.Path(".flaskenv").exists():
+        this_app.config.from_prefixed_env()
+    else:
+        load_dotenv("exercises/geo/.flaskenv")
+        this_app.config.from_prefixed_env()
+    return this_app
+
+
+app = create_app()
+
+
+def get_data_from_db(query: str, params: tuple | None = None) -> list:
+    """Retrieve data from the database
+
+    :param query: parametrized query to execute
+    :param params: query parameters
+    """
+    # TODO: Implement this function
+    ...
+
+
+@app.route("/")
+def index() -> str:
+    """Display default page"""
+    return render_template("index.html")
+
+
+@app.get("/country")
+def country_form() -> str | Response:
+    """Display country search form"""
+    # TODO: Implement this function
+    ...
+
+
+@app.get("/country/<string:name>")
+def country_info(name: str) -> str:
+    """Display country information"""
+    # TODO: Implement this function
+    ...
+
+
+@app.get("/region")
+def region_form() -> str | Response:
+    """Display region search form"""
+    # TODO: Implement this function
+    ...
+
+
+@app.get("/region/<string:name>")
+def region_info(name: str) -> str:
+    """Display region information"""
+    # TODO: Implement this function
+    ...
+
+
+@app.get("/subregion")
+def subregion_form() -> str | Response:
+    """Display subregion search form"""
+    # TODO: Implement this function
+    ...
+
+
+@app.get("/subregion/<string:name>")
+def subregion_info(name: str) -> str:
+    """Display subregion information"""
+    # TODO: Implement this function
+    ...
+
+
+@app.errorhandler(404)
+def not_found(err):
+    # TODO: Implement this function
+    ...
+
+
+if __name__ == "__main__":
+    app.run()

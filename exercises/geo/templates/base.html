@@ -1,14 +1,29 @@
-<html>
-  <head>
-  </head>
-  <body>
-    <div>
-      <div>
-        <div><a href="/country">Country info</a></div>
-        <div><a href="/region">Region info</a></div>
-        <div><a href="/continent">Continent info</a></div>
-      </div>
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>World data</title>
+</head>
+
+<body>
+    <navbar>
+        <div class="container">
+            <h1 class="title">Query database on country, region, or subregion level.</h1>
+            <div class="grid">
+                <div class="cell"><a href="/country">Country info</a></div>
+                <div class="cell"><a href="/region">Region info</a></div>
+                <div class="cell"><a href="/subregion">Subregion info</a></div>
+                <div class="cell"><a href="/">Home</a></div>
+            </div>
+        </div>
+    </navbar>
+    <div class="section">
+        <div class="container">
+            {% block content %} {% endblock content %}
+        </div>
     </div>
-    {% block content %} {% endblock %}
-  </body>
+</body>
+
 </html>
