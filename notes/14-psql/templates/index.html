@@ -25,6 +25,13 @@
     </header>
     <main>
         <div class="container is-widescreen">
+            {% with messages = get_flashed_messages() %}
+            {% if messages %}
+            {% for msg in messages %}
+            <p>{{ msg }}</p>
+            {% endfor %}
+            {% endif %}
+            {% endwith %}
             {% if data %}
             <table class="striped">
                 <thead>
