@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Movie mash</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@2/css/pico.colors.min.css">
+    <link rel="icon" type="image/x-icono" href="{{url_for('static', filename='favicon.ico')}}">
+</head>
+
+<body>
+    <header>
+        <div class="container is-widescreen">
+            <h1 class="title">Find a movie that featured specific actors.</h1>
+            <form action="/" method="post">
+                <fieldset class="grid">
+                    <input name="name1" placeholder="First act" />
+                    <input name="name2" placeholder="Second act" />
+                    <input type="submit" value="Find the match" />
+                </fieldset>
+            </form>
+        </div>
+    </header>
+    <main>
+        <div class="container is-widescreen">
+            {% if data %}
+            <table class="striped">
+                <thead>
+                    <th>Title</th>
+                    <th>Year</th>
+                </thead>
+                <tbody>
+                    {% for row in data%}
+                    <tr>
+                        <td>{{ row.title }}</td>
+                        <td>{{ row.year }}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+            {% endif %}
+        </div>
+    </main>
+</body>
+
+</html>
