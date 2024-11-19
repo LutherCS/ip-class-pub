@@ -21,16 +21,42 @@ from sqlalchemy.orm import (
 class Base(DeclarativeBase): ...
 
 
-class Animal(Base): ...
+class Animal(Base):
+    __tablename__ = "animal"
+    id = sqla.Column(sqla.Integer, primary_key=True)
+    name = sqla.Column(sqla.String, nullable=False)
+    age = sqla.Column(sqla.Integer)
+    species = sqla.Column(sqla.String)
+    location_id = sqla.Column(sqla.Integer, sqla.ForeignKey("location.id"))
+    location = relationship("Location", backref=backref("location"))
+
+    def __repr__(self):
+        return f"<Animal(name={self.name!r}), location={self.location!r}>"
 
 
-class Location(Base): ...
+class Location(Base):
+    __tablename__ = "location"
+    id = sqla.Column(sqla.Integer, primary_key=True)
+    name = sqla.Column(sqla.String, nullable=False, unique=True)
+
+    def __repr__(self):
+        return f"<Location(name={self.name!r})>"
 
 
-class AnimalSchema(SQLAlchemyAutoSchema): ...
+class AnimalSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Animal
+        include_relationships = True
+        load_instance = True
+
+    location = fields.Nested("LocationSchema")
 
 
-class LocationSchema(SQLAlchemyAutoSchema): ...
+class LocationSchema(SQLAlchemyAutoSchema):
+    class Meta:
+        model = Location
+        include_fk = True
+        load_instance = True
 
 
 @click.command(help="Create a database from the CSV file")
@@ -44,8 +70,29 @@ def create(ctx) -> None:
     if pathlib.Path(f"{filename}.sqlite3").exists():
         pathlib.Path(f"{filename}.sqlite3").unlink()
     # TODO: Build tables
+    Base.metadata.create_all(engine)
     # Add data to the DB
     # TODO: Add data
+    with open(f"{filename}.csv", "r", encoding="utf-8") as f:
+        content = csv.DictReader(f, delimiter=",")
+        for item in content:
+            location = Location(name=item["location"])
+            existing_location = (
+                session.query(Location).filter_by(name=location.name).first()
+            )
+            if existing_location:
+                location = existing_location
+            else:
+                session.add(location)
+            animal = Animal(
+                id=item["id"],
+                name=item["name"],
+                age=item["age"],
+                species=item["species"],
+                location=location,
+            )
+            session.add(animal)
+        session.commit()
     print("Database created successfully.")
 
 
@@ -56,6 +103,16 @@ def read(ctx) -> None:
     session = ctx.obj["session"]
     print(f"{'id':5s}{'name':20s}{'age':5s}{'species':25s}{'location':15s}")
     # TODO: Get data
+    zoo = session.query(Animal).all()
+    schema = AnimalSchema(many=True)
+    for animal in schema.dump(zoo):
+        print(
+            f"{animal["id"]:<5d}"
+            + f"{animal['name']:20s}"
+            + f"{animal['age']:<5d}"
+            + f"{animal['species']:25s}"
+            + f"{animal['location']["name"]}"
+        )
 
 
 @click.group()
