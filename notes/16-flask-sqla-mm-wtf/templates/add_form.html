@@ -1,11 +1,24 @@
 {% extends "index.html" %}
 {% block form %}
 <form action="/add" method="post">
-    <!-- Four fields: name, age, species, and locaation -->
+    {{ form.csrf_token }}
     <div class="field">
-        <label class="label" for name>Name</label>
-        <div class="control"><input class="input is-fullwidth" type="text" /></div>
+        <label>{{ form.name.label(class="label") }}</label>
+        <div class="control">{{ form.name(class="input is-fullwidth") }}</div>
     </div>
+    <div class="field">
+        <label>{{ form.age.label(class="label") }}</label>
+        <div class="control">{{ form.age(class="input is-fullwidth", min="0") }}</div>
+    </div>
+    <div class="field">
+        <label>{{ form.species.label(class="label") }}</label>
+        <div class="control">{{ form.species(class="input is-fullwidth") }}</div>
+    </div>
+    <div class="field">
+        <label>{{ form.location.label(class="label") }}</label>
+        <div class="control">{{ form.location(class="input is-fullwidth") }}</div>
+    </div>
+
     <input type="submit" class="button is-primary is-fullwidth" value="Add">
 </form>
 {% endblock form %}
