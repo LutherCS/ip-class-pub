@@ -1,0 +1,11 @@
+{% extends "index.html" %}
+{% block form %}
+<form action="/add" method="post">
+    <!-- Four fields: name, age, species, and locaation -->
+    <div class="field">
+        <label class="label" for name>Name</label>
+        <div class="control"><input class="input is-fullwidth" type="text" /></div>
+    </div>
+    <input type="submit" class="button is-primary is-fullwidth" value="Add">
+</form>
+{% endblock form %}
