@@ -2,7 +2,7 @@
 """
 Movie mash
 
-@author: Roamn Yasinovskyy
+@author: Roman Yasinovskyy
 @version: 2024.11
 """
 
