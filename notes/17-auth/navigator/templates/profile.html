@@ -1,0 +1,42 @@
+{% extends "base.html" %}
+{% block content %}
+{% if data %}
+<table id="Companys" class="table is-striped is-fullwidth">
+    <thead>
+        <th>Name</th>
+        <th>Revenue ($B)</th>
+        <th>Employees</th>
+        <th>Country</th>
+        <th>Headquarters</th>
+        <th>Action</th>
+    </thead>
+    <tbody>
+        {% for company in data %}
+        <tr>
+            <td>{{ company.name }}</td>
+            <td>{{ "${:,.3f}".format(company.revenue) }}</td>
+            <td>{{ "{:,}".format(company.employees) }}</td>
+            <td>{{ company.country }}</td>
+            <td>{{ company.headquarters }}</td>
+            <td>
+                <form method="post" action='{{ url_for("main.dislikeit", company_id=company.id) }}'>
+                    <p class="control"><input type="hidden" name="profile" value="true" /></p>
+                    <div class="field">
+                        <p class="control">
+                            <button class="button is-danger">
+                                <span class="icon">
+                                    <i class="fas fa-thumbs-down"></i>
+                                </span>
+                            </button>
+                        </p>
+                    </div>
+                </form>
+            </td>
+        </tr>
+        {% endfor %}
+    </tbody>
+</table>
+{% else %}
+<p>Select a company.</p>
+{% endif %}
+{% endblock content %}

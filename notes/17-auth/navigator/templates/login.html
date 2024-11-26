@@ -1,0 +1,39 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="block">
+    <form method="post" action='{{ url_for("auth.login") }}'>
+        {{ form.csrf_token }}
+        <div class="field">
+            <p class="control has-icons-left has-icons-right">
+                {{ form.email(class="input") }}
+                <span class="icon is-small is-left">
+                    <i class="fas fa-envelope"></i>
+                </span>
+                <span class="icon is-small is-right">
+                    <i class="fas fa-check"></i>
+                </span>
+            </p>
+        </div>
+        <div class="field">
+            <p class="control has-icons-left">
+                {{ form.password(class="input") }}
+                <span class="icon is-small is-left">
+                    <i class="fas fa-lock"></i>
+                </span>
+            </p>
+        </div>
+        <div class="field">
+            <p class="control">
+                <input type="submit" class="button is-success" value="Login" />
+            </p>
+        </div>
+    </form>
+</div>
+{% if form.errors %}
+<div class="block">
+    <ul class="errors">
+        {% for error in form.errors %}<li>{{ error }} is a required field</li>{% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock content %}
