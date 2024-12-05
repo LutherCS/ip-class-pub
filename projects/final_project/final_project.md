@@ -1,6 +1,6 @@
 # Final Project
 
-Your final project is an original, functional web application that uses *Flask* framework with properly designed user interface, programming logic, data storage, and API.
+Your final project is an original, functional, deployed web application that uses *Flask* framework with properly designed user interface, programming logic, data storage, and API.
 You are going to develop a three-tier application (front/view, back/controller, and the database/model) with front and back communicating via API calls.
 It can be a project based around almost anything as long as it meets the following criteria.
 
@@ -8,7 +8,7 @@ It can be a project based around almost anything as long as it meets the followi
 
 1. **User interface: design**
    - Aesthetically appealing and consistent
-   - *Bootstrap* or another framework is used
+   - *Bulma*, *Bootstrap*, or another framework is used
 1. **User interface: interactivity**
    - Both `GET` and `POST` methods are used
    - `JSON` is retrieved and parsed
@@ -18,7 +18,7 @@ It can be a project based around almost anything as long as it meets the followi
    - Both `GET` and `POST` methods are handled
    - Valid `JSON` is returned to the front-end, if requested
 1. **Programming logic: database**
-   - Use `SQLAlchemy` is used to access the database
+    - `SQLAlchemy` or properly formatted and parametrized queries are used to access the database
 1. **Programming logic: error handling**
    - User input is validated
    - `404: Not Found` and similar errors are handled
@@ -31,14 +31,11 @@ It can be a project based around almost anything as long as it meets the followi
    - There must be at least one query that uses `join` to query multiple tables/collections
 1. **Application: originality**
    - Use your imagination and solve *your* problem
-1. **Application: functionality**
-   - Does not crash
-   - Errors are handled and meaningful messages are displayed, if necessary
-   - User input is validated
-   - Returns correct results
+1. **Application: deployment**
    - Deployed and publicly available
 1. **Application: complexity**. One of the following:
-   - Use *Vue* or another JavaScript framework
+   - Use *ReactJS*, *Vue*, or another JavaScript framework
+     Add authentication
    - Use *requests* or similar to communicate with an external API
    - Use *MongoDB* or another document database instead of a relational database
    - Something not covered in class (must be vetted by me)
@@ -48,7 +45,7 @@ It can be a project based around almost anything as long as it meets the followi
 Grading scale for **original** projects.
 
 | Criterion                 | Points  |
-| ------------------------- | ------- |
+|---------------------------|---------|
 | UI: design                | 10      |
 | UI: forms and methods     | 10      |
 | UI: error handling        | 10      |
@@ -59,7 +56,7 @@ Grading scale for **original** projects.
 | Data: model               | 10      |
 | Data: complexity          | 10      |
 | App: originality          | 10      |
-| App: functionality        | 10      |
+| App: deployment           | 10      |
 | App: complexity           | 10      |
 | Team: Collaboration       | 15      |
 | Team: Communication       | 15      |
@@ -67,6 +64,7 @@ Grading scale for **original** projects.
 
 ## References
 
+- [Bulma: Free, open source, and modern CSS framework based on Flexbox](https://bulma.io/)
 - [Bootstrap · The most popular HTML, CSS, and JS library in the world.](https://getbootstrap.com/)
 - [Flask | The Pallets Projects](https://palletsprojects.com/p/flask/)
 - [Flask-Bootstrap — Flask-Bootstrap 3.3.7.1 documentation](https://pythonhosted.org/Flask-Bootstrap/)
