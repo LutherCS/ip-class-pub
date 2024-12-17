@@ -35,7 +35,7 @@ It can be a project based around almost anything as long as it meets the followi
    - Deployed and publicly available
 1. **Application: complexity**. One of the following:
    - Use *ReactJS*, *Vue*, or another JavaScript framework
-     Add authentication
+   - Add authentication
    - Use *requests* or similar to communicate with an external API
    - Use *MongoDB* or another document database instead of a relational database
    - Something not covered in class (must be vetted by me)
