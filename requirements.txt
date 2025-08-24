@@ -33,7 +33,7 @@ pytest-timeout==2.3.1
 python-dateutil==2.9.0.post0
 python-dotenv==1.0.1
 python-slugify==8.0.4
-requests==2.32.3
+requests==2.32.4
 six==1.16.0
 soupsieve==2.6
 SQLAlchemy==2.0.34
