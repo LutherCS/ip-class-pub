@@ -1,2 +1,0 @@
-FLASK_SECRET_KEY = ""
-FLASK_DB_URI = ""
