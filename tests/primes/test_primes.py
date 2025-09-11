@@ -1,15 +1,19 @@
 #!/usr/bin/env python3
 """
-Testing JavaScript
+Testing primes
 
 @authors: Roman Yasinovskyy
-@version: 2022.9
+@version: 2025.9
 """
 
 import subprocess
+from math import ceil
+from random import randint
 
 import pytest
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
+
+expect.set_options(timeout=1_000)
 
 
 def setup_module(module):
@@ -26,68 +30,106 @@ def teardown_module(module):
     module.http_server.terminate()
 
 
-def test_case_1_greeting(page: Page):
-    page.goto("http://localhost:8000/primes.html?name=Roman&number=3")
-    assert page.query_selector("#greeting").inner_text() == "Hello Roman"
+@pytest.mark.parametrize(
+    "name, greeting",
+    [
+        ("Wu", "Hello, Wu"),
+        ("Garmadon", "Hello, Garmadon"),
+        ("Misako", "Hello, Misako"),
+        ("Lloyd", "Hello, Lloyd"),
+    ],
+)
+def test_case_1_greeting(page: Page, name: str, greeting: str):
+    page.goto(f"http://localhost:8000/index.html?name={name}&number=3")
+    expect(page.locator("#greeting")).to_have_text(greeting)
 
 
-def test_case_1_number(page: Page):
-    page.goto("http://localhost:8000/primes.html?name=Roman&number=3")
-    assert page.query_selector("#numberInfo").inner_text() == "3 is a prime number"
+@pytest.mark.parametrize(
+    "number, result",
+    [
+        (1, "1 is not a prime number"),
+        (2, "2 is a prime number"),
+        (3, "3 is a prime number"),
+        (4, "4 is not a prime number"),
+    ],
+)
+def test_case_1_number(page: Page, number: int, result: str):
+    page.goto(f"http://localhost:8000/index.html?name=Lloyd&number={number}")
+    expect(page.locator("#numberInfo")).to_have_text(result)
 
 
-def test_case_1_table(page: Page):
-    page.goto("http://localhost:8000/primes.html?name=Roman&number=3")
-    assert len(page.query_selector_all("table[id='nPrimes'] > tbody > tr")) == 3
+@pytest.mark.parametrize("number", [randint(100, 1000) for _ in range(4)])
+def test_case_1_table(page: Page, number):
+    page.goto(f"http://localhost:8000/index.html?name=Lloyd&number={number}")
+    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(
+        ceil(number / 10)
+    )
 
 
-def test_case_2_greeting(page: Page):
-    page.goto("http://localhost:8000/primes.html?name=Roman")
-    assert page.query_selector("#greeting").inner_text() == "Hello Roman"
+@pytest.mark.parametrize(
+    "name, greeting",
+    [
+        ("Wu", "Hello, Wu"),
+        ("Garmadon", "Hello, Garmadon"),
+        ("Misako", "Hello, Misako"),
+        ("Lloyd", "Hello, Lloyd"),
+    ],
+)
+def test_case_2_greeting(page: Page, name: str, greeting: str):
+    page.goto(f"http://localhost:8000/index.html?name={name}")
+    expect(page.locator("#greeting")).to_have_text(greeting)
 
 
 def test_case_2_number(page: Page):
-    page.goto("http://localhost:8000/primes.html?name=Roman")
-    assert (
-        page.query_selector("#numberInfo").inner_text() == "330 is not a prime number"
-    )
+    page.goto("http://localhost:8000/index.html?name=Lloyd")
+    expect(page.locator("#numberInfo")).to_have_text("330 is not a prime number")
 
 
 def test_case_2_table(page: Page):
-    page.goto("http://localhost:8000/primes.html?name=Roman")
-    assert len(page.query_selector_all("table[id='nPrimes'] > tbody > tr")) == 330
+    page.goto("http://localhost:8000/index.html?name=Lloyd")
+    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(33)
 
 
 def test_case_3_greeting(page: Page):
-    page.goto("http://localhost:8000/primes.html?number=3")
-    assert page.query_selector("#greeting").inner_text() == "Hello student"
+    page.goto("http://localhost:8000/index.html?number=42")
+    expect(page.locator("#greeting")).to_have_text("Hello, student")
 
 
-def test_case_3_number(page: Page):
-    page.goto("http://localhost:8000/primes.html?number=3")
-    assert page.query_selector("#numberInfo").inner_text() == "3 is a prime number"
+@pytest.mark.parametrize(
+    "number, result",
+    [
+        (1, "1 is not a prime number"),
+        (2, "2 is a prime number"),
+        (3, "3 is a prime number"),
+        (4, "4 is not a prime number"),
+    ],
+)
+def test_case_3_number(page: Page, number: int, result: str):
+    page.goto(f"http://localhost:8000/index.html?number={number}")
+    expect(page.locator("#numberInfo")).to_have_text(result)
 
 
-def test_case_3_table(page: Page):
-    page.goto("http://localhost:8000/primes.html?number=3")
-    assert len(page.query_selector_all("table[id='nPrimes'] > tbody > tr")) == 3
-
-
-def test_case_4_greeting(page: Page):
-    page.goto("http://localhost:8000/primes.html")
-    assert page.query_selector("#greeting").inner_text() == "Hello student"
-
-
-def test_case_4_number(page: Page):
-    page.goto("http://localhost:8000/primes.html")
-    assert (
-        page.query_selector("#numberInfo").inner_text() == "330 is not a prime number"
+@pytest.mark.parametrize("number", [randint(100, 1000) for _ in range(4)])
+def test_case_3_table(page: Page, number):
+    page.goto(f"http://localhost:8000/index.html?number={number}")
+    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(
+        ceil(number / 10)
     )
 
 
+def test_case_4_greeting(page: Page):
+    page.goto("http://localhost:8000/index.html")
+    expect(page.locator("#greeting")).to_have_text("Hello, student")
+
+
+def test_case_4_number(page: Page):
+    page.goto("http://localhost:8000/index.html")
+    expect(page.locator("#numberInfo")).to_have_text("330 is not a prime number")
+
+
 def test_case_4_table(page: Page):
-    page.goto("http://localhost:8000/primes.html")
-    assert len(page.query_selector_all("table[id='nPrimes'] > tbody > tr")) == 330
+    page.goto("http://localhost:8000/index.html")
+    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(33)
 
 
 if __name__ == "__main__":
