@@ -1,10 +1,17 @@
 #!/usr/bin/env python3
-"""Testing calculator"""
+"""
+Testing calculator
+
+@authors: Roman Yasinovskyy
+@version: 2025.9
+"""
 
 import subprocess
 
 import pytest
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
+
+expect.set_options(timeout=1_000)
 
 
 def setup_module(module):
@@ -22,36 +29,35 @@ def teardown_module(module):
 
 
 def test_eval(page: Page):
-    page.goto("http://localhost:8000/calculator.html")
+    page.goto("http://localhost:8000/")
     page.click("#btnEql")
-    # page.screenshot(path=f"boo.png")
-    assert page.query_selector("#result").inner_text() == "0"
+    expect(page.locator("#result")).to_have_text("0")
 
 
 def test_clear(page: Page):
-    page.goto("http://localhost:8000/calculator.html")
+    page.goto("http://localhost:8000/")
     page.click("#btn1")
     page.click("#btnClr")
-    assert page.query_selector("#result").inner_text() == "0"
+    expect(page.locator("#result")).to_have_text("0")
 
 
 def test_error(page: Page):
-    page.goto("http://localhost:8000/calculator.html")
+    page.goto("http://localhost:8000/")
     page.click("#btn1")
     page.click("#btnSum")
     page.click("#btnSum")
     page.click("#btn2")
     page.click("#btnEql")
-    assert page.query_selector("#result").inner_text() == "ERROR"
+    expect(page.locator("#result")).to_have_text("ERROR")
 
 
 def test_infinity(page: Page):
-    page.goto("http://localhost:8000/calculator.html")
+    page.goto("http://localhost:8000/")
     page.click("#btn1")
     page.click("#btnDiv")
     page.click("#btn0")
     page.click("#btnEql")
-    assert page.query_selector("#result").inner_text() == "Infinity"
+    expect(page.locator("#result")).to_have_text("Infinity")
 
 
 @pytest.mark.parametrize(
@@ -64,10 +70,10 @@ def test_infinity(page: Page):
     ],
 )
 def test_integer_operations(page: Page, buttons, result):
-    page.goto("http://localhost:8000/calculator.html")
+    page.goto("http://localhost:8000/")
     for btn in buttons:
         page.click(f"#btn{btn}")
-    assert int(page.query_selector("#result").inner_text()) == result
+    expect(page.locator("#result")).to_have_text(str(result))
 
 
 @pytest.mark.parametrize(
@@ -80,11 +86,11 @@ def test_integer_operations(page: Page, buttons, result):
     ],
 )
 def test_floating_point_operations(page: Page, buttons, result):
-    page.goto("http://localhost:8000/calculator.html")
+    page.goto("http://localhost:8000/")
     for btn in buttons:
         page.click(f"#btn{btn}")
-    assert float(page.query_selector("#result").inner_text()) == pytest.approx(
-        result, 0.001
-    )
+    assert float(page.query_selector("#result").inner_text()) == pytest.approx(result, 0.001)
+
+
 if __name__ == "__main__":
     pytest.main(["-v", __file__])
