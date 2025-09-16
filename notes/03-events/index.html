@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>JS events</title>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css"
+    />
+    <script src="main.js" type="text/javascript" defer></script>
+  </head>
+
+  <body>
+    <div class="container">
+      <header>
+        <h1 class="title">JavaScript Events</h1>
+      </header>
+      <main>
+        <p id="greeting" class="content">Hello</p>
+        <label for="ageInput" id="ageLabel">Please enter your age</label>
+        <input
+          class="input"
+          type="number"
+          name="age"
+          id="ageInput"
+          min="0"
+          max="100"
+        />
+        <input
+          type="button"
+          class="button is-success"
+          value="Green"
+          onclick="paint('green')"
+        />
+        <button class="button is-danger" onclick="paint('red')">Red</button>
+
+        <p class="button" onclick="paint('blue')">Bye</p>
+      </main>
+    </div>
+  </body>
+</html>
