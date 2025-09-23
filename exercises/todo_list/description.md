@@ -1,34 +1,43 @@
-# List design
+# Task manager
 
-Implement the following TODO List functionality using HTML, CSS, and JavaScript. Use of Bulma (from CDN) is required.
-
-## Design
-
-![TODO List](todo_list_demo.gif)
+Develop a task management application (TODO list) using HTML, CSS, and JavaScript.
+Use of Bulma is highly recommended since the provided test suite relies on Bulma classes (*help*, *is-danger*) but similar functionality can be achieved using another framework or custom CSS.
 
 ## Functionality
 
-| Element     | Type     | Comment                                  |
-| ----------- | -------- | ---------------------------------------- |
-| Title       | text     | required                                 |
-| Assigned to | select   | pre-populated in JS                      |
-| Priority    | select   | pre-populated, determines color of a row |
-| Due date    | date     | required                                 |
-| Add task    | button   | validates the form and adds a new row    |
-| Checkbox    | checkbox | removes a row from the table             |
+Each *task* must include the following properties:
 
-You can hard-code the list of team members and priorities to populate the *Assigned to* and *Priority* drop-down menus respectively.
+- Title
+- Worker (assigned to)
+- Priority (Low, Normal, Important, Critical)
+- Due date
+
+Once user input is collected, add a new task as a table row with the task priority defining the row color (via CSS class).
+The list of team members and priorities are provided and must be used to populate the *Assigned to* and *Priority* `select` elements.
+
+| Element     | Type     | Comment                                    |
+|-------------|----------|--------------------------------------------|
+| Title       | text     | required                                   |
+| Assigned to | select   | pre-populated in JS                        |
+| Priority    | select   | pre-populated, determines color of a row   |
+| Due date    | date     | required                                   |
+| Add task    | button   | validates the form and adds a new row      |
+| Clear all   | button   | removes all rows from the table            |
+| Completed   | checkbox | removes a row from the table after timeout |
 
 ## Hints and ideas
 
-1. Validate user input to ensure valid values are entered
-2. Use custom `style.css` to highlight tasks based on priority
-3. HTML elements have been stripped of classes but you can add them back. Don't change the *id*.
-4. Look at the *GPA Calculator* for the ways to populate `select` elements.
+1. Validate user input to ensure valid values are entered.
+2. Use *help* `class` to bring user's attention to the missing value(s).
+3. Use custom *site.css* to highlight tasks based on priority.
+4. HTML elements have been stripped of classes but you can add them back. Don't change the `id`.
+
+## Demonstration
+
+![Demo](demo.webm)
 
 ## References
 
-- [Form controls | Bulma](https://bulma.io/documentation/form/general/)
 - [Form data validation - Learn web development | MDN](https://developer.mozilla.org/en-US/docs/Learn/HTML/Forms/Form_validation)
 - [javascript - Remove current row (tr) when checkbox is checked - Stack Overflow](https://stackoverflow.com/questions/26512386/remove-current-row-tr-when-checkbox-is-checked)
 - [How to use JavaScript closures with confidence – Hacker Noon](https://hackernoon.com/how-to-use-javascript-closures-with-confidence-85cd1f841a6b)

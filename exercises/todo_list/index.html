@@ -1,61 +1,86 @@
 <!DOCTYPE html>
+<html>
 
 <head>
-    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>TODO list</title>
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.2/css/bulma.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/site.css" />
+    <script src="js/main.js" defer></script>
 </head>
 
-<body> 
-    <div class="container">
-        <h1>TODO List</h1>
-        <div class="container">
-            <form id="newTask">
-            <div>
-                <div>
-                    <label for="title">Task</label>
-                    <input id="title" required />
-                </div>
+<body>
+    <div>
+        <header>
+            <h1>TODO List</h1>
+        </header>
+        <main>
+            <section>
+                <form id="newTask">
+                    <div>
+                        <div>
+                            <div>
+                                <div id="taskTitleText">
+                                    <label>Task</label>
+                                    <div>
+                                        <input type="text" id="title" required />
+                                    </div>
+                                    <p>Task title is required</p>
+                                </div>
+                            </div>
 
-                <div>
-                    <label for="assignedTo">Assigned to</label>
-                    <select id="assignedTo"></select>
-                </div>
+                            <div>
+                                <div id="taskWorkerSelect">
+                                    <label>Assigned to</label>
+                                    <div>
+                                        <select id="assignedTo"></select>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div>
-                    <label for="priority">Priority</label>
-                    <select id="priority"></select>
-                </div>
+                            <div>
+                                <div id="taskPrioritySelect">
+                                    <label>Priority</label>
+                                    <div>
+                                        <select id="priority"></select>
+                                    </div>
+                                </div>
+                            </div>
 
-                <div>
-                    <label for="dueDate">Due date</label>
-                    <input id="dueDate" required />
-                </div>
-            </div>
-            <div>
-                <button type="button" id="addTaskBtn" onclick="addTask()">Add task</button>
-            </div>
-        </form>
+                            <div>
+                                <div id="taskDueDate">
+                                    <label>Due date</label>
+                                    <div>
+                                        <input type="date" id="dueDate" required />
+                                    </div>
+                                    <p>Task due date is required</p>
+                                </div>
+                            </div>
+
+                            <div>
+                                <button type="button" id="addTaskBtn" onclick="addTask()">
+                                    Add task
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </section>
+
+            <section>
+                <table id="taskList">
+                    <thead>
+                        <th>
+                            <button id="removeAllTasks" onclick="selectAll()"></button>
+                        </th>
+                        <th>Task</th>
+                        <th>Assigned to</th>
+                        <th>Priority</th>
+                        <th>Due date</th>
+                    </thead>
+                    <tbody></tbody>
+                </table>
+            </section>
+        </main>
     </div>
-    </div>
-
-    <div class="container">
-        <table id="taskList">
-            <thead>
-                <tr>
-                    <th></th>
-                    <th>Task</th>
-                    <th>Assigned to</th>
-                    <th>Priority</th>
-                    <th>Due date</th>
-                </tr>
-            </thead>
-            <tbody></tbody>
-        </table>
-    </div>
-
-    <script type="text/javascript" src="js/script.js"></script>
 </body>
 
 </html>
