@@ -4,14 +4,16 @@ Create an application that would allow users to take notes and select their colo
 Date of the note should be set to current date and time, and the notes must be arranged/grouped by color.
 Use local storage to save and retrieve notes automatically.
 
+See Bulma documentation for details of the page organization and layout.
+
 ## Requirements
 
 - Form with the following fields:
-  - title (a required `text input` with `id` *title*)
+  - title (a required `text` `input` with `id` *title*)
   - color (a required element with `id` *color*)
   - text (a required `textarea` with `id` *text*)
   - button (a required `button` with `id` *addNote*)
-- Form controls should be wrapped inside the divs (`#fieldTitle`, `#fieldColor`, and `#fieldText`) as follows. See Bulma's documentation for details.
+- Form controls should be wrapped inside the divs (`#fieldTitle`, `#fieldColor`, and `#fieldText`) as follows:
 
 ```html
 <div id="fieldID">
@@ -23,16 +25,17 @@ Use local storage to save and retrieve notes automatically.
 </div>`
 ```
 
-- User input must be validated and a note must not be added if either title or text is missing.
+- User input must be validated and a note must not be added if either title or text is missing
+  - Use Bulma `help` class to indicate the missing input
 - Notes must meet the following requirements:
   - have `class` *note*
-  - contain title, text, and date
+  - contain title, text, and date (in the `mm/dd/yyyy, hh:mm:ss` format)
   - color, as specified by the control of the form
   - grouped by color
   - contain a button (with `class` *deleteNote*) to delete a note
-- Notes must be saved to and retrieved from the local storage automatically
+- Notes must be saved to and retrieved from the local storage automatically.
   - If a page is reloaded, notes must be preserved
-- Use Model-View-Controller design pattern to split the application functionality
+- Use Model-View-Controller design pattern to split the application functionality.
 
 ## Testing
 
