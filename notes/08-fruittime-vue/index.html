@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Time with VueJS</title>
+    <link href="site.css" rel="stylesheet">
+    <script src="main.js" defer></script>
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <header>
+        <div class="container" id="titleCard">
+            <h1 class="title">Welcome to {{ appName }}!</h1>
+        </div>
+    </header>
+    <main>
+        <section>
+            <div class="container" id="app">
+                <table class="table is-striped is-fullwidth">
+                    <thead>
+                        <th>Fruit</th>
+                        <th>Rating</th>
+                        <th>Comment</th>
+                    </thead>
+                    <tbody>
+                        <tr v-for="fruit in basket">
+                            <td>{{ fruit.name }}</td>
+                            <td>
+                                <span class="field">
+                                    <button class="button is-info"
+                                        @click="fruit.rating < 5 ? fruit.rating++ : fruit.rating">
+                                        <ion-icon name="thumbs-up-outline"></ion-icon>
+                                    </button>
+                                </span>
+                                &nbsp;
+                                <!-- {{ fruit.rating }} -->
+                                <span class="field">
+                                    <button class="button is-warning"
+                                        @click="fruit.rating > 1 ? fruit.rating-- : fruit.rating">
+                                        <ion-icon name="thumbs-down-outline"></ion-icon>
+                                    </button>
+                                </span>
+                            </td>
+                            <td>
+                                <span v-if="fruit.rating==1" class="has-text-danger">Throwaway</span>
+                                <span v-else-if="fruit.rating==2">Meh</span>
+                                <span v-else-if="fruit.rating==3">Fine</span>
+                                <span v-else-if="fruit.rating==4">Good</span>
+                                <span v-else-if="fruit.rating==5" class="has-text-success">Excellent</span>
+                            </td>
+                    </tbody>
+                </table>
+            </div>
+        </section>
+    </main>
+    <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+</body>
+
+</html>
