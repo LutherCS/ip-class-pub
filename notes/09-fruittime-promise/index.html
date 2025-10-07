@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fruit Time</title>
+    <link href="site.css" rel="stylesheet">
+    <script src="main.js" type="module" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="title">Fruit reviews</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div id="formDiv">
+                <div class="field">
+                    <label class="label">Fruit name</label>
+                    <div class="control">
+                        <input class="input" list="fruits" placeholder="Please enter the fruit name" id="fruitName"
+                            name="fruit_name">
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Fruit rating</label>
+                    <div class="radios">
+                        <label class="radio">
+                            <input type="radio" name="rating" value="4">
+                            Excellent
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="rating" value="3">
+                            Good
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="rating" value="2">
+                            Regular
+                        </label>
+                        <label class="radio">
+                            <input type="radio" name="rating" value="1">
+                            Bad
+                        </label>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Review</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Review" id="fruitReview" name="fruit_review"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button type="button" class="button is-link" id="submitBtn">Submit</button>
+                    </div>
+                </div>
+            </div>
+            <div class="container pt-3" id="reviewsDiv"></div>
+
+        </div>
+    </main>
+</body>
+
+</html>
