@@ -1,0 +1,113 @@
+{
+  "response_code": 0,
+  "results": [
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Science: Computers",
+      "question": "Which programming language shares its name with an island in Indonesia?",
+      "correct_answer": "Java",
+      "incorrect_answers": ["Python", "C", "Jakarta"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Science: Computers",
+      "question": "Laserjet and inkjet printers are both examples of what type of printer?",
+      "correct_answer": "Non-impact printer",
+      "incorrect_answers": [
+        "Impact printer",
+        "Daisywheel printer",
+        "Dot matrix printer"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Science: Computers",
+      "question": "What type of sound chip does the Super Nintendo Entertainment System (SNES) have?",
+      "correct_answer": "ADPCM Sampler",
+      "incorrect_answers": [
+        "FM Synthesizer",
+        "Programmable Sound Generator (PSG)",
+        "PCM Sampler"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Mythology",
+      "question": "Which Greek &amp; Roman god was known as the god of music, truth and prophecy, healing, the sun and light, plague, poetry, and more?",
+      "correct_answer": "Apollo",
+      "incorrect_answers": ["Aphrodite", "Artemis", "Athena"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "Mythology",
+      "question": "Who is the god of war in Polynesian mythology?",
+      "correct_answer": "&#039;Oro",
+      "incorrect_answers": ["Hina", "Kohara", "M\u0101ui"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Mythology",
+      "question": "What immense structure is referred to in Norse Mythology as the Yggdrasil.",
+      "correct_answer": "Tree",
+      "incorrect_answers": ["Mountain", "Temple", "Castle"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "History",
+      "question": "To what political party did Abraham Lincoln belong when elected POTUS?",
+      "correct_answer": "Republican",
+      "incorrect_answers": ["Democrat", "Independent", "Whig"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "medium",
+      "category": "History",
+      "question": "What was the total length of the Titanic?",
+      "correct_answer": "882 ft | 268.8 m",
+      "incorrect_answers": [
+        "759 ft | 231.3 m",
+        "1042 ft | 317.6 m",
+        "825 ft | 251.5 m"
+      ]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "History",
+      "question": "During the Spanish Civil War (1936), Francisco Franco fought for which political faction?",
+      "correct_answer": "Nationalist Spain",
+      "incorrect_answers": ["Republican Spain", "Popular Front", "Papal State"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "easy",
+      "category": "Geography",
+      "question": "What is the capital of Scotland?",
+      "correct_answer": "Edinburgh",
+      "incorrect_answers": ["Glasgow", "Dundee", "London"]
+    },
+    {
+      "type": "boolean",
+      "difficulty": "medium",
+      "category": "Geography",
+      "question": "There exists an island named &quot;Java&quot;.",
+      "correct_answer": "True",
+      "incorrect_answers": ["False"]
+    },
+    {
+      "type": "multiple",
+      "difficulty": "hard",
+      "category": "Geography",
+      "question": "When does Finland celebrate their independence day?",
+      "correct_answer": "December 6th",
+      "incorrect_answers": ["January 2nd", "November 12th", "February 8th"]
+    }
+  ]
+}
