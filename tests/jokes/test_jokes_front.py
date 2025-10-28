@@ -3,7 +3,7 @@
 Using pytest-playwright to test the front end
 
 @authors: Roman Yasinovskyy
-@version: 2024.10
+@version: 2025.10
 """
 
 import os
@@ -11,32 +11,37 @@ import subprocess
 from itertools import product
 
 import pytest
-from playwright.sync_api import Page
+from playwright.sync_api import Page, expect
 
-TIMEOUT = 1000
+expect.set_options(timeout=1_000)
 
 
-def setup_module(module):
+@pytest.fixture(scope="module", autouse=True)
+def server():
     """Create the server fixture"""
     os.chdir("exercises/jokes")
-    module.server = subprocess.Popen(["flask", "run"])
+    server = subprocess.Popen(["flask", "run"])
     try:
-        module.server.wait(timeout=1)
+        server.wait(timeout=1)
     except subprocess.TimeoutExpired:
         pass
+    yield
+    server.terminate()
 
 
-def teardown_module(module):
-    """Stop the server"""
-    module.server.terminate()
+@pytest.fixture(scope="function", autouse=True)
+def before_each_after_each(page: Page):
+    page.route(
+        "https://cdn.jsdelivr.net/**",
+        lambda route: route.abort(),
+    )
+    page.goto("http://localhost:5000/")
 
 
 def test_click_button(page: Page) -> None:
     """Click a button without making any changes to the default selection"""
-    page.set_default_timeout(TIMEOUT)
-    page.goto("http://localhost:5000/")
     page.click("#btnAmuse")
-    assert len(page.query_selector_all("#jokes > article")) == 1
+    expect(page.get_by_role("article")).to_have_count(1)
 
 
 @pytest.mark.parametrize(
@@ -48,12 +53,10 @@ def test_click_button(page: Page) -> None:
 )
 def test_get_a_joke(page: Page, language: str, category: str) -> None:
     """Various combinations of language/category should be handled and return a single joke"""
-    page.set_default_timeout(TIMEOUT)
-    page.goto("http://localhost:5000/")
     page.select_option("#selLang", language)
     page.select_option("#selCat", category)
     page.click("#btnAmuse")
-    assert len(page.query_selector_all("#jokes > article")) == 1
+    expect(page.get_by_role("article")).to_have_count(1)
 
 
 @pytest.mark.parametrize(
@@ -66,13 +69,11 @@ def test_get_a_joke(page: Page, language: str, category: str) -> None:
 )
 def test_get_n_jokes(page: Page, language: str, category: str, number: int) -> None:
     """Some combinations of language/category should return multiple jokes"""
-    page.set_default_timeout(TIMEOUT)
-    page.goto("http://localhost:5000/")
     page.select_option("#selLang", language)
     page.select_option("#selCat", category)
     page.select_option("#selNum", str(number))
     page.click("#btnAmuse")
-    assert len(page.query_selector_all("#jokes > article")) == number
+    expect(page.get_by_role("article")).to_have_count(number)
 
 
 @pytest.mark.parametrize(
@@ -85,27 +86,23 @@ def test_get_n_jokes(page: Page, language: str, category: str, number: int) -> N
 )
 def test_get_fewer_jokes(page: Page, language: str, category: str, number: int) -> None:
     """Test various combinations of languages, categories, and number of jokes"""
-    page.set_default_timeout(TIMEOUT)
-    page.goto("http://localhost:5000/")
-    page.select_option("#selCat", category)
     page.select_option("#selLang", language)
+    page.select_option("#selCat", category)
     page.select_option("#selNum", str(number))
     page.click("#btnAmuse")
-    assert len(page.query_selector_all("#jokes > article")) == number
+    expect(page.get_by_role("article")).to_have_count(number)
 
 
 @pytest.mark.parametrize(
     "language",
     ["eu", "fr", "gl", "lt", "sv"],
 )
-def test_get_jokes_error(page: Page, language: str) -> None:
+def test_get_chuck_error(page: Page, language: str) -> None:
     """There are no jokes about Chuck Norris in some languages"""
-    page.set_default_timeout(TIMEOUT)
-    page.goto("http://localhost:5000/")
-    page.select_option("#selCat", "chuck")
     page.select_option("#selLang", language)
+    page.select_option("#selCat", "chuck")
     page.click("#btnAmuse")
-    assert len(page.query_selector_all("#jokes > article")) == 1
+    expect(page.get_by_role("article")).to_have_count(1)
 
 
 if __name__ == "__main__":

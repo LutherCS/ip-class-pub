@@ -2,8 +2,8 @@
 """
 Serving `pyjokes` via templates
 
-@authors:
-@version: 2024.10
+@author:
+@version:
 """
 
 import random

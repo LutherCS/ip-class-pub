@@ -3,7 +3,7 @@
 Using pytest-flask to test the back end
 
 @authors: Roman Yasinovskyy
-@version: 2024.10
+@version: 2025.10
 """
 
 import pathlib
@@ -43,15 +43,12 @@ def test_status_get(client) -> None:
 )
 def test_status_post(client, language: str, category: str) -> None:
     """POST with various combinations of language/category should work"""
-    assert (
-        client.post("/", data=dict(language=language, category=category)).status_code
-        == 200
-    )
+    assert client.post("/", data=dict(language=language, category=category)).status_code == 200
 
 
 def test_status_post_error(client) -> None:
     """POST without any data should not work"""
-    assert client.post("/").status_code == 405
+    assert client.post("/").status_code == 418
 
 
 @pytest.mark.parametrize(
