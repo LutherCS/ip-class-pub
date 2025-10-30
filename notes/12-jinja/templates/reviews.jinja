@@ -1,0 +1,26 @@
+{% extends 'index.jinja' %}
+{% block content%}
+{% if reviews %}
+{% for review in reviews %}
+<div class="card">
+    <header class="card-header has-background-{{ colors[review['rating']]}}">
+        <p class="card-header-title">{{ review.name }}</p>
+        <button class="card-header-icon" aria-label="delete">
+            <span class="delete icon">
+            </span>
+        </button>
+    </header>
+    <div class="card-content has-background-{{ colors[review['rating']]}}-soft">{{ review.opinion }}</div>
+    <footer class="card-footer has-background-{{ colors[review['rating']]}}">
+        <p class="card-footer-item">Calories: 0</p>
+        <p class="card-footer-item">Carbs: 0</p>
+        <p class="card-footer-item">Fat: 0</p>
+        <p class="card-footer-item">Protein: 0</p>
+        <p class="card-footer-item">Sugar: 0</p>
+    </footer>
+</div>
+{% endfor %}
+{% else %}
+<p>Post your first review</p>
+{% endif %}
+{% endblock content%}
