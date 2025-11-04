@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>fruiTTime: timely fruit reviews</title>
+    <link rel="icon" type="image/x-icon" href="{{ url_for('static', filename='fruits.ico') }}">
+    <link href="{{ url_for('static', filename='site.css') }}" rel="stylesheet">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <header class="hero is-primary">
+        <div class="container hero-body">
+            <h1 class="title">fruiTTime</h1>
+            <p class="subtitle">timely fruit reviews</p>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <form id="fruitReview" action="/save" method="post">
+                <div class="columns">
+                    <div class="field column">
+                        <label class="label">Name</label>
+                        <div class="control">
+                            <input class="input" placeholder="Please enter the fruit name" id="fruitName"
+                                name="fruit_name" required aria-required="true">
+                        </div>
+                        <p id="fruitNameHelp" class="help is-hidden">This field is required</p>
+                    </div>
+                    <div class="field column">
+                        <label class="label">Rating</label>
+                        <div class="radios p-2" style="border: 1px solid gainsboro; border-radius: 6px;">
+                            {% for value, text in config["RATINGS"].items() %}
+                            <label class="radio">
+                                <input type="radio" name="fruit_rating" value="{{ value }}" />
+                                {{ text }}
+                            </label>
+                            {% endfor %}
+                        </div>
+                        <p id="fruitRatingHelp" class="help is-hidden">This field is required</p>
+                    </div>
+                </div>
+                <div class="field">
+                    <label class="label">Opinion</label>
+                    <div class="control">
+                        <textarea class="textarea" placeholder="Opinion" id="fruitOpinion"
+                            name="fruit_opinion"></textarea>
+                    </div>
+                </div>
+                <div class="field">
+                    <div class="control">
+                        <button type="submit" class="button is-link is-large is-fullwidth"
+                            id="submitReview">Submit</button>
+                    </div>
+                </div>
+            </form>
+            <div class="container pt-3" id="allReviews">
+                {% block content %}
+                {% endblock content %}
+            </div>
+        </div>
+    </main>
+</body>
+
+</html>
