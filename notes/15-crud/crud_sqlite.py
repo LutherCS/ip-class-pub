@@ -21,6 +21,26 @@ def create(db_name: str, datafile: str, verbose: bool = False) -> None:
     :param datafile: source datafile
     :param verbose: set verbosity to DEBUG level
     """
+    with sqlite3.connect(db_name) as conn:
+        cursor = conn.cursor()
+        cursor.execute("DROP TABLE IF EXISTS fruit;")
+        cursor.execute("""
+                    CREATE TABLE IF NOT EXISTS fruit (
+                    'id' integer primary key not null,
+                    'name' text,
+                    'family' text,
+                    'order' text,
+                    'genus' text,
+                    'calories' real,
+                    'fat' real,
+                    'sugar' real,
+                    'carbohydrates' real,
+                    'protein' real);
+                    """)
+    if "csv":
+        create_from_csv(db_name=db_name, datafile=datafile)
+    elif "json":
+        create_from_json(db_name=db_name, datafile=datafile)
 
 
 def create_from_csv(db_name: str, datafile: str) -> None:
@@ -29,6 +49,12 @@ def create_from_csv(db_name: str, datafile: str) -> None:
     :param db_name: database name
     :param datafile: source datafile
     """
+    with sqlite3.connect(db_name) as conn:
+        cursor = conn.cursor()
+        with open(datafile, "r") as f:
+            data = csv.reader(f)
+            next(data)
+            cursor.executemany("INSERT INTO fruit VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);", data)
 
 
 def create_from_json(db_name: str, datafile: str) -> None:
