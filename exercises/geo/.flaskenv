@@ -1,2 +1,6 @@
-FLASK_APP = "app.py"
-FLASK_SECRET_KEY = "524725d9f703443326023b6377e95686fb9ec669f858fa4918a017be3f6d8c0f"
+# "local": "local sqlite3, default"
+# "remote": "remote to knuth
+# "tunnel": "remote to knuth via tunnel
+FLASK_DB_MODE = "local"
+FLASK_DB_FILE = "world.sqlite3"
+FLASK_SECRET_KEY = ""
