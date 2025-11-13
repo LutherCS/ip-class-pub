@@ -37,9 +37,9 @@ def create(db_name: str, datafile: str, verbose: bool = False) -> None:
                     'carbohydrates' real,
                     'protein' real);
                     """)
-    if "csv":
+    if pathlib.Path(datafile).suffix == ".csv":
         create_from_csv(db_name=db_name, datafile=datafile)
-    elif "json":
+    elif pathlib.Path(datafile).suffix == ".json":
         create_from_json(db_name=db_name, datafile=datafile)
 
 
@@ -63,41 +63,85 @@ def create_from_json(db_name: str, datafile: str) -> None:
     :param db_name: database name
     :param datafile: source datafile
     """
+    with sqlite3.connect(db_name) as conn:
+        cursor = conn.cursor()
+        with open(datafile, "r") as f:
+            data = json.load(f)
+            cursor.executemany(
+                "INSERT INTO fruit VALUES(?, ?, ?, ?, ?, ?, ?, ?, ?, ?);",
+                [
+                    (
+                        fruit["id"],
+                        fruit["name"],
+                        fruit["family"],
+                        fruit["order"],
+                        fruit["genus"],
+                        fruit["nutritions"]["calories"],
+                        fruit["nutritions"]["fat"],
+                        fruit["nutritions"]["sugar"],
+                        fruit["nutritions"]["carbohydrates"],
+                        fruit["nutritions"]["protein"],
+                    )
+                    for fruit in data
+                ],
+            )
 
 
-@click.command(help="Read all records from the specified table")
+@click.command(help="Read one or all records from the table fruit")
 @click.argument("db_name")
-@click.option("--table", "-t", default="fruit")
-def read(db_name: str, table: str) -> None:
+@click.option("--fruit", "-f", default=0)
+def read(db_name: str, fruit: int = 0) -> None:
     """Read all records from some table
 
     :param db_name: database name
     :param table: target table
     """
+    with sqlite3.connect(db_name) as conn:
+        cursor = conn.cursor()
+        if fruit > 0:
+            cursor.execute("select * from fruit where id=?;", (fruit,))
+        else:
+            cursor.execute("select * from fruit;")
+        if __name__ == "__main__":
+            print("RESULT")
+            for record in cursor:
+                print(record)
+        else:
+            return cursor.fetchall()
 
 
 @click.command()
 @click.argument("db_name")
 @click.option("--fruit", "-f", help="fruit to update", type=int, default=0)
-def update(db_name: str, fruit: int) -> None:
+def update(db_name: str, fruit: int = 0) -> None:
     """Update records
 
     :param db_name: database name
     :param fruit: target item
     """
+    with sqlite3.connect(db_name) as conn:
+        cursor = conn.cursor()
+        if fruit > 0:
+            cursor.execute("update fruit set name='ADD' where id=?;", (fruit,))
+        else:
+            cursor.execute("update fruit set name='ADD';")
 
 
 @click.command()
 @click.argument("db_name")
 @click.option("--fruit", "-f", help="fruit to delete", type=int, default=0)
-@click.option("--family", help="Family of fruits to delete")
-def delete(db_name: str, fruit: int, family: str = "") -> None:
+def delete(db_name: str, fruit: int = 0) -> None:
     """Delete records
 
     :param db_name: database name
     :param fruit: target item
-    :param family: target fruit family
     """
+    with sqlite3.connect(db_name) as conn:
+        cursor = conn.cursor()
+        if fruit > 0:
+            cursor.execute("delete from fruit where id=?;", (fruit,))
+        else:
+            cursor.execute("delete from fruit;")
 
 
 @click.group()
