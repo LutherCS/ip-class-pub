@@ -18,8 +18,22 @@
             <p class="subtitle">timely fruit reviews</p>
         </div>
     </header>
+    <nav class="navbar container" role="navigation" aria-label="main navigation">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <a href='{{ url_for("main.index") }}'>Home</a>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                <a href='{{ url_for("auth.signup") }}' role="button" class="button is-info">Sign up</a>
+                <a href='{{ url_for("auth.login") }}' role="button" class="button is-info">Log in</a>
+            </div>
+        </div>
+    </nav>
     <main>
         <div class="container">
+            {% block form %}
             <form id="fruitReview" action="/save" method="post">
                 <div class="columns">
                     <div class="field column">
@@ -57,6 +71,7 @@
                     </div>
                 </div>
             </form>
+            {% endblock form %}
             <div class="container pt-3" id="allReviews">
                 {% block content %}
                 {% endblock content %}

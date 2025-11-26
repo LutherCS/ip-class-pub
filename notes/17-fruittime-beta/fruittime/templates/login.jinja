@@ -1,0 +1,39 @@
+{% extends "index.jinja" %}
+{% block form %}
+<div class="block">
+    <form method="post" action='{{ url_for("auth.login") }}'>
+        {{ login_form.csrf_token }}
+        <div class="field">
+            <p class="control has-icons-left has-icons-right">
+                {{ login_form.email(class="input") }}
+                <span class="icon is-small is-left">
+                    <ion-icon name="mail-outline"></ion-icon>
+                </span>
+                <span class="icon is-small is-right">
+                    <ion-icon name="checkmark-outline"></ion-icon>
+                </span>
+            </p>
+        </div>
+        <div class="field">
+            <p class="control has-icons-left">
+                {{ login_form.password(class="input") }}
+                <span class="icon is-small is-left">
+                    <ion-icon name="lock-closed-outline"></ion-icon>
+                </span>
+            </p>
+        </div>
+        <div class="field">
+            <p class="control">
+                <input type="submit" class="button is-success" value="Login" />
+            </p>
+        </div>
+    </form>
+</div>
+{% if login_form.errors %}
+<div class="block">
+    <ul class="errors">
+        {% for error in login_form.errors %}<li>{{ error }} is a required field</li>{% endfor %}
+    </ul>
+    {% endif %}
+</div>
+{% endblock form %}

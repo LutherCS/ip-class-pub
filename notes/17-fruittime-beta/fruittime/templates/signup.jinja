@@ -1,0 +1,46 @@
+{% extends "index.jinja" %}
+{% block form %}
+<form method="post" action='{{ url_for("auth.signup") }}'>
+    {{ signup_form.csrf_token }}
+    <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            {{ signup_form.email(class="input", placeholder="Email") }}
+            <span class="icon is-small is-left">
+                <ion-icon name="mail-outline"></ion-icon>
+            </span>
+            <span class="icon is-small is-right">
+                <ion-icon name="checkmark-outline"></ion-icon>
+            </span>
+        </p>
+    </div>
+    <div class="field">
+        <p class="control has-icons-left has-icons-right">
+            {{ signup_form.name(class="input", placeholder="Name") }}
+            <span class="icon is-small is-left">
+                <ion-icon name="person-outline"></ion-icon>
+            </span>
+            <span class="icon is-small is-right">
+                <ion-icon name="checkmark-outline"></ion-icon>
+            </span>
+        </p>
+    </div>
+    <div class="field">
+        <p class="control has-icons-left">
+            {{ signup_form.password(class="input", placeholder="Password") }}
+            <span class="icon is-small is-left">
+                <ion-icon name="lock-closed-outline"></ion-icon>
+            </span>
+        </p>
+    </div>
+    <div class="field">
+        <p class="control">
+            <input type="submit" class="button is-primary" value="Create account" />
+        </p>
+    </div>
+</form>
+{% if signup_form.email.errors %}
+<ul class="errors">
+    {% for error in signup_form.email.errors %}<li>{{ error }}</li>{% endfor %}
+</ul>
+{% endif %}
+{% endblock form %}

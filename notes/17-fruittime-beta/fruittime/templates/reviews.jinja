@@ -1,7 +1,7 @@
 {% extends 'index.jinja' %}
 {% block content%}
-{% if config["REVIEWS"] | length > 0 %}
-{% for review in config["REVIEWS"] %}
+{% if reviews | length > 0 %}
+{% for review in reviews %}
 <div class="card">
     <header class="card-header has-background-{{ config['COLORS'][review['rating']]}}">
         <p class="card-header-title">{{ review.name }}</p>

@@ -9,6 +9,7 @@ Fruittime models
 
 import datetime
 
+from flask_login import UserMixin
 from marshmallow import fields
 from sqlalchemy import ForeignKey
 from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
@@ -39,7 +40,7 @@ class Fruit(db.Model):
         return f"Fruit({self.name})"
 
 
-class User(db.Model):
+class User(UserMixin, db.Model):
     __tablename__ = "user"
 
     id: Mapped[int] = mapped_column(primary_key=True)
