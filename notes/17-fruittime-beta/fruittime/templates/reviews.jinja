@@ -1,26 +1,44 @@
 {% extends 'index.jinja' %}
-{% block content%}
+{% block content %}
 {% if reviews | length > 0 %}
 {% for review in reviews %}
 <div class="card">
-    <header class="card-header has-background-{{ config['COLORS'][review['rating']]}}">
-        <p class="card-header-title">{{ review.name }}</p>
-        <button class="card-header-icon" aria-label="delete">
-            <span class="delete icon">
-            </span>
-        </button>
+    <header class="card-header has-background-{{ config['COLORS'][review['rating']] }}">
+        <p class="card-header-title">
+            {{ review.fruit.name }}&nbsp;reviewed by&nbsp;{{review.author.name}}
+            {% if g.review_votes and review.id in g.review_votes and current_user.id == review.author.id %}
+            &nbsp;&hearts;liked by&nbsp;{{ g.review_votes[review.id] }}
+            {% endif %}
+        </p>
+        {% if current_user.id == review.author.id %}
+        <form action="{{ url_for('main.delete_review', review_id=review.id) }}">
+            <button class="card-header-icon" aria-label="delete">
+                <span class="delete icon"></span>
+            </button>
+        </form>
+        {% elif current_user.is_authenticated %}
+        <form action="{{ url_for('main.upvote_review', review_id=review.id) }}" method="post">
+            <button class="card-header-icon">
+                {% if review.id in g.user_votes %}
+                <ion-icon name="thumbs-up"></ion-icon>
+                {% else %}
+                <ion-icon name="thumbs-up-outline"></ion-icon>
+                {% endif %}
+            </button>
+        </form>
+        {% endif %}
     </header>
-    <div class="card-content has-background-{{ config['COLORS'][review['rating']]}}-soft">{{ review.opinion }}</div>
-    <footer class="card-footer has-background-{{ config['COLORS'][review['rating']]}}">
-        <p class="card-footer-item">Calories: {{ review['nutrition']['calories']}}</p>
-        <p class="card-footer-item">Carbs: {{ review['nutrition']['carbs']}}</p>
-        <p class="card-footer-item">Fat: {{ review['nutrition']['fat']}}</p>
-        <p class="card-footer-item">Protein: {{ review['nutrition']['protein']}}</p>
-        <p class="card-footer-item">Sugar: {{ review['nutrition']['sugar']}}</p>
+    <div class="card-content has-background-{{ config['COLORS'][review['rating']] }}-soft">{{ review.opinion }}</div>
+    <footer class="card-footer has-background-{{ config['COLORS'][review['rating']] }}">
+        <p class="card-footer-item">Calories: {{ review.fruit.calories }}</p>
+        <p class="card-footer-item">Carbs: {{ review.fruit.carbohydrates }}</p>
+        <p class="card-footer-item">Fat: {{ review.fruit.fat }}</p>
+        <p class="card-footer-item">Protein: {{ review.fruit.protein }}</p>
+        <p class="card-footer-item">Sugar: {{ review.fruit.sugar }}</p>
     </footer>
 </div>
 {% endfor %}
 {% else %}
-<p>Post your first review</p>
+<p>Post your first review!</p>
 {% endif %}
-{% endblock content%}
+{% endblock content %}

@@ -12,7 +12,7 @@ from flask_login import login_required, login_user, logout_user
 from werkzeug.security import check_password_hash, generate_password_hash
 
 from fruittime import db, login_manager
-from fruittime.forms import LoginForm, SignupForm, NewReviewForm
+from fruittime.forms import LoginForm, SignupForm
 from fruittime.models import User
 
 auth = Blueprint("auth", __name__, url_prefix="/")
@@ -33,6 +33,8 @@ def signup():
     new_user.name = signup_form.name.data
     db.session.add(new_user)
     db.session.commit()
+    login_user(new_user)
+    flash(f"Welcome, {new_user.name}")
     return redirect(url_for("main.index"))
 
 

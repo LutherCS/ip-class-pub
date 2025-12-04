@@ -1,1 +1,3 @@
+FLASK_APP="fruittime"
 FLASK_DATA_FILE="orchard"
+FLASK_SECRET_KEY="b0a502474e32a8f3b39dae45ade2b1aaa93e45b71e1c53f6fdbff8f04ec1dda9"

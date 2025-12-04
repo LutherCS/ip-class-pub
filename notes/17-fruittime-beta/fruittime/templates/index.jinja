@@ -26,56 +26,63 @@
         </div>
         <div class="navbar-end">
             <div class="navbar-item">
+                {% if current_user.is_authenticated %}
+                <a href='{{ url_for("auth.logout") }}' role="button" class="button is-warning">Log out</a>
+                {% else %}
                 <a href='{{ url_for("auth.signup") }}' role="button" class="button is-info">Sign up</a>
                 <a href='{{ url_for("auth.login") }}' role="button" class="button is-info">Log in</a>
+                {% endif %}
             </div>
         </div>
     </nav>
+    <div class="container is-fullwidth p-3">
+        {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+        {% for category, message in messages %}
+        <p class="has-background-{{ category }}">{{ message }}</p>
+        {% endfor %}
+        {% endif %}
+        {% endwith %}
+    </div>
     <main>
         <div class="container">
             {% block form %}
-            <form id="fruitReview" action="/save" method="post">
-                <div class="columns">
-                    <div class="field column">
-                        <label class="label">Name</label>
-                        <div class="control">
-                            <input class="input" placeholder="Please enter the fruit name" id="fruitName"
-                                name="fruit_name" required aria-required="true">
-                        </div>
-                        <p id="fruitNameHelp" class="help is-hidden">This field is required</p>
-                    </div>
-                    <div class="field column">
-                        <label class="label">Rating</label>
-                        <div class="radios p-2" style="border: 1px solid gainsboro; border-radius: 6px;">
-                            {% for value, text in config["RATINGS"].items() %}
-                            <label class="radio">
-                                <input type="radio" name="fruit_rating" value="{{ value }}" />
-                                {{ text }}
-                            </label>
-                            {% endfor %}
-                        </div>
-                        <p id="fruitRatingHelp" class="help is-hidden">This field is required</p>
+            {% if current_user.is_authenticated and review_form is defined %}
+            <form action="{{ url_for('main.save_review') }}" method="post">
+                {{ review_form.csrf_token }}
+                <div class="field">
+                    <label>{{ review_form.name.label(class="label") }}</label>
+                    <div class="control">{{ review_form.name(class="input", placeholder="Please enter the fruit name",
+                        id="fruitName") }}</div>
+                </div>
+                <div class="field">
+                    <label>{{ review_form.rating.label(class="label") }}</label>
+                    <div class="radios">
+                        {% for r_value, r_text in review_form.rating.choices %}
+                        <label class="radio">
+                            <input type="radio" name="rating" value="{{ r_value }}">
+                            {{ r_text }}
+                        </label>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="field">
-                    <label class="label">Opinion</label>
-                    <div class="control">
-                        <textarea class="textarea" placeholder="Opinion" id="fruitOpinion"
-                            name="fruit_opinion"></textarea>
-                    </div>
+                    <label>{{ review_form.opinion.label(class="label") }}</label>
+                    <div class="control">{{ review_form.opinion(class="textarea") }}</div>
                 </div>
+
                 <div class="field">
                     <div class="control">
-                        <button type="submit" class="button is-link is-large is-fullwidth"
-                            id="submitReview">Submit</button>
+                        <button type="submit" class="button is-link is-fullwidth" name="save">Submit</button>
                     </div>
                 </div>
             </form>
+            {% endif %}
             {% endblock form %}
-            <div class="container pt-3" id="allReviews">
-                {% block content %}
-                {% endblock content %}
-            </div>
+        </div>
+        <div class="container pt-3" id="allReviews">
+            {% block content %}
+            {% endblock content %}
         </div>
     </main>
 </body>
