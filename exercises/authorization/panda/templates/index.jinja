@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PandAuth</title>
+    <link rel="icon" href="{{ url_for('static', filename='panda.ico') }}">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@1.0.4/css/bulma.min.css">
+    <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
+    <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
+</head>
+
+<body>
+    <header class="hero is-primary">
+        <div class="container hero-body">
+            <h1 class="title">PandAuth</h1>
+        </div>
+    </header>
+    <nav class="navbar container" role="navigation" aria-label="main navigation">
+        <div class="navbar-start">
+            <div class="navbar-item">
+                <a href='{{ url_for("main.index") }}'>Home</a>
+            </div>
+        </div>
+        <div class="navbar-end">
+            <div class="navbar-item">
+                {% if current_user.is_authenticated %}
+                <a href='{{ url_for("auth.logout") }}' role="button" class="button is-warning" id="logoutBtn">
+                    Log out</a>
+                {% else %}
+                <a href='{{ url_for("auth.login") }}' role="button" class="button is-info" id="loginBtn">
+                    Log in</a>
+                {% endif %}
+            </div>
+        </div>
+    </nav>
+    <main>
+        <div class="container">
+            {% if current_user.is_authenticated %}
+            <article id="profile">
+                <p>Welcome, {{ current_user | string }}!</p>
+                <p>You're logged in using Google email <strong>{{ current_user.email }}</strong> </p>
+                <img src="{{ current_user.picture }}" alt="Google profile pic" />
+            </article>
+            {% else %}
+            <p>Please, log in!</p>
+            {% endif %}
+        </div>
+    </main>
+    <footer>
+        <div class="container p-5">
+            &copy; 2025
+        </div>
+    </footer>
+</body>
+
+</html>

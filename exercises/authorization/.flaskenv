@@ -1,0 +1,8 @@
+FLASK_APP="panda"
+FLASK_RUN_HOST="panda.luther.edu"
+FLASK_RUN_CERT="panda/ssl/certs/selfsigned330.crt"
+FLASK_RUN_KEY="panda/ssl/private/selfsigned330.key"
+FLASK_DATABASE="users.db"
+FLASK_SECRET_KEY=""
+GOOGLE_CLIENT_ID=""
+GOOGLE_CLIENT_SECRET=""
