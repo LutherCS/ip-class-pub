@@ -39,7 +39,7 @@ pytest==9.0.3
 pytest-base-url==2.1.0
 pytest-playwright==0.7.0
 pytest-timeout==2.4.0
-python-dotenv==1.1.1
+python-dotenv==1.2.2
 python-slugify==8.0.4
 requests==2.33.0
 requests-oauthlib==2.0.0
