@@ -35,7 +35,7 @@ psycopg-binary==3.2.9
 pyee==13.0.0
 Pygments==2.20.0
 pyjokes==0.8.3
-pytest==8.4.2
+pytest==9.0.3
 pytest-base-url==2.1.0
 pytest-playwright==0.7.0
 pytest-timeout==2.4.0
