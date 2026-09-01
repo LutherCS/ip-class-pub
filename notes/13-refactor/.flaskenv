@@ -1,1 +1,0 @@
-FLASK_DATA_FILE="basket"
