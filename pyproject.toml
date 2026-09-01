@@ -1,0 +1,32 @@
+[project]
+dependencies = [
+    "beautifulsoup4>=4.15.0",
+    "cryptography>=50.0.0",
+    "faker>=40.36.0",
+    "flask>=3.1.3",
+    "flask-cors>=6.0.5",
+    "flask-dance>=7.1.0",
+    "flask-login>=0.6.3",
+    "flask-marshmallow>=1.5.0",
+    "flask-security-too>=5.8.1",
+    "flask-sqlalchemy>=3.1.1",
+    "flask-wtf>=1.3.0",
+    "gunicorn>=26.0.0",
+    "marshmallow>=4.3.0",
+    "marshmallow-sqlalchemy>=1.5.0",
+    "playwright>=1.62.0",
+    "psycopg[binary]>=3.3.4",
+    "pyjokes>=0.8.3",
+    "pytest>=9.1.1",
+    "pytest-freezer>=0.4.9",
+    "pytest-playwright>=0.8.0",
+    "pytest-timeout>=2.4.0",
+    "python-dotenv>=1.2.2",
+    "requests>=2.34.2",
+    "soupsieve>=2.9.1",
+    "sqlalchemy>=2.0.51",
+    "wtforms>=3.2.2",
+]
+name = "ip-class-pub"
+requires-python = ">=3.12"
+version = "2026.9"

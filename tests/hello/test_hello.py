@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
 Testing simple project
 
 @authors: Roman Yasinovskyy
-@version: 2025.9
+@version: 2026.9
 """
 
 import subprocess
