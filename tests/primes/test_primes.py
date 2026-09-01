@@ -67,6 +67,25 @@ def test_case_1_table(page: Page, number):
 
 
 @pytest.mark.parametrize(
+    "number, expected", [(32, 1851), (42, 3447), (100, 24133), (330, 333821)]
+)
+def test_case_1_values(page: Page, number: int, expected: int):
+    page.goto(f"http://localhost:8000/index.html?name=Lloyd&number={number}")
+    result = sum(
+        map(
+            int,
+            [
+                elem.inner_text()
+                for elem in page.query_selector_all(
+                    "table[id='nPrimes'] > tbody > tr > td"
+                )
+            ],
+        )
+    )
+    assert result == expected
+
+
+@pytest.mark.parametrize(
     "name, greeting",
     [
         ("Wu", "Hello, Wu"),
@@ -88,6 +107,22 @@ def test_case_2_number(page: Page):
 def test_case_2_table(page: Page):
     page.goto("http://localhost:8000/index.html?name=Lloyd")
     expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(33)
+
+
+def test_case_2_values(page: Page):
+    page.goto("http://localhost:8000/index.html?name=Lloyd")
+    result = sum(
+        map(
+            int,
+            [
+                elem.inner_text()
+                for elem in page.query_selector_all(
+                    "table[id='nPrimes'] > tbody > tr > td"
+                )
+            ],
+        )
+    )
+    assert result == 333821
 
 
 def test_case_3_greeting(page: Page):
@@ -117,6 +152,25 @@ def test_case_3_table(page: Page, number):
     )
 
 
+@pytest.mark.parametrize(
+    "number, expected", [(32, 1851), (42, 3447), (100, 24133), (330, 333821)]
+)
+def test_case_3_values(page: Page, number: int, expected: int):
+    page.goto(f"http://localhost:8000/index.html?number={number}")
+    result = sum(
+        map(
+            int,
+            [
+                elem.inner_text()
+                for elem in page.query_selector_all(
+                    "table[id='nPrimes'] > tbody > tr > td"
+                )
+            ],
+        )
+    )
+    assert result == expected
+
+
 def test_case_4_greeting(page: Page):
     page.goto("http://localhost:8000/index.html")
     expect(page.locator("#greeting")).to_have_text("Hello, student")
@@ -130,6 +184,22 @@ def test_case_4_number(page: Page):
 def test_case_4_table(page: Page):
     page.goto("http://localhost:8000/index.html")
     expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(33)
+
+
+def test_case_4_values(page: Page):
+    page.goto("http://localhost:8000/index.html")
+    result = sum(
+        map(
+            int,
+            [
+                elem.inner_text()
+                for elem in page.query_selector_all(
+                    "table[id='nPrimes'] > tbody > tr > td"
+                )
+            ],
+        )
+    )
+    assert result == 333821
 
 
 if __name__ == "__main__":

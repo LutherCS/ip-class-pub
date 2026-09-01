@@ -41,6 +41,29 @@ def before_each_after_each(page: Page):
     yield
 
 
+@pytest.mark.skip(reason="Template")
+def test_get_random_joke_with_mock(page: Page) -> None:
+    """Getting a random joke"""
+    page.route(
+        "https://cdn.jsdelivr.net/**",
+        lambda route: route.fulfill(status=404),
+    )
+    page.route(
+        "**/api/v1/jokes/en/any/1",
+        lambda route: route.fulfill(
+            status=200,
+            content_type="application/json",
+            path=f"{pathlib.Path(__file__).parent}/random_joke.json",
+        ),
+    )
+    page.on("request", lambda request: print(request.method, request.url))
+    page.on("response", lambda response: print(response.all_headers()))
+
+    page.goto(APP_URL)
+    page.click("#btnAmuse")
+    expect(page.get_by_role("article")).to_have_count(1)
+
+
 def test_get_all_jokes(page: Page) -> None:
     """Clicking a button without selecting any category/language
     should return all jokes in any language/category"""
@@ -264,6 +287,7 @@ def test_get_fewer_jokes(page: Page, language: str, category: str, number: int) 
     expect(page.get_by_role("article")).to_have_count(number)
 
 
+# @pytest.mark.skip_browser("chromium")
 @pytest.mark.parametrize(
     "joke_id, joke_text",
     [
@@ -302,6 +326,7 @@ def test_get_the_joke_by_id(page: Page, joke_id: int, joke_text: str) -> None:
     expect(page.get_by_role("article").first).to_contain_text(joke_text)
 
 
+# @pytest.mark.skip_browser("chromium")
 @pytest.mark.parametrize(
     "joke_id, error_message",
     [

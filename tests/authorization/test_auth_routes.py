@@ -9,7 +9,9 @@ Test the routes
 import pathlib
 import sys
 from importlib import util
+from urllib.parse import unquote
 
+from flask.testing import FlaskClient
 import pytest
 
 try:
@@ -29,19 +31,27 @@ def fixture_client():
             yield test_client
 
 
-def test_main_route(client) -> None:
+def test_main_route(client: FlaskClient) -> None:
     """GET should work"""
     assert client.get("/").status_code == 200
 
 
-def test_auth_login(client) -> None:
+def test_auth_login(client: FlaskClient) -> None:
     """GET should redirect"""
     assert client.get("/auth/login").status_code == 302
+    assert (
+        unquote(client.get("/auth/login").location)
+        == "https://accounts.google.com/o/oauth2/v2/auth?response_type=code"
+        + f"&client_id={client.application.config['GOOGLE_CLIENT_ID']}"
+        + "&redirect_uri=http://localhost/auth/login/callback"
+        + "&scope=openid+email+profile"
+    )
 
 
-def test_auth_logout(client) -> None:
+def test_auth_logout(client: FlaskClient) -> None:
     """GET should redirect"""
     assert client.get("/auth/logout").status_code == 302
+    assert unquote(client.get("/auth/logout").location) == "/auth/login?next=/auth/logout"
 
 
 if __name__ == "__main__":

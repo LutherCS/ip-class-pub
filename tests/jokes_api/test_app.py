@@ -201,6 +201,7 @@ def test_get_fewer_jokes(page: Page, language: str, category: str, number: int) 
     expect(page.get_by_role("article")).to_have_count(number)
 
 
+# @pytest.mark.skip_browser("chromium")
 @pytest.mark.parametrize(
     "joke_id, joke_text",
     [
@@ -239,6 +240,7 @@ def test_get_the_joke_by_id(page: Page, joke_id: int, joke_text: str) -> None:
     expect(page.get_by_role("article").first).to_contain_text(joke_text)
 
 
+# @pytest.mark.skip_browser("chromium")
 @pytest.mark.parametrize(
     "joke_id, error_message",
     [
