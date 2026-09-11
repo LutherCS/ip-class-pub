@@ -88,6 +88,19 @@ Run the following:
 python -m pytest -v tests/primes
 ```
 
+You may test some functions directly using *npm* and *Jest*.
+First, install *Node.js* for your operating system and install the required packages specified in the *package.json*:
+
+```bash
+npm install
+```
+
+Next, use *npm* to test *script.js*:
+
+```bash
+npm test tests/primes/primes.test.js
+```
+
 ## Demonstration
 
 ![Demo](primes.mp4)

@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
 Testing primes
 
 @authors: Roman Yasinovskyy
-@version: 2025.9
+@version: 2026.9
 """
 
 import subprocess
@@ -61,14 +60,10 @@ def test_case_1_number(page: Page, number: int, result: str):
 @pytest.mark.parametrize("number", [randint(100, 1000) for _ in range(4)])
 def test_case_1_table(page: Page, number):
     page.goto(f"http://localhost:8000/index.html?name=Lloyd&number={number}")
-    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(
-        ceil(number / 10)
-    )
+    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(ceil(number / 10))
 
 
-@pytest.mark.parametrize(
-    "number, expected", [(32, 1851), (42, 3447), (100, 24133), (330, 333821)]
-)
+@pytest.mark.parametrize("number, expected", [(32, 1851), (42, 3447), (100, 24133), (330, 333821)])
 def test_case_1_values(page: Page, number: int, expected: int):
     page.goto(f"http://localhost:8000/index.html?name=Lloyd&number={number}")
     result = sum(
@@ -76,9 +71,7 @@ def test_case_1_values(page: Page, number: int, expected: int):
             int,
             [
                 elem.inner_text()
-                for elem in page.query_selector_all(
-                    "table[id='nPrimes'] > tbody > tr > td"
-                )
+                for elem in page.query_selector_all("table[id='nPrimes'] > tbody > tr > td")
             ],
         )
     )
@@ -116,9 +109,7 @@ def test_case_2_values(page: Page):
             int,
             [
                 elem.inner_text()
-                for elem in page.query_selector_all(
-                    "table[id='nPrimes'] > tbody > tr > td"
-                )
+                for elem in page.query_selector_all("table[id='nPrimes'] > tbody > tr > td")
             ],
         )
     )
@@ -147,14 +138,10 @@ def test_case_3_number(page: Page, number: int, result: str):
 @pytest.mark.parametrize("number", [randint(100, 1000) for _ in range(4)])
 def test_case_3_table(page: Page, number):
     page.goto(f"http://localhost:8000/index.html?number={number}")
-    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(
-        ceil(number / 10)
-    )
+    expect(page.locator("table[id='nPrimes'] > tbody > tr")).to_have_count(ceil(number / 10))
 
 
-@pytest.mark.parametrize(
-    "number, expected", [(32, 1851), (42, 3447), (100, 24133), (330, 333821)]
-)
+@pytest.mark.parametrize("number, expected", [(32, 1851), (42, 3447), (100, 24133), (330, 333821)])
 def test_case_3_values(page: Page, number: int, expected: int):
     page.goto(f"http://localhost:8000/index.html?number={number}")
     result = sum(
@@ -162,9 +149,7 @@ def test_case_3_values(page: Page, number: int, expected: int):
             int,
             [
                 elem.inner_text()
-                for elem in page.query_selector_all(
-                    "table[id='nPrimes'] > tbody > tr > td"
-                )
+                for elem in page.query_selector_all("table[id='nPrimes'] > tbody > tr > td")
             ],
         )
     )
@@ -193,9 +178,7 @@ def test_case_4_values(page: Page):
             int,
             [
                 elem.inner_text()
-                for elem in page.query_selector_all(
-                    "table[id='nPrimes'] > tbody > tr > td"
-                )
+                for elem in page.query_selector_all("table[id='nPrimes'] > tbody > tr > td")
             ],
         )
     )
