@@ -19,12 +19,12 @@ Implement a simple calculator that performs the following operations: addition, 
 ## Styling
 
 Use of a framework (Bulma or Bootstrap) is optional but highly encouraged.
-Bulma css is linked.
+Bulma css is already imported.
 
 ## Functionality
 
 Operations are performed on floating-point numbers and the results may be presented in scientific notation.
-Let JavaScript handle the math.
+Use JavaScript's `eval` to handle the math.
 
 ## Acceptable limitations
 

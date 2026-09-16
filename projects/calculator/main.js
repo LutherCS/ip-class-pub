@@ -1,6 +1,10 @@
-/* jshint esversion: 8 */
-/* jshint browser: true */
-'use strict';
+/**
+ * Implementation
+ * 
+ * @author:
+ * @version: 2026.9
+ */
+"use strict";
 
 var outputScreen;
 var clearOnEntry;
@@ -11,19 +15,19 @@ var clearOnEntry;
  * 
  * @param {number} digit digit to add or display on the `outputScreen`
  */
-function enterDigit(digit) {}
+function enterDigit(digit) { }
 
 
 /**
  * Clear `outputScreen` and set value to 0
  */
-function clear_screen() {}
+function clearScreen() { }
 
 
 /**
  * Evaluate the expression and display its result or *ERROR*
  */
-function eval_expr() {}
+function evalExpr() { }
 
 
 /**
@@ -31,7 +35,7 @@ function eval_expr() {}
  * 
  * @param {string} operation to add to the expression
  */
-function enterOp(operation) {}
+function enterOp(operation) { }
 
 
 window.onload = function () {

@@ -1,15 +1,14 @@
-#!/usr/bin/env python3
 """
 Testing calculator
 
 @authors: Roman Yasinovskyy
-@version: 2025.9
+@version: 2026.9
 """
 
 import subprocess
 
 import pytest
-from playwright.sync_api import Page, expect
+from playwright.sync_api import ElementHandle, Page, expect
 
 expect.set_options(timeout=1_000)
 
@@ -89,7 +88,9 @@ def test_floating_point_operations(page: Page, buttons, result):
     page.goto("http://localhost:8000/")
     for btn in buttons:
         page.click(f"#btn{btn}")
-    assert float(page.query_selector("#result").inner_text()) == pytest.approx(result, 0.001)
+    resultScreen = page.query_selector("#result")
+    assert isinstance(resultScreen, ElementHandle)
+    assert float(resultScreen.inner_text()) == pytest.approx(result, 0.001)
 
 
 if __name__ == "__main__":
