@@ -30,7 +30,7 @@ The list of team members and priorities are provided and must be used to populat
 1. Validate user input to ensure valid values are entered.
 2. Use *help* `class` to bring user's attention to the missing value(s).
 3. Use custom *site.css* to highlight tasks based on priority.
-4. HTML elements have been stripped of classes but you can add them back. Don't change the `id`.
+4. HTML elements have been stripped of classes but you can add them back. Don't change any `id`.
 
 ## Demonstration
 
