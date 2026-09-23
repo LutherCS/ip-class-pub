@@ -22,7 +22,7 @@ class Shelf {
         this.items.push(newTitle);
     }
 
-    [Symbol.iterator]() {
+    *[Symbol.iterator]() {
         for (let item of this.items) {
             yield item;
         }
@@ -39,6 +39,11 @@ let myGames = new Shelf();
 myGames.add(risk);
 myGames.add(monopoly);
 console.log(myGames)
+
+risk.title = "RISK!!!"
+risk.time = "Forever"
+risk.year = [1, 2, 3]
 for (let game of myGames) {
-    console.log(game);
+    console.log(game.toString());
+    // console.log(game);
 }
