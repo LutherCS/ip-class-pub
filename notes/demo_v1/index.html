@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gamelyy</title>
+    <link rel="stylesheet" href="style.css" />
+    <script src="main.js" defer></script>
+</head>
+
+<body>
+    <header>
+        <div class="container">
+            <h1 class="title">Welcome to GamelYY</h1>
+        </div>
+    </header>
+    <main>
+        <div class="container">
+            <div class="columns">
+                <div class="column is-one-third">
+                    <div class="field">
+                        <label class="label">Title</label>
+                        <div class="control">
+                            <input type="text" class="input" id="titleInput">
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="field">
+                        <label class="label">Designer</label>
+                        <div class="control">
+                            <input type="text" class="input" id="designerInput">
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-one-third">
+                    <div class="field">
+                        <label class="label">Year</label>
+                        <div class="control">
+                            <input type="number" class="input" id="yearInput" max="2100">
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="column is-full">
+                <div class="field">
+                    <label class="label">Review</label>
+                    <div class="control">
+                        <textarea class="textarea" id="reviewInput">
+
+                            </textarea>
+                    </div>
+                </div>
+            </div>
+            <div class="field">
+                <div class="control">
+                    <button class="button is-link is-fullwidth" id="addGameButton">Add game</button>
+                </div>
+            </div>
+            <div class="container" id="allGames"></div>
+        </div>
+    </main>
+</body>
+
+</html>
