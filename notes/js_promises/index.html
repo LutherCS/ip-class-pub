@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Promises</title>
+    <link rel="stylesheet" href="site.css">
+    <script src="main.js" type="module"></script>
+    <link rel="shortcut icon" type="image/png" href="favicon.png">
+</head>
+
+<body>
+    <main class="container">
+        <section class="hero is-primary">
+            <div class="hero-body">
+                <p class="title">Welcome to our site!</p>
+            </div>
+        </section>
+        <section>
+            <div class="columns">
+                <div class="column is-half">
+                    <div class="field">
+                        <label class="label">Category</label>
+                        <div class="control">
+                            <input name="cat" id="inCategory" class="input" list="data"></select>
+                        </div>
+                    </div>
+                </div>
+                <div class="column is-half">
+                    <div class="field" id="numNumField">
+                        <label class="label">Number</label>
+                        <div class="control">
+                            <input name="num" id="numNum" type="number" min="1" max="100" class="input" required>
+                        </div>
+                        <p class="help is-danger is-hidden">This field is required</p>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="field">
+                    <div class="control">
+                        <button type="button" id="btnAction" class="button is-primary is-large is-fullwidth">
+                            Action!
+                        </button>
+                    </div>
+                </div>
+
+            </div>
+        </section>
+
+        <section class="section">
+            <div id="result" class="container">
+            </div>
+        </section>
+
+    </main>
+</body>
+
+</html>
