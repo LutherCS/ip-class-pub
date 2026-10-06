@@ -1,19 +1,18 @@
 "use strict";
 
 /**
- * Retrieve questions in the chosen category
- * @returns 
+ * Retrieving data from the Open Trivia Database
+ *
+ * @author
+ * @version 2026.10
  */
-async function getQuestions() {
-    // TODO: use getData to retrieve data from an API
-}
 
 /**
  * Use fetch to retrieve data
  * 
- * @param {*} chosenNumber
- * @param {*} chosenCategory
- * @returns 
+ * @param {number} chosenNumber
+ * @param {string} chosenCategory
+ * @returns JSON of the retrieved data
  */
 async function getData(chosenNumber, chosenCategory) {
     const BASE_URL = "https://opentdb.com/api.php?";
@@ -21,10 +20,30 @@ async function getData(chosenNumber, chosenCategory) {
 }
 
 /**
+ * Retrieve questions in the chosen category
+ * 
+ * @returns 
+ */
+async function getQuestions() {
+    // TODO: use getData to retrieve data from an API
+}
+
+/**
+ * Build the HTML structure to display questions
+ *
+ * @param {Element} questionSection section where questions are going to be displayed
+ * @param {number} number number of question cards to create
+ */
+function buildStructure(questionSection, number) {
+    // TODO: create the structure (e.g. cards or divs) to be later populated
+}
+
+
+/**
  * Display the results
  * 
- * @param {*} questionSection
- * @param {*} questionPool
+ * @param {Element} questionSection section where questions are going to be displayed
+ * @param {Array} questionPool question retrieved from the API
  */
 function displayQuestion(questionSection, questionPool) {
     // TODO: attach all questions to the provided section

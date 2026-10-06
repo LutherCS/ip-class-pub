@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
-`trivia` testing
+Testing trivia
 
 @authors: Roman Yasinovskyy
-@version: 2025.10
+@version: 2026.10
 """
 
 import json
