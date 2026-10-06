@@ -11,11 +11,12 @@ function generateDataList(allFruits, listId) {
     document.querySelector("body")?.appendChild(dataList);
 }
 async function getFruitData() {
-    //   let baseUrl = "https://www.fruityvice.com/api/fruit/";
-    let baseUrl = "https://wordsohard.com/api/v1/define/";
+    // let baseUrl = "https://www.fruityvice.com/api/fruit";
+    let baseUrl = "http://localhost:5000/api/fruit";
+    // let baseUrl = "https://wordsohard.com/api/v1/define";
     let theFruit = document.querySelector("#inCategory")
         .value;
-    let targetUrl = `${baseUrl}${theFruit}`;
+    let targetUrl = `${baseUrl}/${theFruit}`;
     let data = await fetch(targetUrl)
         .then((response) => response.json())
         .catch((e) => console.error(e));
@@ -23,11 +24,9 @@ async function getFruitData() {
 }
 function populateResult(data) {
     let resultDiv = document.querySelector("#result");
-    for (const def of data.definitions) {
-        let p = document.createElement("p");
-        p.innerHTML = def.definition;
-        resultDiv?.appendChild(p);
-    }
+    let p = document.createElement("p");
+    p.innerHTML = data.family;
+    resultDiv?.appendChild(p);
 }
 window.onload = function () {
     generateDataList(fruits, "data");
