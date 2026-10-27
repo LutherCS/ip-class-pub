@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
 Using pytest-playwright to test the front end
 
 @authors: Roman Yasinovskyy
-@version: 2025.10
+@version: 2026.10
 """
 
 import os
@@ -46,9 +45,11 @@ def test_click_button(page: Page) -> None:
 
 @pytest.mark.parametrize(
     "language, category",
-    product(
-        ["cs", "de", "en", "es", "eu", "fr", "gl", "hu", "it", "lt", "pl", "sv"],
-        ["all", "chuck", "neutral"],
+    list(
+        product(
+            ["cs", "de", "en", "es", "eu", "fr", "gl", "hu", "it", "lt", "pl", "sv"],
+            ["all", "chuck", "neutral"],
+        )
     ),
 )
 def test_get_a_joke(page: Page, language: str, category: str) -> None:
@@ -61,10 +62,12 @@ def test_get_a_joke(page: Page, language: str, category: str) -> None:
 
 @pytest.mark.parametrize(
     "language, category, number",
-    product(
-        ["cs", "de", "en", "es", "it", "pl"],
-        ["all", "chuck", "neutral"],
-        range(1, 10),
+    list(
+        product(
+            ["cs", "de", "en", "es", "it", "pl"],
+            ["all", "chuck", "neutral"],
+            range(1, 10),
+        )
     ),
 )
 def test_get_n_jokes(page: Page, language: str, category: str, number: int) -> None:
@@ -78,10 +81,12 @@ def test_get_n_jokes(page: Page, language: str, category: str, number: int) -> N
 
 @pytest.mark.parametrize(
     "language, category, number",
-    product(
-        ["eu", "fr", "gl", "hu", "lt", "sv"],
-        ["all", "neutral"],
-        range(1, 5),
+    list(
+        product(
+            ["eu", "fr", "gl", "hu", "lt", "sv"],
+            ["all", "neutral"],
+            range(1, 5),
+        )
     ),
 )
 def test_get_fewer_jokes(page: Page, language: str, category: str, number: int) -> None:

@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
 Using pytest-flask to test the back end
 
 @authors: Roman Yasinovskyy
-@version: 2025.10
+@version: 2026.10
 """
 
 import pathlib
@@ -24,9 +23,8 @@ finally:
 @pytest.fixture(name="client")
 def fixture_client():
     """Create the client fixture"""
-    with app.test_client() as test_client:
-        with app.app_context():
-            yield test_client
+    with app.test_client() as test_client, app.app_context():
+        yield test_client
 
 
 def test_status_get(client) -> None:
@@ -36,14 +34,16 @@ def test_status_get(client) -> None:
 
 @pytest.mark.parametrize(
     "language, category",
-    product(
-        ["cs", "de", "en", "es", "eu", "fr", "gl", "hu", "it", "lt", "pl", "sv"],
-        ["all", "chuck", "neutral"],
+    list(
+        product(
+            ["cs", "de", "en", "es", "eu", "fr", "gl", "hu", "it", "lt", "pl", "sv"],
+            ["all", "chuck", "neutral"],
+        )
     ),
 )
 def test_status_post(client, language: str, category: str) -> None:
     """POST with various combinations of language/category should work"""
-    assert client.post("/", data=dict(language=language, category=category)).status_code == 200
+    assert client.post("/", data={"language": language, "category": category}).status_code == 200
 
 
 def test_status_post_error(client) -> None:
@@ -53,9 +53,11 @@ def test_status_post_error(client) -> None:
 
 @pytest.mark.parametrize(
     "language, category",
-    product(
-        ["cs", "de", "en", "es", "eu", "fr", "gl", "hu", "it", "lt", "pl", "sv"],
-        ["all", "chuck", "neutral"],
+    list(
+        product(
+            ["cs", "de", "en", "es", "eu", "fr", "gl", "hu", "it", "lt", "pl", "sv"],
+            ["all", "chuck", "neutral"],
+        )
     ),
 )
 def test_get_a_joke(language: str, category: str) -> None:
@@ -65,10 +67,12 @@ def test_get_a_joke(language: str, category: str) -> None:
 
 @pytest.mark.parametrize(
     "language, category, number",
-    product(
-        ["cs", "de", "en", "es", "it", "pl"],
-        ["all", "chuck", "neutral"],
-        range(1, 10),
+    list(
+        product(
+            ["cs", "de", "en", "es", "it", "pl"],
+            ["all", "chuck", "neutral"],
+            range(1, 10),
+        )
     ),
 )
 def test_get_n_jokes(language: str, category: str, number: int) -> None:
