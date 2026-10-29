@@ -1,0 +1,19 @@
+{% extends 'index.jinja' %}
+{% block content %}
+    <div class="container" id="allGames"></div>
+    {% if all_games %}
+        {% for game in all_games %}
+            <article class="message is-info">
+                <div class="message-header">
+                    {{ game }}
+                </div>
+                <div class="message-body">
+                    details to follow
+                </div>
+            </article>
+        {% endfor %}
+    {% else %}
+        <p>Use the form to add a game</p>
+    {% endif %}
+    </div>
+{% endblock content %}
