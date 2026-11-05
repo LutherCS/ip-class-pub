@@ -1,2 +1,6 @@
 [tool.fastapi]
 entrypoint = "gamelyy.app:app"
+[project]
+dependencies = ["fastapi[standard]>=0.143.0"]
+name         = "fastapi_demo"
+version      = "2026.11"
