@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
-Testing `geo` data retrieval
+Testing geo data retrieval
 
 @author: Roman Yasinovskyy
-@version: 2025.11
+@version: 2026.11
 """
 
 import pathlib
@@ -25,9 +24,8 @@ finally:
 def fixture_app():
     """Create the client fixture"""
     app = create_app()
-    with app.test_client() as this_app:
-        with app.app_context():
-            yield this_app
+    with app.test_client() as this_app, app.app_context():
+        yield this_app
 
 
 @pytest.mark.parametrize(
@@ -72,7 +70,7 @@ def test_query_real_region(name: str, results: int):
     ],
 )
 def test_query_fictional_region(name: str):
-    """Should not crash while retrieving fictinoal continental region"""
+    """Should not crash while retrieving fictional continental region"""
     query = "select * from country where continental_region=?;"
     assert len(get_data_from_db(query, (name,))) == 0
 
@@ -119,7 +117,7 @@ def test_query_real_subregion(name: str, results: int) -> None:
     ],
 )
 def test_query_fictional_subregion(name: str):
-    """Should not crash while retrieving fictinoal subregion"""
+    """Should not crash while retrieving fictional subregion"""
     query = "select * from country where subregion=?;"
     assert len(get_data_from_db(query, (name,))) == 0
 

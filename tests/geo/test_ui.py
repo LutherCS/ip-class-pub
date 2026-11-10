@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
-Testing `geo` user interface
+Testing geo user interface
 
 @author: Roman Yasinovskyy
-@version: 2025.11
+@version: 2026.11
 """
 
 import os

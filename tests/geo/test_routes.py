@@ -1,9 +1,8 @@
-#!/usr/bin/env python3
 """
-Testing `geo` routes
+Testing geo routes
 
 @author: Roman Yasinovskyy
-@version: 2025.11
+@version: 2026.11
 """
 
 import pathlib
@@ -24,9 +23,8 @@ finally:
 def fixture_client():
     """Create the client fixture"""
     app = create_app()
-    with app.test_client() as test_client:
-        with app.app_context():
-            yield test_client
+    with app.test_client() as test_client, app.app_context():
+        yield test_client
 
 
 @pytest.mark.parametrize(
