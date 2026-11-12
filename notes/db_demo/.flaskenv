@@ -1,0 +1,2 @@
+FLASK_DATABASE = "database.db"
+FLASK_SECRET_KEY = ""
