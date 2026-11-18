@@ -25,7 +25,7 @@ dependencies = [
     "pytest-timeout>=2.4.0",
     "python-dotenv>=1.2.2",
     "requests>=2.34.2",
-    "soupsieve>=2.9.1",
+    "soupsieve>=4.0",
     "sqlalchemy>=2.0.51",
     "wtforms>=3.2.2",
 ]
