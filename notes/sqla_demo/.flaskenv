@@ -1,2 +1,2 @@
-FLASK_DATA_FILE = ""
+FLASK_DATA_FILE = "dataset"
 FLASK_SECRET_KEY = ""

@@ -5,71 +5,75 @@ GamelYY model
 @version: 2026.11
 """
 
-from flask_marshmallow.sqla import SQLAlchemyAutoSchema
+import csv
+
 from marshmallow import fields
-from sqlalchemy import Column, Float, Integer, String
-from sqlalchemy.orm import DeclarativeBase, relationship
+from sqlalchemy import ForeignKey
+from sqlalchemy.exc import IntegrityError
+from sqlalchemy.orm import DeclarativeBase, Mapped, mapped_column, relationship
+
+from gamelyy import db, mm
 
 
 class Base(DeclarativeBase): ...
 
 
-class Game(Base):
+class Game(db.Model):
     __tablename__ = "game"
 
-    rank = Column(Integer)
-    bgg_url = Column(String)
-    game_id = Column(Integer, primary_key=True)
-    names = Column(String, nullable=False)
-    min_players = Column(Integer)
-    max_players = Column(Integer)
-    avg_time = Column(Integer)
-    min_time = Column(Integer)
-    max_time = Column(Integer)
-    year = Column(Integer)
-    avg_rating = Column(Float)
-    geek_rating = Column(Float)
-    num_votes = Column(Integer)
-    image_url = Column(String)
-    age = Column(Integer)
-    mechanic = Column(String)
-    owned = Column(Integer)
-    category = Column(String)
-    designer = Column(String)
-    weight = Column(Float)
+    rank: Mapped[int] = mapped_column()
+    bgg_url: Mapped[str] = mapped_column()
+    game_id: Mapped[int] = mapped_column(primary_key=True)
+    names: Mapped[str] = mapped_column(nullable=False)
+    min_players: Mapped[int] = mapped_column()
+    max_players: Mapped[int] = mapped_column()
+    avg_time: Mapped[int] = mapped_column()
+    min_time: Mapped[int] = mapped_column()
+    max_time: Mapped[int] = mapped_column()
+    year: Mapped[int] = mapped_column()
+    avg_rating: Mapped[float] = mapped_column()
+    geek_rating: Mapped[float] = mapped_column()
+    num_votes: Mapped[int] = mapped_column()
+    image_url: Mapped[str] = mapped_column()
+    age: Mapped[int] = mapped_column()
+    mechanic: Mapped[str] = mapped_column()
+    owned: Mapped[int] = mapped_column()
+    category: Mapped[str] = mapped_column()
+    designer: Mapped[str] = mapped_column()
+    weight: Mapped[float] = mapped_column()
 
 
-class User(Base):
+class User(db.Model):
     __tablename__ = "user"
 
-    username = Column(String(20), primary_key=True)
-    password = Column(String)
+    username: Mapped[str] = mapped_column(primary_key=True)
+    password: Mapped[str] = mapped_column()
 
 
-class Ownership(Base):
+class Ownership(db.Model):
     __tablename__ = "ownership"
 
-    id = Column(Integer, primary_key=True)
-    user_id = Column(String)
-    game_id = Column(Integer)
+    id: Mapped[int] = mapped_column(primary_key=True)
+    user_id: Mapped[str] = mapped_column(ForeignKey("user.username"))
+    game_id: Mapped[int] = mapped_column(ForeignKey("game.game_id"))
 
-    game = relationship("Game")
-    user = relationship("User")
+    game: Mapped["Game"] = relationship("Game")
+    user: Mapped["User"] = relationship("User")
 
 
-class GameSchema(SQLAlchemyAutoSchema):
+class GameSchema(mm.SQLAlchemyAutoSchema):
     class Meta:
         model = Game
         include_relationships = True
 
 
-class UserSchema(SQLAlchemyAutoSchema):
+class UserSchema(mm.SQLAlchemyAutoSchema):
     class Meta:
         model = User
         include_relationships = True
 
 
-class OwnershipSchema(SQLAlchemyAutoSchema):
+class OwnershipSchema(mm.SQLAlchemyAutoSchema):
     class Meta:
         model = Ownership
         include_relationships = True
@@ -79,20 +83,44 @@ class OwnershipSchema(SQLAlchemyAutoSchema):
     user = fields.Nested("UserSchema")
 
 
-def create(): ...
+def load_data(filename: str):
+    with open(filename) as f:
+        content = csv.DictReader(f)
+        try:
+            for item in content:
+                game = Game()
+                game.rank = int(item["rank"])
+                game.bgg_url = item["bgg_url"]
+                game.game_id = int(item["game_id"])
+                game.names = item["names"]
+                game.min_players = int(item["min_players"])
+                game.max_players = int(item["max_players"])
+                game.avg_time = int(item["avg_time"])
+                game.min_time = int(item["min_time"])
+                game.max_time = int(item["max_time"])
+                game.year = int(item["year"])
+                game.avg_rating = float(item["avg_rating"])
+                game.geek_rating = float(item["geek_rating"])
+                game.num_votes = int(item["num_votes"])
+                game.image_url = item["image_url"]
+                game.age = int(item["age"])
+                game.mechanic = item["mechanic"]
+                game.owned = int(item["owned"])
+                game.category = item["category"]
+                game.designer = item["designer"]
+                game.weight = float(item["weight"])
+                db.session.add(game)
+            db.session.commit()
+        except IntegrityError:
+            db.session.rollback()
 
 
-def retrieve(): ...
-
-
-def update(): ...
-
-
-def delete(): ...
-
-
-def main(): ...
-
-
-if __name__ == "__main__":
-    main()
+def add_anonymous_user():
+    try:
+        anonymous = User()
+        anonymous.username = "anonymous"
+        anonymous.password = ""
+        db.session.add(anonymous)
+        db.session.commit()
+    except IntegrityError:
+        db.session.rollback()
