@@ -19,9 +19,20 @@
         <div class="container">
             <form id="gameForm" method="post" action="/add">
                 <div class="field">
-                    <label class="label">Title</label>
+                    {{ new_game.title.label(class="label") }}
                     <div class="control">
-                        <input type="text" class="input" id="titleInput" name="title">
+                        {{ new_game.title(class="input", placeholder="Enter the title", id="titleInput") }}
+                    </div>
+                </div>
+                <div class="field">
+                    {{ new_game.rating.label(class="label") }}
+                    <div class="radios">
+                        {% for rat_val, rat_text in new_game.rating.choices %}
+                            <label class="radio">
+                                <input type="radio" name="rating" value={{ rat_value }}>
+                                {{ rat_text }}
+                            </label>
+                        {% endfor %}
                     </div>
                 </div>
                 <div class="field">

@@ -10,6 +10,7 @@ from sqlalchemy import select
 
 from gamelyy import db
 from gamelyy.model import Game, GameSchema, Ownership, User
+from gamelyy.forms import NewGameForm
 
 main = Blueprint("main", __name__, url_prefix="/")
 
@@ -24,7 +25,7 @@ def index():
     )
     all_games = db.session.scalars(stmt).all()
     print(all_games)
-    return render_template("reviews.jinja", all_games=all_games)
+    return render_template("reviews.jinja", all_games=all_games, new_game=NewGameForm())
 
 
 @main.post("/add")
